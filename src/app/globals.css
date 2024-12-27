@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Nunito';
+  src: url('/fonts/Nunito.ttf');
+}
+
+@font-face {
+  font-family: 'BebasNeue';
+  src: url('/fonts/BebasNeue.ttf');
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

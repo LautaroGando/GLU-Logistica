@@ -9,8 +9,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        pcPrincipal: "#24BA63",
+        pcSecondary: "#FAFAFA",
+        sc: "#4E4E4E",
+        tcPrincipal: "#2EAA62",
+        tcSecondary: "#6E6E6E",
+        tcExtra: "#8E8E8E",
+        transparentColor: "#00000080",
+        mapColorCABA: "#2EE47A",
+        mapColorGBA2: "#1C9E53",
+        mapColorGBA3: "#037B35",
+      },
+      fontFamily: {
+        nunito: ["Nunito", "sans-serif"],
+        bebasNeue: ["BebasNeue", "sans-serif"],
       },
     },
   },

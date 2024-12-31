@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "@/components/HeaderComponents/Header";
+import { MenuProvider } from "@/context/MenuContext/MenuContext";
 
 export const metadata: Metadata = {
   title: "La Vuelta Logística",
@@ -13,7 +15,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`antialiased`}>{children}</body>
+      <body className="antialiase">
+        <MenuProvider>
+          <Header />
+          <main className="px-3 sm:px-4 lg:max-w-[1200px] lg:mx-auto">
+            {children}
+          </main>
+        </MenuProvider>
+      </body>
     </html>
   );
 }

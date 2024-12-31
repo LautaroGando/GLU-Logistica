@@ -24,6 +24,10 @@ export default {
         nunito: ["Nunito", "sans-serif"],
         bebasNeue: ["BebasNeue", "sans-serif"],
       },
+      backgroundImage: {
+        buttonGradient: 'linear-gradient(350deg, #24BA63 45.45%, #2EAA62 46.73%)',
+        buttonHoverGradient: 'linear-gradient(350deg, #FAFAFA 45.45%, #EEEEEE 46.73%)',
+      }
     },
   },
   plugins: [],

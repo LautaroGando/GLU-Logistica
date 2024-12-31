@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Nunito';
-  src: url('/fonts/Nunito.ttf');
+  font-family: "Nunito";
+  src: url("/fonts/Nunito.ttf");
 }
 
 @font-face {
-  font-family: 'BebasNeue';
-  src: url('/fonts/BebasNeue.ttf');
+  font-family: "BebasNeue";
+  src: url("/fonts/BebasNeue.ttf");
 }
 
 *,
@@ -21,12 +21,9 @@
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+input[type="radio"]:checked {
+  @apply border-pcPrincipal bg-pcPrincipal;
 }

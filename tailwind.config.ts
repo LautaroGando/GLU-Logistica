@@ -24,6 +24,9 @@ export default {
         nunito: ["Nunito", "sans-serif"],
         bebasNeue: ["BebasNeue", "sans-serif"],
       },
+      boxShadow: {
+        methodCard: "0 4px 4px 0 rgba(36, 186, 99, 0.50)",
+      },
     },
   },
   plugins: [],

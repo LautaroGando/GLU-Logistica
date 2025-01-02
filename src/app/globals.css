@@ -17,14 +17,14 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: "Nunito", sans-serif;
 }
 
-input[type="radio"]:checked {
+.radio-checked:checked {
   @apply border-pcPrincipal bg-pcPrincipal;
 }
 
@@ -35,3 +35,4 @@ input[type="radio"]:checked {
 .inputFormError {
   @apply text-red-400 text-xs;
 }
+

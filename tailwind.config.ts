@@ -19,6 +19,7 @@ export default {
         mapColorCABA: "#2EE47A",
         mapColorGBA2: "#1C9E53",
         mapColorGBA3: "#037B35",
+        blackPage: "#222",
       },
       fontFamily: {
         nunito: ["Nunito", "sans-serif"],

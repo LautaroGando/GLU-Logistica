@@ -27,3 +27,12 @@ body {
 .radio-checked:checked {
   @apply border-pcPrincipal bg-pcPrincipal;
 }
+
+.inputForm {
+  @apply w-full h-[50px] border-b-[1px] border-pcPrincipal p-3 outline-none text-sc;
+}
+
+.inputFormError {
+  @apply text-red-400 text-xs;
+}
+

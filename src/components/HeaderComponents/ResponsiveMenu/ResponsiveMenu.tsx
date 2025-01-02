@@ -9,7 +9,7 @@ export const ResponsiveMenu: React.FC = () => {
     <>
       <button
         onClick={() => handleToggleMenu()}
-        className={`relative w-[24px] h-[24px] z-10 sm:w-[30px] sm:h-[30px]`}
+        className={`relative w-[24px] h-[24px] z-20 sm:w-[30px] sm:h-[30px]`}
       >
         <span
           className={`absolute block w-full h-[2px] left-0 origin-center transition-all transform ${

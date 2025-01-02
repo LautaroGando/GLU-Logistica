@@ -10,7 +10,7 @@ export const ChangeLinkForm: React.FC<IChangeLinkFormProps> = ({
   return (
     <p className="flex gap-2 justify-center text-sc text-sm sm:text-base">
       {text}
-      <Link className="text-pcPrincipal" href={href}>{link}</Link>
+      <Link className="text-pcPrincipal hover:underline" href={href}>{link}</Link>
     </p>
   );
 };

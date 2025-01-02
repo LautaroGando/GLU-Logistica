@@ -22,6 +22,7 @@
 
 body {
   font-family: "Nunito", sans-serif;
+  background-color: #FAFAFA;
 }
 
 .radio-checked:checked {
@@ -29,7 +30,7 @@ body {
 }
 
 .inputForm {
-  @apply w-full h-[50px] border-b-[1px] border-pcPrincipal p-3 outline-none text-sc;
+  @apply w-full h-[50px] border-b-[1px] bg-pcSecondary border-pcPrincipal p-3 outline-none text-sc transition-all duration-300 focus:bg-pcPrincipal/10;
 }
 
 .inputFormError {

@@ -3,29 +3,46 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Nunito';
-  src: url('/fonts/Nunito.ttf');
+  font-family: "Nunito";
+  src: url("/fonts/Nunito.ttf");
 }
 
 @font-face {
-  font-family: 'BebasNeue';
-  src: url('/fonts/BebasNeue.ttf');
+  font-family: "BebasNeue";
+  src: url("/fonts/BebasNeue.ttf");
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: #fafafa;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #24ba63;
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Nunito", sans-serif;
+  background-color: #fafafa;
+}
+
+.radio-checked:checked {
+  @apply border-pcPrincipal bg-pcPrincipal;
+}
+
+.inputForm {
+  @apply w-full h-[50px] border-b-[1px] bg-pcSecondary border-pcPrincipal p-3 outline-none text-sc transition-all duration-300 focus:bg-pcPrincipal/10;
+}
+
+.inputFormError {
+  @apply text-red-400 text-xs;
 }

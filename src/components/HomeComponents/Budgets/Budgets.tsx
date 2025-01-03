@@ -5,7 +5,7 @@ import React from "react";
 
 export const Budgest: React.FC = () => {
   return (
-    <div id="budgets" className="flex flex-col gap-5 relative lg:h-[600px] lg:flex-row-reverse">
+    <div className="flex flex-col gap-5 relative lg:h-[600px] lg:flex-row-reverse">
       <div className="flex flex-col gap-5 lg:w-[50%]">
         <Title label="PRESUPUESTOS" />
         <Image

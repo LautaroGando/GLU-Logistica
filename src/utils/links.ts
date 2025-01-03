@@ -3,18 +3,18 @@ import { ILink } from "@/interfaces/ILink";
 export const links: ILink[] = [
     {
         name: '¿Quiénes somos?',
-        href: '#about-us',
+        href: '/#about-us',
     },
     {
         name: 'Presupuestos',
-        href: '#budgets',
+        href: '/#budgets',
     },
     {
         name: 'Zonas de cobertura',
-        href: '#coverage-areas',
+        href: '/#coverage-areas',
     },
     {
         name: 'Contactar',
-        href: '#contact',
+        href: '/#contact',
     },
 ];

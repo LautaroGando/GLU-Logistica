@@ -33,6 +33,10 @@ export default {
         banner: "linear-gradient(344deg, #FAFAFA 48%, #00000000 49%)",
         bannerGradientImage:
           "linear-gradient(263deg, rgba(36, 186, 99, 0.65) 0%, rgba(3, 123, 53, 0.65) 100%)",
+        aboutUsGradientImage:
+          "linear-gradient(177deg, #24BA63 45%, #00000000 55%)",
+        aboutUsGradientBorder:
+          "linear-gradient(-135deg, #24BA63 50%, #00000000 50%)",
       },
       boxShadow: {
         methodCard: "0 4px 4px 0 rgba(36, 186, 99, 0.50)",

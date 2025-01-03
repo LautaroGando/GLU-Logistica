@@ -1,0 +1,63 @@
+import { ICoverageArea } from "@/interfaces/ICoverageArea";
+
+export const coverageAreas: ICoverageArea[] = [
+  {
+    area: "Zona CABA:",
+    locality: ["CABA"],
+  },
+  {
+    area: "Zona GBA1:",
+    locality: [
+      "Vicente López",
+      "San Martín",
+      "3 de Febrero",
+      "Lomas de Zamora",
+      "Lanús",
+      "Avellaneda",
+    ],
+  },
+  {
+    area: "Zona GBA2:",
+    locality: [
+      "Pilar",
+      "Escobar",
+      "José C. Paz",
+      "Malvinas Argentinas",
+      "Tigre",
+      "San Fernando",
+      "San Isidro",
+      "San Miguel",
+      "Moreno",
+      "Merlo",
+      "Ituzaingó",
+      "Hurlingham",
+      "Morón",
+      "La Matanza",
+      "Ezeiza",
+      "Esteban Echeverría",
+      "Almirante Brown",
+      "Quilmes",
+      "Florencio Varela",
+      "Berazategui",
+    ],
+  },
+  {
+    area: "Zona GBA3:",
+    locality: [
+      "Zárate",
+      "Campana",
+      "Exaltación de la Cruz",
+      "Luján",
+      "General Rodriguez",
+      "Marcos Paz",
+      "General las Heras",
+      "Cañuelas",
+      "San Vicente",
+      "Presidente Perón",
+      "Coronel Brandsen",
+      "La Plata",
+      "Ensenada",
+      "Berisso",
+    ],
+  },
+];

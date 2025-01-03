@@ -7,6 +7,7 @@ import Footer from "@/components/FooterComponents/Footer";
 export const metadata: Metadata = {
   title: "La Vuelta Logística",
   description: "",
+  icons: "/assets/images/Header/logo.svg",
 };
 
 export default function RootLayout({

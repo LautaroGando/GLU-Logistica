@@ -7,9 +7,9 @@ import ButtonGoogle from "../GeneralComponents/ButtonGoogle/ButtonGoogle";
 
 export const SignIn: React.FC = () => {
   return (
-    <div className="flex flex-col gap-5 mx-auto max-w-[450px] lg:flex-row lg:mx-0 lg:max-w-full lg:justify-between">
+    <div className="flex flex-col gap-5 mx-auto max-w-[450px] lg:flex-row lg:mx-0 lg:max-w-full lg:justify-evenly">
       <Image
-        className="w-[200px] self-center sm:w-[320px] md:w-[450px] lg:w-[400px]"
+        className="w-[200px] self-center sm:w-[320px] md:w-[450px] lg:w-[400px] xl:w-[500px]"
         src="/assets/images/Ilustrations/Login/ilustration-login.svg"
         alt="Vector del login"
         width={500}

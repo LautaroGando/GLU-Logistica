@@ -7,7 +7,7 @@ export const ButtonGoogle: React.FC<IButtonGoogleProps> = ({
 }: IButtonGoogleProps) => {
   return (
     <button
-      className="flex gap-3 h-[36px] items-center justify-center border-[1px] border-tcSecondary text-sc sm:h-[46px]"
+      className="flex gap-3 h-[36px] items-center justify-center border-[1px] border-tcSecondary text-sc transition-all duration-500 hover:border-transparent hover:shadow-md sm:h-[46px]"
       type="submit"
     >
       <Image

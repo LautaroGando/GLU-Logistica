@@ -10,7 +10,7 @@ export const sections: ISection[] = [
     {
         icon: faTruckFast,
         name: 'SERVICIOS DE LOGÍSTICA',
-        href: '/services-logistics',
+        href: '/logistics-services',
     },
     {
         icon: faCreditCard,

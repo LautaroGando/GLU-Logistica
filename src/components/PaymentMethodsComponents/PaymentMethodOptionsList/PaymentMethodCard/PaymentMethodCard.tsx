@@ -15,14 +15,10 @@ const PaymentMethodCard: React.FC<IPaymentMethodCardProps> = ({
       className={`
         relative flex items-center py-4 px-6 gap-6 w-[260px] border-b-[1px] rounded-lg cursor-pointer transition-all duration-300 
         border-transparent 
-        ${
-          isSelected
-            ? "border-b-pcPrincipal bg-pcPrincipal/15 shadow-xl scale-[1.02]"
-            : "border-transparent"
-        }
+        ${isSelected ? " bg-pcPrincipal/15 shadow-md scale-[1.02]" : "border-transparent"}
        hover:bg-pcPrincipal/10
         sm:w-[300px] sm:h-[84px]
-        md:w-[360px]
+        md:w-[360px] md:text-[24px]
       `}
       onClick={() => onSelectMethod(method.id, method.label)}
       role="button"
@@ -54,7 +50,7 @@ const PaymentMethodCard: React.FC<IPaymentMethodCardProps> = ({
             className={`${method.iconColor} text-[20px] sm:text-[30px] sm:w-[50px]`}
           />
         ) : null}
-        <p className="sm:text-[24px] text-sc">{method.label}</p>
+        <p className="sm:text-[20px] md:text-[24px] text-sc">{method.label}</p>
       </div>
     </div>
   );

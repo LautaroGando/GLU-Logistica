@@ -13,26 +13,24 @@ const PaymentMethodOptionsList = () => {
   };
 
   return (
-    <>
-      <div className="flex justify-center items-center h-[100%]">
-        <div
-          className="
-          h-full flex flex-col gap-5 justify-center items-center
+    <div className="flex flex-col gap-[10%] justify-center items-center h-[100%]">
+      <div
+        className="
+          flex flex-col gap-5 justify-center items-center
           sm:grid sm:grid-cols-2 sm:h-[max-content]
           "
-        >
-          {methods.map((method: IMethod, i) => (
-            <PaymentMethodCard
-              key={i}
-              method={method}
-              selectedMethod={selectedPaymentMethod}
-              onSelectMethod={handleSelectMethod}
-            />
-          ))}
-        </div>
+      >
+        {methods.map((method: IMethod, i) => (
+          <PaymentMethodCard
+            key={i}
+            method={method}
+            selectedMethod={selectedPaymentMethod}
+            onSelectMethod={handleSelectMethod}
+          />
+        ))}
       </div>
       {MethodLabel && <PaymentMethodButton label={MethodLabel} />}
-    </>
+    </div>
   );
 };
 

@@ -17,7 +17,7 @@ const FooterContact: React.FC<IFooterContactProps> = ({ isMobile }) => {
         <input
           type="submit"
           value="Suscribirse"
-          className="bg-sc p-1 transition-all duration-200 cursor-pointer hover:bg-tcSecondary sm:text-[16px] sm:p-2"
+          className="bg-sc p-1 transition-all duration-200 border-2 border-transparent cursor-pointer hover:bg-tcSecondary sm:text-[16px] sm:p-2"
         />
       </div>
     </div>

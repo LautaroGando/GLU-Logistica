@@ -6,11 +6,11 @@ import React from "react";
 
 export const CoverageAreas: React.FC = () => {
   return (
-    <div id="coverage-areas" className="flex flex-col gap-5 md:mt-20">
+    <div className="flex flex-col gap-5 md:mt-20">
       <Title label="ZONAS DE COBERTURA" />
       <div className="relative sm:flex">
         <Image
-          className="hidden sm:inline-block sm:w-[600px] md:w-[800px]"
+          className="hidden sm:inline-block sm:w-[500px] md:w-[600px]"
           src="/assets/images/Ilustrations/Home/ilustration-map.svg"
           alt="Vector del mapa"
           width={500}
@@ -35,6 +35,12 @@ export const CoverageAreas: React.FC = () => {
             </h3>
           </div>
         ))}
+      </div>
+      <div className="gap-3 hidden sm:flex">
+        <div className="w-[50px] h-[50px] bg-mapColorCABA relative after:content-['CABA'] after:absolute after:-bottom-6 after:text-center after:w-full after:text-sc after:text-sm"></div>
+        <div className="w-[50px] h-[50px] bg-pcPrincipal relative after:content-['GBA1'] after:absolute after:-bottom-6 after:text-center after:w-full after:text-sc after:text-sm"></div>
+        <div className="w-[50px] h-[50px] bg-mapColorGBA2 relative after:content-['GBA2'] after:absolute after:-bottom-6 after:text-center after:w-full after:text-sc after:text-sm"></div>
+        <div className="w-[50px] h-[50px] bg-mapColorGBA3 relative after:content-['GBA3'] after:absolute after:-bottom-6 after:text-center after:w-full after:text-sc after:text-sm"></div>
       </div>
     </div>
   );

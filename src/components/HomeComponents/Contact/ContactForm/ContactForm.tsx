@@ -18,7 +18,7 @@ const ContactForm: React.FC = () => {
       {() => (
         <Form>
           <div className="mb-4">
-            <Field type="text" name="nombre" placeholder="Nombre:" className="inputForm" />
+            <Field type="text" name="nombre" placeholder="Nombre..." className="inputForm" />
             <ErrorMessage name="nombre" component="div" className="text-red-500" />
           </div>
 
@@ -26,7 +26,7 @@ const ContactForm: React.FC = () => {
             <Field
               type="text"
               name="correo"
-              placeholder="Correo electrónico:"
+              placeholder="Correo electrónico..."
               className="inputForm"
             />
             <ErrorMessage name="correo" component="div" className="text-red-500" />
@@ -36,7 +36,7 @@ const ContactForm: React.FC = () => {
             <Field
               as="textarea"
               name="mensaje"
-              placeholder="Mensaje:"
+              placeholder="Mensaje..."
               className="inputForm min-h-[150px] resize-none"
             />
             <ErrorMessage name="mensaje" component="div" className="text-red-500" />

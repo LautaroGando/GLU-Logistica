@@ -5,8 +5,8 @@ const Title: React.FC<ITitleProps> = ({ label }) => {
   return (
     <div
       className="
-        flex gap-2 mt-8
-        sm:gap-4
+        flex gap-2 mt-8 mb-[30px]
+        sm:gap-4 sm-[50px]
         md:gap-6
         xl:gap-7
       "

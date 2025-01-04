@@ -9,7 +9,10 @@ const FooterContact: React.FC<IFooterContactProps> = ({ isMobile }) => {
         <input
           type="text"
           placeholder="Correo electrónico..."
-          className="p-1 outline-none text-sc  sm:text-[16px] sm:p-2 "
+          className="p-1 outline-none text-sc border-2 border-transparent transition-all duration-200
+          sm:text-[16px] sm:p-2 
+         hover:border-sky-500 
+         focus:border-sky-600"
         />
         <input
           type="submit"

@@ -24,7 +24,7 @@ const Warehouse = () => {
         >
           <h4 className="font-bold mt-6 sm:mt-[86px]">
             Almacenamos tus paquetes en nuestro deposito, organizamos tus pedidos por zona y
-            entrgamos.
+            entregamos.
           </h4>
           <p className="font-medium mt-4 sm:mt-[24px]">
             El deposito cuenta con seguridad privada 24hs.

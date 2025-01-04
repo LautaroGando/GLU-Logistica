@@ -22,9 +22,9 @@ const FooterSocialMedia = () => {
           href={item.link}
           target="_blank"
           rel="noopener noreferrer"
-          className={`flex items-center py-[7px] px-2 border border-pcSecondary rounded-[100%] w-[max-content] transition-all duration-300 
+          className={`flex items-center justify-center border border-pcSecondary rounded-[100%] w-[40px] h-[40px] transition-all duration-300 
             hover:scale-110 ${item.color} hover:bg-pcSecondary
-            lg:p-3
+            lg:w-[60px] lg:h-[60px]
             `}
         >
           <FontAwesomeIcon icon={item.icon} className="text-[25px] lg:text-[36px]" />

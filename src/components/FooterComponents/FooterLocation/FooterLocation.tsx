@@ -9,7 +9,7 @@ const FooterLocation: React.FC<IFooterLocationProps> = ({ isMobile }) => (
   <div className={`${isMobile ? "lg:hidden" : "hidden lg:flex lg:flex-col"}`}>
     <h4 className="text-[16px] font-bold sm:text-[20px] lg:text-[24px]">Localidad</h4>
     <div className="flex items-center gap-2 mb-4 lg:mb-0">
-      <FontAwesomeIcon icon={faBuilding} className="text-[40px]" />
+      <FontAwesomeIcon icon={faBuilding} className="text-[40px] size-[40px]" />
       <div className="flex flex-col text-[11px]">
         <a className="leading-[1.3]">Buenos Aires, Argentina</a>
         <a className="leading-[1.3]">Av. Juan B. Justo 9100 CP-1408</a>

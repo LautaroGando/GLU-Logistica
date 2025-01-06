@@ -11,7 +11,7 @@ export const Links: React.FC = () => {
 
   return (
     <div
-      className={`h-[100vh] fixed flex flex-col right-0 top-0 transition-all duration-500 overflow-hidden z-10 ${
+      className={`h-[100dvh] fixed flex flex-col right-0 top-0 transition-all duration-500 overflow-hidden z-10 ${
         menu ? "w-full" : "w-0"
       }`}
     >

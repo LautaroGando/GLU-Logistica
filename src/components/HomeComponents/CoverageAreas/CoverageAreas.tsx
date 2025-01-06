@@ -6,7 +6,7 @@ import React from "react";
 
 export const CoverageAreas: React.FC = () => {
   return (
-    <div className="flex flex-col gap-5 md:mt-20">
+    <div className="flex flex-col gap-5">
       <Title label="ZONAS DE COBERTURA" />
       <div className="relative sm:flex">
         <Image

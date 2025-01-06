@@ -12,7 +12,7 @@ export default function Home() {
       <AboutUs />
       <div id="budgets" className="md:h-10"></div>
       <Budgest />
-      <div id="coverage-areas"></div>
+      <div id="coverage-areas" className="md:h-10"></div>
       <CoverageAreas />
       <Contact />
     </div>

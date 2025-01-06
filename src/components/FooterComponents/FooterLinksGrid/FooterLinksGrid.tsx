@@ -60,7 +60,7 @@ const FooterLinksGrid = () => {
               <div className="relative w-fit transition-colors flex items-center gap-2">
                 <FontAwesomeIcon
                   icon={faWhatsapp}
-                  className="text-[16px] sm:text-[20px] lg:text-[24px]"
+                  className="text-[16px] size-[16px] sm:size-[20px] sm:text-[20px] lg:size-[24px] lg:text-[24px]"
                 />
                 <p className="group-hover:text-pcPrimary hover:text-pcSecondary/80">
                   +54 011 6860-5718
@@ -71,7 +71,10 @@ const FooterLinksGrid = () => {
 
             <a href="mailto:lavueltalogistica@gmail.com" className="group relative w-fit">
               <div className="relative w-fit transition-colors flex items-center gap-2">
-                <FontAwesomeIcon icon={faEnvelope} className="text-[16px] lg:text-[20px]" />
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className="text-[16px] size-[16px] lg:text-[20px] lg:size-[20px]"
+                />
                 <p className="group-hover:text-pcPrimary hover:text-pcSecondary/80">
                   lavueltalogistica@gmail.com
                 </p>

@@ -27,7 +27,10 @@ const FooterSocialMedia = () => {
             lg:w-[60px] lg:h-[60px]
             `}
         >
-          <FontAwesomeIcon icon={item.icon} className="text-[25px] lg:text-[36px]" />
+          <FontAwesomeIcon
+            icon={item.icon}
+            className="text-[25px] size-[25px] lg:text-[36px] lg:size-[36px]"
+          />
         </a>
       ))}
     </div>

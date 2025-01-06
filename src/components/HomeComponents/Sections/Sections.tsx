@@ -15,12 +15,10 @@ export const Sections: React.FC = () => {
             key={i}
           >
             <FontAwesomeIcon
-              className="text-3xl md:text-4xl lg:text-6xl"
+              className="text-3xl max-w-[37px] sm:max-w-[45px] md:text-4xl lg:text-6xl xl:max-w-[75px]"
               icon={section.icon}
             />
-            <h3 className="text-xs text-center md:text-sm lg:text-base">
-              {section.name}
-            </h3>
+            <h3 className="text-xs text-center md:text-sm lg:text-base">{section.name}</h3>
           </Link>
         ))}
       </div>

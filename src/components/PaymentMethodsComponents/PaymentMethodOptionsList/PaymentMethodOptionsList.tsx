@@ -29,7 +29,12 @@ const PaymentMethodOptionsList = () => {
           />
         ))}
       </div>
-      {MethodLabel && <PaymentMethodButton label={MethodLabel} />}
+
+      {MethodLabel ? (
+        <PaymentMethodButton label={MethodLabel} />
+      ) : (
+        <div className="h-[48px] sm:h-[60px]"></div>
+      )}
     </div>
   );
 };

@@ -14,6 +14,7 @@ export default function Home() {
       <Budgest />
       <div id="coverage-areas" className="md:h-10"></div>
       <CoverageAreas />
+      <div id="contact" className="md:h-10"></div>
       <Contact />
     </div>
   );

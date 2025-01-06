@@ -33,7 +33,7 @@ const SingUp = () => {
           <span className="flex items-center justify-center gap-3 text-tcSecondary font-light before:content-[''] before:flex-1 before:h-[1px] before:bg-tcSecondary after:content-[''] after:flex-1 after:h-[1px] after:bg-tcSecondary">
             o
           </span>
-          <ButtonGoogle text="Iniciar sesión con google" />
+          <ButtonGoogle text="Registrarse con google" />
           <ChangeLinkForm
             text="¿Ya tienes una cuenta?"
             href="/sign-in"

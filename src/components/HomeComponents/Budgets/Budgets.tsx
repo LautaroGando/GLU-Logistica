@@ -14,6 +14,7 @@ export const Budgest: React.FC = () => {
           alt="Vector de presupuestos"
           width={500}
           height={500}
+          priority
         />
         <InfoHome index={1} />
       </div>
@@ -23,6 +24,7 @@ export const Budgest: React.FC = () => {
         alt="Vector de presupuestos"
         width={500}
         height={500}
+        priority
       />
 
       <div className="w-[74px] h-[74px] bg-aboutUsGradientBorder absolute -bottom-24 left-0 rotate-180 hidden md:block lg:w-[285px] lg:h-[285px]"></div>

@@ -15,6 +15,14 @@ export const timeline: ITimeline[] = [
     },
     {
         age: 2023,
+        text: 'Expanción a nuevas zonas.',
+    },
+    {
+        age: 2024,
+        text: 'Apertura del depósito.',
+    },
+    {
+        age: 2025,
         text: 'Clientes satisfechos.',
     },
 ];

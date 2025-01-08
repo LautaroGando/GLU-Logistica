@@ -8,7 +8,7 @@ import ContactForm from "./ContactForm/ContactForm";
 
 const Contact: React.FC = () => {
   return (
-    <main id="contact">
+    <div>
       <Title label="CONTACTO" />
       <div className="md:max-w-[450px] mx-auto lg:max-w-[100%] lg:flex lg:justify-between">
         <div className="w-[330px] mx-auto md:w-full lg:min-w-[430px]">
@@ -18,7 +18,7 @@ const Contact: React.FC = () => {
           <ContactForm />
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

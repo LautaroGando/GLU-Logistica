@@ -6,7 +6,7 @@ import InfoHome from "@/components/GeneralComponents/InfoHome/InfoHome";
 
 export const AboutUs: React.FC = () => {
   return (
-    <div className="flex flex-col gap-5 -mt-10 relative lg:flex-row">
+    <div className="flex flex-col gap-5 -mt-10 relative lg:flex-row lg:items-center">
       <div className="flex flex-col gap-5 lg:w-[50%]">
         <Title label="¿Quiénes somos?" />
         <div className="w-[74px] h-[74px] bg-aboutUsGradientBorder absolute top-8 right-0 hidden md:block lg:w-[285px] lg:h-[285px]"></div>

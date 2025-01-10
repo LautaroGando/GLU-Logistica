@@ -4,6 +4,7 @@ import Header from "@/components/HeaderComponents/Header";
 import { MenuProvider } from "@/context/MenuContext/MenuContext";
 import Footer from "@/components/FooterComponents/Footer";
 import WhatsAppLink from "@/components/GeneralComponents/WhatsAppLink/WhatsAppLink";
+import { ChangeServiceProvider } from "@/context/ChangeServiceContext/ChangeServiceContext";
 
 export const metadata: Metadata = {
   title: "La Vuelta Logística",
@@ -20,12 +21,14 @@ export default function RootLayout({
     <html lang="es">
       <body className="antialiase">
         <MenuProvider>
-          <Header />
-          <main className="px-3 my-10 sm:px-4 lg:max-w-[1200px] lg:mx-auto">
-            {children}
-          </main>
-          <WhatsAppLink />
-          <Footer />
+          <ChangeServiceProvider>
+            <Header />
+            <main className="px-3 my-10 sm:px-4 lg:max-w-[1200px] lg:mx-auto">
+              {children}
+            </main>
+            <WhatsAppLink />
+            <Footer />
+          </ChangeServiceProvider>
         </MenuProvider>
       </body>
     </html>

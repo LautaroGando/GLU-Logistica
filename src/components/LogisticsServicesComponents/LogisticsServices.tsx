@@ -1,23 +1,17 @@
 import React from "react";
 import Title from "../GeneralComponents/Title/Title";
-import Freight from "./Freight/Freight";
 import MotorcycleCourier from "./MotorcycleCourier/MotorcycleCourier";
-import ServiceDescription from "./ServiceDescription/ServiceDescription";
-import FleetOptions from "./FleetOptions/FleetOptions";
+import Freight from "./Freight/Freight";
 
 const LogisticsServices = () => {
   return (
-    <main className="text-sc">
+    <div className="text-sc mb-20">
       <Title label="SERVICIOS DE LOGÍSTICA" />
-
-      <MotorcycleCourier />
-
-      <ServiceDescription />
-
-      <Freight />
-
-      <FleetOptions />
-    </main>
+      <div className="flex flex-col gap-20 md:gap-32">
+        <MotorcycleCourier />
+        <Freight />
+      </div>
+    </div>
   );
 };
 

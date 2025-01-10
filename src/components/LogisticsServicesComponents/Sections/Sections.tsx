@@ -47,11 +47,7 @@ export const Sections: React.FC<ISectionsProps> = ({ id }: ISectionsProps) => {
               {text.text}
             </p>
           </div>
-          <div
-            className={`hidden lg:w-1/2 lg:flex lg:${
-              i % 2 === 0 ? "justify-end" : "justify-start"
-            }`}
-          >
+          <div className="hidden lg:w-1/2 lg:flex lg:justify-center">
             <Image
               className="w-[240px] sm:w-[300px] lg:w-[350px]"
               src={text.img}

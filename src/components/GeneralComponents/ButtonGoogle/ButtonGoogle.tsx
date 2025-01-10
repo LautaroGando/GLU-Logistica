@@ -2,12 +2,10 @@ import React from "react";
 import { IButtonGoogleProps } from "./types";
 import Image from "next/image";
 
-export const ButtonGoogle: React.FC<IButtonGoogleProps> = ({
-  text,
-}: IButtonGoogleProps) => {
+export const ButtonGoogle: React.FC<IButtonGoogleProps> = ({ text }: IButtonGoogleProps) => {
   return (
     <button
-      className="flex gap-3 h-[36px] items-center justify-center border-[1px] border-tcSecondary text-sc transition-all duration-500 hover:border-transparent hover:shadow-md sm:h-[46px]"
+      className="flex gap-3 h-[36px] w-full items-center justify-center border-[1px] border-tcSecondary text-sc transition-all duration-500 hover:border-transparent hover:shadow-md sm:h-[46px]"
       type="submit"
     >
       <Image

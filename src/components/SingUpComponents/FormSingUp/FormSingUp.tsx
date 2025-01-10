@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
+import { motion } from "framer-motion"; // Importar Framer Motion
 import ButtonForm from "@/components/GeneralComponents/ButtonForm/ButtonForm";
 import { validateSignUp } from "@/helpers/validateSingUp/validateSingUp";
 import { IInputSignUp } from "@/helpers/validateSingUp/types";
@@ -25,90 +26,43 @@ const FormSignUp = () => {
     >
       {({ errors, touched }: FormikProps<IInputSignUp>) => (
         <Form className="flex flex-col gap-5">
-          <div>
-            <Field className="inputForm" type="text" name="firstName" placeholder="Nombre..." />
-            {errors.firstName && touched.firstName && (
-              <ErrorMessage className="inputFormError" name="firstName" component="p" />
-            )}
-          </div>
+          {[
+            { name: "firstName", type: "text", placeholder: "Nombre..." },
+            { name: "lastName", type: "text", placeholder: "Apellido..." },
+            { name: "email", type: "email", placeholder: "Correo electrónico..." },
+            { name: "document", type: "text", placeholder: "Documento..." },
+            { name: "password", type: "password", placeholder: "Contraseña..." },
+            { name: "confirmPassword", type: "password", placeholder: "Repetir contraseña..." },
+            { name: "location", type: "text", placeholder: "Localidad..." },
+            { name: "phone", type: "number", placeholder: "Teléfono..." },
+            { name: "birthDate", type: "date", placeholder: "Fecha de nacimiento..." },
+          ].map((field, index) => (
+            <motion.div
+              key={field.name}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Field
+                className="inputForm"
+                type={field.type}
+                name={field.name}
+                placeholder={field.placeholder}
+              />
+              {errors[field.name as keyof IInputSignUp] &&
+                touched[field.name as keyof IInputSignUp] && (
+                  <ErrorMessage className="inputFormError" name={field.name} component="p" />
+                )}
+            </motion.div>
+          ))}
 
-          <div>
-            <Field className="inputForm" type="text" name="lastName" placeholder="Apellido..." />
-            {errors.lastName && touched.lastName && (
-              <ErrorMessage className="inputFormError" name="lastName" component="p" />
-            )}
-          </div>
-
-          <div>
-            <Field
-              className="inputForm"
-              type="email"
-              name="email"
-              placeholder="Correo electrónico..."
-            />
-            {errors.email && touched.email && (
-              <ErrorMessage className="inputFormError" name="email" component="p" />
-            )}
-          </div>
-
-          <div>
-            <Field className="inputForm" type="text" name="document" placeholder="Documento..." />
-            {errors.document && touched.document && (
-              <ErrorMessage className="inputFormError" name="document" component="p" />
-            )}
-          </div>
-
-          <div>
-            <Field
-              className="inputForm"
-              type="password"
-              name="password"
-              placeholder="Contraseña..."
-            />
-            {errors.password && touched.password && (
-              <ErrorMessage className="inputFormError" name="password" component="p" />
-            )}
-          </div>
-
-          <div>
-            <Field
-              className="inputForm"
-              type="password"
-              name="confirmPassword"
-              placeholder="Repetir contraseña..."
-            />
-            {errors.confirmPassword && touched.confirmPassword && (
-              <ErrorMessage className="inputFormError" name="confirmPassword" component="p" />
-            )}
-          </div>
-
-          <div>
-            <Field className="inputForm" type="text" name="location" placeholder="Localidad..." />
-            {errors.location && touched.location && (
-              <ErrorMessage className="inputFormError" name="location" component="p" />
-            )}
-          </div>
-
-          <div>
-            <Field className="inputForm" type="number" name="phone" placeholder="Teléfono..." />
-            {errors.phone && touched.phone && (
-              <ErrorMessage className="inputFormError" name="phone" component="p" />
-            )}
-          </div>
-
-          <div>
-            <Field
-              className="inputForm"
-              type="date"
-              name="birthDate"
-              placeholder="Fecha de nacimiento..."
-            />
-            {errors.birthDate && touched.birthDate && (
-              <ErrorMessage className="inputFormError" name="birthDate" component="p" />
-            )}
-          </div>
-
-          <ButtonForm name="Registrarse" />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.9 }}
+          >
+            <ButtonForm name="Registrarse" />
+          </motion.div>
         </Form>
       )}
     </Formik>

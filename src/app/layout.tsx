@@ -5,6 +5,7 @@ import { MenuProvider } from "@/context/MenuContext/MenuContext";
 import Footer from "@/components/FooterComponents/Footer";
 import NewsLetterModal from "@/components/GeneralComponents/NewsLetterModal/NewsLetterModal";
 import WhatsAppLink from "@/components/GeneralComponents/WhatsAppLink/WhatsAppLink";
+import { ChangeServiceProvider } from "@/context/ChangeServiceContext/ChangeServiceContext";
 
 
 export const metadata: Metadata = {
@@ -22,11 +23,15 @@ export default function RootLayout({
     <html lang="es">
       <body className="antialiase">
         <MenuProvider>
-          <Header />
-          <main className="px-3 my-10 sm:px-4 lg:max-w-[1200px] lg:mx-auto">{children}</main>
-          <NewsLetterModal />
-          <WhatsAppLink />
-          <Footer />
+          <ChangeServiceProvider>
+            <Header />
+            <main className="px-3 my-10 sm:px-4 lg:max-w-[1200px] lg:mx-auto">
+              {children}
+            </main>
+            <NewsLetterModal />
+            <WhatsAppLink />
+            <Footer />
+          </ChangeServiceProvider>
         </MenuProvider>
       </body>
     </html>

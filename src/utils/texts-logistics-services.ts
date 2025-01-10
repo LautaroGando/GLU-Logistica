@@ -1,0 +1,92 @@
+export const textLogisticsServices = [
+  {
+    id: "traditionalMessaging",
+    title: "Trámites y Gestiones Administrativas",
+    img: "/assets/images/Ilustrations/Logistics-Services/formalities.svg",
+    text: "Entendemos que el tiempo es valioso, por eso ofrecemos un servicio integral de trámites y gestiones administrativas. Ya sea que necesites enviar documentos importantes, realizar pagos o gestionar cualquier tipo de trámite, nuestro equipo está preparado para hacerlo por ti de manera rápida y segura.",
+  },
+  {
+    id: "traditionalMessaging",
+    title: "Repartos Puerta a Puerta",
+    img: "/assets/images/Ilustrations/Logistics-Services/distributions.svg",
+    text: "Nuestro servicio de repartos puerta a puerta garantiza que tus paquetes lleguen a su destino de manera puntual y en perfectas condiciones. Nos adaptamos a tus necesidades, ofreciendo entregas tanto eventuales como programadas, asegurando que siempre tengas una solución a medida.",
+  },
+  {
+    id: "traditionalMessaging",
+    title: "Flexibilidad y Comodidad",
+    img: "/assets/images/Ilustrations/Logistics-Services/flex.svg",
+    text: "Con LA VUELTA, tenés la libertad de elegir el día y la hora que más te convengan para tus envíos. Nuestro compromiso es ofrecerte un servicio personalizado que se ajuste a tu agenda, brindándote la tranquilidad de saber que tus envíos están en buenas manos.",
+  },
+  {
+    id: "traditionalMessaging",
+    title: "Confianza y Profesionalismo",
+    img: "/assets/images/Ilustrations/Logistics-Services/trust.svg",
+    text: "Nos enorgullece ofrecer un servicio de mensajería que combina confianza y profesionalismo. Nuestro equipo está compuesto por profesionales dedicados que se esfuerzan por superar tus expectativas en cada entrega.",
+  },
+  {
+    id: "lowCostMessaging",
+    title: "Soluciones para tu E-commerce",
+    img: "/assets/images/Ilustrations/Logistics-Services/solutions.svg",
+    text: "En LA VUELTA, entendemos las necesidades únicas de los negocios en línea y estamos aquí para ofrecerte una solución de mensajería económica y eficiente que se adapta perfectamente a tu e-commerce.",
+  },
+  {
+    id: "lowCostMessaging",
+    title: "Compromiso de Envíos Semanales",
+    img: "/assets/images/Ilustrations/Logistics-Services/delivery.svg",
+    text: "Nuestro servicio está diseñado para aquellos que manejan un volumen constante de envíos. Con promociones por envíos semanales, te garantizamos tarifas competitivas que te ayudarán a optimizar tus costos operativos sin comprometer la calidad del servicio.",
+  },
+  {
+    id: "lowCostMessaging",
+    title: "Entregas Rápidas en 24 Horas",
+    img: "/assets/images/Ilustrations/Logistics-Services/speed.svg",
+    text: "Sabemos que la rapidez es crucial en el mundo del comercio electrónico. Por eso, nos comprometemos a realizar entregas dentro de las 24 horas, asegurando que tus clientes reciban sus pedidos de manera rápida y eficiente, mejorando así su experiencia de compra.",
+  },
+  {
+    id: "lowCostMessaging",
+    title: "Depósito para Almacenamiento de Mercadería",
+    img: "/assets/images/Ilustrations/Logistics-Services/deposit.svg",
+    text: "Para facilitar aún más tus operaciones, ofrecemos un depósito seguro donde puedes almacenar tu mercadería. Esto te permite gestionar tu inventario de manera más efectiva, reduciendo tiempos de preparación y asegurando que siempre estés listo para cumplir con la demanda.",
+  },
+  {
+    id: "lowCostMessaging",
+    title: "Soluciones a Medida para tu Negocio",
+    img: "/assets/images/Ilustrations/Logistics-Services/solutionsBussines.svg",
+    text: "Nuestro enfoque personalizado nos permite adaptarnos a las necesidades específicas de tu negocio. Ya sea que estés comenzando o buscando optimizar tus operaciones actuales, estamos aquí para ofrecerte el soporte que necesitas para crecer.",
+  },
+  {
+    id: "miniFreight",
+    title: "Autos y utilitarios: Soluciones de Transporte para tus Necesidades",
+    img: "/assets/images/Ilustrations/Logistics-Services/transport.svg",
+    text: "En LA VUELTA, ofrecemos un servicio de mini fletes diseñado para facilitar el traslado de paquetería mediana y grande, así como muebles medianos y otros artículos voluminosos. Nuestro objetivo es proporcionarte una solución de transporte confiable y eficiente que se adapte a tus necesidades específicas.",
+  },
+  {
+    id: "miniFreight",
+    title: "Transporte de Paquetería Mediana y Grande",
+    img: "/assets/images/Ilustrations/Logistics-Services/bigTransport.svg",
+    text: "Ya sea que necesites enviar paquetes de tamaño mediano o grande, nuestro servicio de mini fletes está equipado para manejar tus envíos con cuidado y puntualidad. Nos aseguramos de que tus artículos lleguen a su destino en perfectas condiciones.",
+  },
+  {
+    id: "miniFreight",
+    title: "Servicio Personalizado y Flexible",
+    img: "/assets/images/Ilustrations/Logistics-Services/service.svg",
+    text: "Entendemos que cada cliente tiene necesidades únicas, por lo que ofrecemos un servicio flexible que se adapta a tus requerimientos. Ya sea que necesites un traslado único o servicios regulares, estamos aquí para ayudarte.",
+  },
+  {
+    id: "freight",
+    title: "Servicio de Paquetería Grande",
+    img: "/assets/images/Ilustrations/Logistics-Services/bigPackage.svg",
+    text: "Nos especializamos en el transporte de paquetes grandes, garantizando que cada envío se maneje con el máximo cuidado. Ya sea para entregas comerciales o personales, nuestro servicio está diseñado para cumplir con tus expectativas de tiempo y calidad.",
+  },
+  {
+    id: "freight",
+    title: "Mudanzas Completas",
+    img: "/assets/images/Ilustrations/Logistics-Services/recolocation.svg",
+    text: "Mudarse puede ser un proceso estresante, pero con nuestro servicio de mudanzas, puedes estar tranquilo sabiendo que tus muebles y pertenencias están en buenas manos. Nos encargamos de todo, desde el embalaje hasta el transporte y la descarga en tu nuevo hogar.",
+  },
+  {
+    id: "freight",
+    title: "Ayudantes Profesionales",
+    img: "/assets/images/Ilustrations/Logistics-Services/collaboration.svg",
+    text: "Entendemos que algunas mudanzas requieren un esfuerzo adicional, por lo que ofrecemos la opción de contar con ayudantes profesionales. Nuestro equipo está capacitado para manejar cualquier desafío que pueda surgir durante el proceso de mudanza, asegurando una experiencia sin contratiempos.",
+  },
+];

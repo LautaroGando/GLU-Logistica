@@ -14,7 +14,7 @@ export const CoverageAreas: React.FC = () => {
         whileInView={{ y: 0, opacity: 1 }}
         initial={{ y: 50, opacity: 0 }}
         transition={{ duration: 1 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.7 }}
       >
         <Title label="ZONAS DE COBERTURA" />
       </motion.div>
@@ -25,7 +25,7 @@ export const CoverageAreas: React.FC = () => {
           whileInView={{ y: 0, opacity: 1 }}
           initial={{ y: 50, opacity: 0 }}
           transition={{ duration: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.7 }}
         >
           <Image
             src="/assets/images/Ilustrations/Home/ilustration-map.svg"
@@ -41,7 +41,7 @@ export const CoverageAreas: React.FC = () => {
           whileInView={{ y: 0, opacity: 1 }}
           initial={{ y: 50, opacity: 0 }}
           transition={{ duration: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.7 }}
         >
           <Image
             src="/assets/images/Ilustrations/Home/ilustration-CoverageAreas.svg"
@@ -55,12 +55,18 @@ export const CoverageAreas: React.FC = () => {
 
       <div className="flex flex-col gap-5 sm:hidden">
         {coverageAreas.map((area: ICoverageArea, i: number) => (
-          <div key={i}>
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.7 }}
+          >
             <h3 className="text-sc">
               <strong className="text-xl text-pcPrincipal">{area.area} </strong>
               {`${area.locality.join(", ")}.`}
             </h3>
-          </div>
+          </motion.div>
         ))}
       </div>
 

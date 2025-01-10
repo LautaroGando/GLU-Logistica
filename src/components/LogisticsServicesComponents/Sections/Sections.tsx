@@ -4,6 +4,16 @@ import Image from "next/image";
 import React from "react";
 import { ISectionsProps } from "./types";
 import TriangleSection from "@/components/GeneralComponents/TriangleSection/TriangleSection";
+import { motion } from "framer-motion";
+
+const slideUp = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
 
 export const Sections: React.FC<ISectionsProps> = ({ id }: ISectionsProps) => {
   const filterSections = textLogisticsServices.filter((text) => text.id === id);
@@ -11,9 +21,15 @@ export const Sections: React.FC<ISectionsProps> = ({ id }: ISectionsProps) => {
   return (
     <div className="flex flex-col gap-20 relative lg:pb-52">
       {filterSections.map((text, i) => (
-        <div
+        <motion.div
           key={i}
-          className={`flex flex-col items-center gap-5 lg:flex-row lg:justify-between ${i % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}
+          className={`flex flex-col items-center gap-5 lg:flex-row lg:justify-between ${
+            i % 2 === 0 ? "" : "lg:flex-row-reverse"
+          }`}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.7 }}
+          variants={slideUp}
         >
           <div className="flex flex-col items-center gap-10 lg:items-start lg:w-1/2 lg:gap-0">
             <Subtitle title={text.title} center />
@@ -31,7 +47,11 @@ export const Sections: React.FC<ISectionsProps> = ({ id }: ISectionsProps) => {
               {text.text}
             </p>
           </div>
-          <div className={`hidden lg:w-1/2 lg:flex lg:${i % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
+          <div
+            className={`hidden lg:w-1/2 lg:flex lg:${
+              i % 2 === 0 ? "justify-end" : "justify-start"
+            }`}
+          >
             <Image
               className="w-[240px] sm:w-[300px] lg:w-[350px]"
               src={text.img}
@@ -41,7 +61,7 @@ export const Sections: React.FC<ISectionsProps> = ({ id }: ISectionsProps) => {
               priority
             />
           </div>
-        </div>
+        </motion.div>
       ))}
       <TriangleSection isClose />
     </div>

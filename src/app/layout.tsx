@@ -28,6 +28,7 @@ export default function RootLayout({
             <main className="px-3 my-10 sm:px-4 lg:max-w-[1200px] lg:mx-auto">
               {children}
             </main>
+            <NewsLetterModal />
             <WhatsAppLink />
             <Footer />
           </ChangeServiceProvider>

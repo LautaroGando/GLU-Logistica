@@ -1,5 +1,6 @@
 import InfoHome from "@/components/GeneralComponents/InfoHome/InfoHome";
 import Title from "@/components/GeneralComponents/Title/Title";
+import TriangleSection from "@/components/GeneralComponents/TriangleSection/TriangleSection";
 import Image from "next/image";
 import React from "react";
 
@@ -26,8 +27,7 @@ export const Budgest: React.FC = () => {
         height={500}
         priority
       />
-
-      <div className="w-[74px] h-[74px] bg-aboutUsGradientBorder absolute -bottom-24 left-0 rotate-180 hidden md:block lg:w-[285px] lg:h-[285px]"></div>
+      <TriangleSection isClose={true} />
     </div>
   );
 };

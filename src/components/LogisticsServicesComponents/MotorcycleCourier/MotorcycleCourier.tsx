@@ -1,31 +1,32 @@
+"use client";
+
 import Subtitle from "@/components/GeneralComponents/Subtitle/Subtitle";
 import React from "react";
-import ServiceCard from "../ServiceCard/ServiceCard";
-import img1 from "@/../public/assets/images/Ilustrations/Logistics-Services/ilustration-services-MotorcycleCourier.svg";
+import { useChangeService } from "@/context/ChangeServiceContext/ChangeServiceContext";
+import TraditionalMessaging from "./TraditionalMessaging/TraditionalMessaging";
+import LowCostMessaging from "./LowCostMessaging/LowCostMessaging";
+import ChangeServiceMotorcycle from "./ChangeServiceMotorcycle/ChangeServiceMotorcycle";
 
-const MotorcycleCourier = () => {
+export const MotorcycleCourier: React.FC = () => {
+  const { idServiceMotorcycle } = useChangeService();
+
   return (
-    <div>
-      <Subtitle title="Moto mensajerÍa" />
-      <div className="md:flex md:items-start md:justify-between">
-        <ServiceCard
-          title="Mensajería tradicional"
-          subtitle="TRAMITES - GESTIONES ADMINISTRATIVAS - REPARTOS"
-          img={img1}
-          descriptions={[
-            "Servicio de puerta a puerta, día y horario que necesites.",
-            "Eventual o programado.",
-          ]}
+    <div className="flex flex-col gap-5">
+      <Subtitle title="Moto mensajería" />
+      <div className="flex">
+        <ChangeServiceMotorcycle
+          id={1}
+          service="Mensajería Tradicional"
+          isActive={idServiceMotorcycle === 1}
         />
-
-        <ServiceCard
-          title="Mensajería low cost"
-          subtitle="LOGÍSTICA PARA TU E-COMMERCE"
-          img={img1}
-          descriptions={[]}
-          hasMarginTop={true}
+        <ChangeServiceMotorcycle
+          id={2}
+          service="Mensajería Low Cost"
+          isActive={idServiceMotorcycle === 2}
         />
       </div>
+      {idServiceMotorcycle === 1 && <TraditionalMessaging />}
+      {idServiceMotorcycle === 2 && <LowCostMessaging />}
     </div>
   );
 };

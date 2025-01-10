@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Title from "@/components/GeneralComponents/Title/Title";
 import { ICoverageArea } from "@/interfaces/ICoverageArea";
 import { coverageAreas } from "@/utils/coverage-areas";
@@ -7,25 +10,49 @@ import React from "react";
 export const CoverageAreas: React.FC = () => {
   return (
     <div className="flex flex-col gap-5">
-      <Title label="ZONAS DE COBERTURA" />
+      <motion.div
+        whileInView={{ y: 0, opacity: 1 }}
+        initial={{ y: 50, opacity: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+        <Title label="ZONAS DE COBERTURA" />
+      </motion.div>
+
       <div className="relative sm:flex">
-        <Image
+        <motion.div
           className="hidden sm:inline-block sm:w-[500px] md:w-[600px]"
-          src="/assets/images/Ilustrations/Home/ilustration-map.svg"
-          alt="Vector del mapa"
-          width={500}
-          height={500}
-          priority
-        />
-        <Image
+          whileInView={{ y: 0, opacity: 1 }}
+          initial={{ y: 50, opacity: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <Image
+            src="/assets/images/Ilustrations/Home/ilustration-map.svg"
+            alt="Vector del mapa"
+            width={500}
+            height={500}
+            priority
+          />
+        </motion.div>
+
+        <motion.div
           className="w-[320px] mx-auto sm:absolute sm:right-0 md:w-[423px] lg:w-[546px]"
-          src="/assets/images/Ilustrations/Home/ilustration-CoverageAreas.svg"
-          alt="Vector de zonas de cobertura"
-          width={500}
-          height={500}
-          priority
-        />
+          whileInView={{ y: 0, opacity: 1 }}
+          initial={{ y: 50, opacity: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <Image
+            src="/assets/images/Ilustrations/Home/ilustration-CoverageAreas.svg"
+            alt="Vector de zonas de cobertura"
+            width={500}
+            height={500}
+            priority
+          />
+        </motion.div>
       </div>
+
       <div className="flex flex-col gap-5 sm:hidden">
         {coverageAreas.map((area: ICoverageArea, i: number) => (
           <div key={i}>
@@ -36,6 +63,7 @@ export const CoverageAreas: React.FC = () => {
           </div>
         ))}
       </div>
+
       <div className="gap-3 hidden sm:flex">
         <div className="w-[50px] h-[50px] bg-mapColorCABA relative after:content-['CABA'] after:absolute after:-bottom-6 after:text-center after:w-full after:text-sc after:text-sm"></div>
         <div className="w-[50px] h-[50px] bg-pcPrincipal relative after:content-['GBA1'] after:absolute after:-bottom-6 after:text-center after:w-full after:text-sc after:text-sm"></div>

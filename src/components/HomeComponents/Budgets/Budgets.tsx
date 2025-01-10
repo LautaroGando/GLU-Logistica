@@ -23,7 +23,7 @@ export const Budgest: React.FC = () => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.7 }}
           variants={{
             hidden: { opacity: 0, y: 50 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -35,7 +35,7 @@ export const Budgest: React.FC = () => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.7 }}
           variants={{
             hidden: { opacity: 0, y: 50 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -48,7 +48,7 @@ export const Budgest: React.FC = () => {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.7 }}
         variants={{
           hidden: { opacity: 0, y: 50 },
           visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -67,7 +67,7 @@ export const Budgest: React.FC = () => {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.7 }}
         variants={vectorAnimation}
         className="w-[74px] h-[74px] bg-aboutUsGradientBorder absolute -bottom-24 left-0 rotate-180 hidden md:block lg:w-[285px] lg:h-[285px]"
       ></motion.div>

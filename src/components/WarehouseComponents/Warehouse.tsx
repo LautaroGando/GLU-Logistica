@@ -11,7 +11,6 @@ import { warehouseData } from "./utils/warehouseData";
 const Warehouse = () => {
   return (
     <main className="text-sc">
-      {/* Animación del título */}
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -21,7 +20,6 @@ const Warehouse = () => {
       </motion.div>
 
       <div className="lg:flex lg:items-start lg:justify-between">
-        {/* Animación de la imagen */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -37,7 +35,6 @@ const Warehouse = () => {
           />
         </motion.div>
 
-        {/* Animación de los elementos del depósito */}
         <motion.div
           initial="hidden"
           animate="visible"
@@ -54,10 +51,10 @@ const Warehouse = () => {
           {warehouseData.map((item, index) => (
             <motion.div
               key={index}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.7 }}
             >
               <WarehouseItem title={item.title} description={item.description} />
             </motion.div>

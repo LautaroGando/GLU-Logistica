@@ -15,7 +15,7 @@ const slideUp = {
 export const Sections: React.FC = () => {
   return (
     <div className="flex flex-col gap-10">
-      <div className="flex flex-col items-center gap-10 sm:flex-row sm:justify-between">
+      <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
         {sections.map((section: ISection, i: number) => (
           <motion.div
             key={i}
@@ -25,7 +25,7 @@ export const Sections: React.FC = () => {
             variants={slideUp}
           >
             <Link
-              className="w-[250px] h-[100px] flex flex-col text-sc justify-center items-center gap-2 border-[1px] border-transparentColor/10 rounded-lg transition-all duration-300 hover:bg-pcPrincipal hover:text-pcSecondary hover:shadow-md hover:shadow-transparentColor/20 sm:h-[150px] lg:h-[200px]"
+              className="w-[250px] h-[100px] flex flex-col text-sc justify-center items-center gap-2 border-[1px] border-transparentColor/10 rounded-lg transition-all duration-300 hover:bg-pcPrincipal hover:text-pcSecondary hover:shadow-md hover:shadow-transparentColor/20 sm:h-[150px] sm:w-[180px] md:w-[200px] lg:w-[250px] lg:h-[200px]"
               href={section.href}
             >
               <FontAwesomeIcon

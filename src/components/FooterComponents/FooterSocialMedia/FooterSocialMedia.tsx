@@ -10,7 +10,7 @@ const socialMediaLinks = [
   },
   { icon: faLinkedin, link: "#", color: "hover:text-blue-600" },
   { icon: faFacebook, link: "#", color: "hover:text-blue-500" },
-  { icon: faTiktok, link: "#", color: "hover:text-black" },
+  { icon: faTiktok, link: "https://www.tiktok.com/@lavueltalogistica", color: "hover:text-black" },
 ];
 
 const FooterSocialMedia = () => {

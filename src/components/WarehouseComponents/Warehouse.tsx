@@ -46,7 +46,7 @@ const Warehouse = () => {
               transition: { staggerChildren: 0.2, delayChildren: 0.3 },
             },
           }}
-          className="text-sc text-[14px] mt-14 sm:text-[16px] md:w-[100%] md:text-[20px] lg:order-1 lg xl:text-[24px] xl:w-[600px]"
+          className="text-sc text-[14px] mt-14 sm:text-[16px] md:w-[100%] md:text-[20px] lg:mt-0 lg:order-1 lg xl:text-[24px] xl:w-[600px]"
         >
           {warehouseData.map((item, index) => (
             <motion.div

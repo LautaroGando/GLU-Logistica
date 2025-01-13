@@ -16,8 +16,7 @@ export const warehouseData = [
   },
   {
     title: "Ubicación Estratégica",
-    description: `
-      Nuestro depósito está estratégicamente ubicado para facilitar el acceso y la distribución:
+    description: `Nuestro depósito está estratégicamente ubicado para facilitar el acceso y la distribución:
 
       - Sobre Av. Juan B. Justo
       - A 5 cuadras de Av. Gral Paz

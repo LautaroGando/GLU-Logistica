@@ -2,9 +2,31 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { suscribeNewsLetter } from "@/services/Users/NewsLetter.Service";
 
 const NewsLetterModal: React.FC = () => {
+  const [email, setEmail] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (!email) {
+      setError("Por favor, ingresa un correo electrónico válido.");
+      return;
+    }
+
+    try {
+      await suscribeNewsLetter(email);
+      setSuccess("Te has suscrito correctamente.");
+      setError(null);
+    } catch {
+      setError("Hubo un error al suscribirse. Intenta nuevamente.");
+      setSuccess(null);
+    }
+  };
 
   const handleClose = () => {
     setIsVisible(false);
@@ -42,9 +64,14 @@ const NewsLetterModal: React.FC = () => {
           <p className="text-base mt-3 leading-relaxed sm:text-lg">
             Sé el primero en conocer nuestras novedades y servicios exclusivos.
           </p>
-          <form className="flex flex-col gap-3 mt-6 sm:flex-row sm:items-center">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-3 mt-6 sm:flex-row sm:items-center"
+          >
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full h-12 px-4 text-[16px] border-2 border-sc/20 rounded-md outline-none transition-all duration-200 focus:border-pcPrincipal sm:rounded-l-md sm:border-r-0"
               placeholder="Ingresa tu correo electrónico"
               required
@@ -56,6 +83,8 @@ const NewsLetterModal: React.FC = () => {
               SUSCRIBIRSE
             </button>
           </form>
+          {error && <p className="text-red-500 mt-2">{error}</p>}
+          {success && <p className="text-green-500 mt-2">{success}</p>}
         </div>
       </div>
     </motion.div>

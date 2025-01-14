@@ -1,23 +1,23 @@
 export interface IInputSignUp {
-  firstName: string;
-  lastName: string;
+  name: string;
+  surname: string;
   email: string;
-  document: string;
+  idNumber: string;
   password: string;
-  confirmPassword: string;
+  repeatPassword: string;
   location: string;
   phone: string;
-  birthDate: string;
+  birthdate: string;
 }
 
 export interface IErrorSignUp {
-  firstName?: string;
-  lastName?: string;
+  name?: string;
+  surname?: string;
   email?: string;
-  document?: string;
+  idNumber?: string;
   password?: string;
-  confirmPassword?: string;
+  repeatPassword?: string;
   location?: string;
   phone?: string;
-  birthDate?: string;
+  birthdate?: string;
 }

@@ -3,16 +3,16 @@ import { IErrorSignUp, IInputSignUp } from "./types";
 export const validateSignUp = async (input: IInputSignUp) => {
   const errors: IErrorSignUp = {};
 
-  if (!input.firstName) {
-    errors.firstName = "* Campo obligatorio.";
-  } else if (input.firstName.length < 3) {
-    errors.firstName = "* El nombre debe tener al menos 3 caracteres.";
+  if (!input.name) {
+    errors.name = "* Campo obligatorio.";
+  } else if (input.name.length < 3) {
+    errors.name = "* El nombre debe tener al menos 3 caracteres.";
   }
 
-  if (!input.lastName) {
-    errors.lastName = "* Campo obligatorio.";
-  } else if (input.lastName.length < 3) {
-    errors.lastName = "* El apellido debe tener al menos 3 caracteres.";
+  if (!input.surname) {
+    errors.surname = "* Campo obligatorio.";
+  } else if (input.surname.length < 3) {
+    errors.surname = "* El apellido debe tener al menos 3 caracteres.";
   }
 
   if (!input.email) {
@@ -21,10 +21,10 @@ export const validateSignUp = async (input: IInputSignUp) => {
     errors.email = "* Correo electrónico no válido.";
   }
 
-  if (!input.document) {
-    errors.document = "* Campo obligatorio.";
-  } else if (!/^\d{7,10}$/.test(input.document)) {
-    errors.document = "* El documento debe tener entre 7 y 10 dígitos.";
+  if (!input.idNumber) {
+    errors.idNumber = "* Campo obligatorio.";
+  } else if (!/^\d{7,10}$/.test(input.idNumber)) {
+    errors.idNumber = "* El documento debe tener entre 7 y 10 dígitos.";
   }
 
   if (!input.password) {
@@ -33,10 +33,10 @@ export const validateSignUp = async (input: IInputSignUp) => {
     errors.password = "* La contraseña debe tener al menos 6 caracteres.";
   }
 
-  if (!input.confirmPassword) {
-    errors.confirmPassword = "* Campo obligatorio.";
-  } else if (input.confirmPassword !== input.password) {
-    errors.confirmPassword = "* Las contraseñas no coinciden.";
+  if (!input.repeatPassword) {
+    errors.repeatPassword = "* Campo obligatorio.";
+  } else if (input.repeatPassword !== input.password) {
+    errors.repeatPassword = "* Las contraseñas no coinciden.";
   }
 
   if (!input.location) {
@@ -49,13 +49,13 @@ export const validateSignUp = async (input: IInputSignUp) => {
     errors.phone = "* Número de teléfono no válido.";
   }
 
-  if (!input.birthDate) {
-    errors.birthDate = "* Campo obligatorio.";
+  if (!input.birthdate) {
+    errors.birthdate = "* Campo obligatorio.";
   } else {
-    const birthDate = new Date(input.birthDate);
+    const birthDate = new Date(input.birthdate);
     const today = new Date();
     if (birthDate >= today) {
-      errors.birthDate = "* Fecha de nacimiento no válida.";
+      errors.birthdate = "* Fecha de nacimiento no válida.";
     }
   }
 

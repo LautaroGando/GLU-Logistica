@@ -2,19 +2,28 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { motion } from "framer-motion";
 import validate from "@/helpers/validateContact/validateContact";
+import { IFormContact } from "@/interfaces/IFormContact";
+import { contact } from "@/services/Users/Contact.Service";
 
 const ContactForm: React.FC = () => {
+  const handleFormContact = async (data: IFormContact) => {
+    try {
+      const response = await contact(data);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Formik
       initialValues={{
-        nombre: "",
-        correo: "",
-        mensaje: "",
+        subject: "",
+        from: "",
+        message: "",
       }}
       validate={validate}
-      onSubmit={(values) => {
-        console.log("Formulario enviado con los siguientes valores:", values);
-      }}
+      onSubmit={handleFormContact}
     >
       {() => (
         <Form>
@@ -25,8 +34,17 @@ const ContactForm: React.FC = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true, amount: 0.7 }}
           >
-            <Field type="text" name="nombre" placeholder="Nombre..." className="inputForm" />
-            <ErrorMessage name="nombre" component="div" className="text-red-500" />
+            <Field
+              type="text"
+              name="subject"
+              placeholder="Nombre..."
+              className="inputForm"
+            />
+            <ErrorMessage
+              name="subject"
+              component="div"
+              className="text-red-500"
+            />
           </motion.div>
 
           <motion.div
@@ -38,11 +56,15 @@ const ContactForm: React.FC = () => {
           >
             <Field
               type="text"
-              name="correo"
+              name="from"
               placeholder="Correo electrónico..."
               className="inputForm"
             />
-            <ErrorMessage name="correo" component="div" className="text-red-500" />
+            <ErrorMessage
+              name="from"
+              component="div"
+              className="text-red-500"
+            />
           </motion.div>
 
           <motion.div
@@ -54,11 +76,15 @@ const ContactForm: React.FC = () => {
           >
             <Field
               as="textarea"
-              name="mensaje"
+              name="message"
               placeholder="Mensaje..."
               className="inputForm min-h-[150px] resize-none"
             />
-            <ErrorMessage name="mensaje" component="div" className="text-red-500" />
+            <ErrorMessage
+              name="message"
+              component="div"
+              className="text-red-500"
+            />
           </motion.div>
 
           <motion.button

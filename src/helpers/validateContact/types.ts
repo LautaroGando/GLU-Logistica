@@ -1,11 +1,11 @@
 export interface IContactFormValues {
-  nombre: string;
-  correo: string;
-  mensaje: string;
+  from: string;
+  subject: string;
+  message: string;
 }
 
 export interface IContactFormErrors {
-  nombre?: string;
-  correo?: string;
-  mensaje?: string;
+  from?: string;
+  subject?: string;
+  message?: string;
 }

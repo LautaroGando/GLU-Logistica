@@ -1,4 +1,4 @@
-import { IErrorLogin } from "@/interfaces/IErrorLogin";
+import { IErrorLogin } from "@/interfaces/IErrorInput";
 import { IInputLogin } from "@/interfaces/IInputLogin";
 
 export const validateSignIn = async (input: IInputLogin) => {

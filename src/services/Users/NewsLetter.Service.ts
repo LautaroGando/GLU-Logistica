@@ -1,9 +1,9 @@
+import { API_URL } from "@/config/envs";
 import axios from "axios";
-const APIURL = process.env.NEXT_PUBLIC_API_URL;
 
 export const suscribeNewsLetter = async (email: string) => {
   try {
-    const response = await axios.post(`${APIURL}/users/suscribe`, { email });
+    const response = await axios.post(`${API_URL}/users/suscribe`, { email });
 
     return response.data;
   } catch (err) {

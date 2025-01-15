@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
-import ButtonForm from "@/components/GeneralComponents/ButtonForm/ButtonForm";
+import ButtonForm from "@/components/ui/ButtonForm/ButtonForm";
 import { validateSignIn } from "@/helpers/validateSignIn";
 import { IInputLogin } from "@/interfaces/IInputLogin";
 import { signIn } from "@/services/Auth/SignIn.Service";

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Title from "../GeneralComponents/Title/Title";
+import Title from "../ui/Title/Title";
 import Image from "next/image";
 import warehouseImg from "@/../public/assets/images/Ilustrations/Warehouse/ilustration-warehouse.svg";
 import WarehouseItem from "./WarehouseItem/WarehouseItem";

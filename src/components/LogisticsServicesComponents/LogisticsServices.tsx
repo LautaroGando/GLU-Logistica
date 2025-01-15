@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Title from "../GeneralComponents/Title/Title";
+import Title from "../ui/Title/Title";
 import MotorcycleCourier from "./MotorcycleCourier/MotorcycleCourier";
 import Freight from "./Freight/Freight";
 import { motion } from "framer-motion";

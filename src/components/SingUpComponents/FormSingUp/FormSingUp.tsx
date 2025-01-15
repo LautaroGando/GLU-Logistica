@@ -3,7 +3,7 @@
 import React from "react";
 import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
 import { motion } from "framer-motion";
-import ButtonForm from "@/components/GeneralComponents/ButtonForm/ButtonForm";
+import ButtonForm from "@/components/ui/ButtonForm/ButtonForm";
 import { validateSignUp } from "@/helpers/validateSingUp/validateSingUp";
 import { IInputSignUp } from "@/helpers/validateSingUp/types";
 import { signUp } from "@/services/Auth/SignUp.Service";

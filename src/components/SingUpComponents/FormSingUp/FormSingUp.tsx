@@ -4,12 +4,12 @@ import React from "react";
 import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
 import { motion } from "framer-motion";
 import ButtonForm from "@/components/ui/ButtonForm/ButtonForm";
-import { validateSignUp } from "@/helpers/validateSingUp/validateSingUp";
-import { IInputSignUp } from "@/helpers/validateSingUp/types";
+import { validateSignUp } from "@/helpers/validateSingUp";
 import { signUp } from "@/services/Auth/SignUp.Service";
+import { IUserSignUp } from "@/interfaces/IUserSignUp";
 
 const FormSignUp = () => {
-  const handleSignUp = async (data: IInputSignUp) => {
+  const handleSignUp = async (data: IUserSignUp) => {
     try {
       const response = await signUp({
         ...data,
@@ -31,13 +31,13 @@ const FormSignUp = () => {
         password: "",
         repeatPassword: "",
         location: "",
-        phone: "",
+        phone: +"",
         birthdate: "",
       }}
       validate={validateSignUp}
       onSubmit={handleSignUp}
     >
-      {({ errors, touched }: FormikProps<IInputSignUp>) => (
+      {({ errors, touched }: FormikProps<IUserSignUp>) => (
         <Form className="flex flex-col gap-5">
           {[
             { name: "name", type: "text", placeholder: "Nombre..." },
@@ -78,8 +78,8 @@ const FormSignUp = () => {
                 name={field.name}
                 placeholder={field.placeholder}
               />
-              {errors[field.name as keyof IInputSignUp] &&
-                touched[field.name as keyof IInputSignUp] && (
+              {errors[field.name as keyof IUserSignUp] &&
+                touched[field.name as keyof IUserSignUp] && (
                   <ErrorMessage
                     className="inputFormError"
                     name={field.name}

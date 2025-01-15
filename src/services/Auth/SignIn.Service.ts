@@ -1,15 +1,14 @@
+import { API_URL } from "@/config/envs";
 import { IUserSignIn } from "@/interfaces/IUserSingIn";
 import axios from "axios";
 
-const APIURL = process.env.NEXT_PUBLIC_API_URL;
-
 export const signIn = async (data: IUserSignIn) => {
   try {
-    console.log(data);
-
-    const response = await axios.post(`${APIURL}/auth/signin`, { data });
+    const response = await axios.post(`${API_URL}/auth/signin`, { data });
     return response.data;
   } catch (err) {
-    throw new Error(typeof err === "string" ? err : "Ha ocurrido un error desconocido");
+    throw new Error(
+      typeof err === "string" ? err : "Ha ocurrido un error desconocido"
+    );
   }
 };

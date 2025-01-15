@@ -1,7 +1,8 @@
-import { IContactFormErrors, IContactFormValues } from "./types";
+import { IErrorFormContact } from "@/interfaces/IErrorInput";
+import { IFormContact } from "@/interfaces/IFormContact";
 
-const validateContact = (values: IContactFormValues): IContactFormErrors => {
-  const errors: IContactFormErrors = {};
+const validateContact = (values: IFormContact) => {
+  const errors: IErrorFormContact = {};
 
   if (!values.subject) {
     errors.subject = "El nombre es obligatorio";

@@ -1,6 +1,7 @@
-import { IErrorSignUp, IInputSignUp } from "./types";
+import { IErrorSignUp } from "@/interfaces/IErrorInput";
+import { IUserSignUp } from "@/interfaces/IUserSignUp";
 
-export const validateSignUp = async (input: IInputSignUp) => {
+export const validateSignUp = async (input: IUserSignUp) => {
   const errors: IErrorSignUp = {};
 
   if (!input.name) {
@@ -45,7 +46,7 @@ export const validateSignUp = async (input: IInputSignUp) => {
 
   if (!input.phone) {
     errors.phone = "* Campo obligatorio.";
-  } else if (!/^\d{10}$/.test(input.phone)) {
+  } else if (!/^\d{10}$/.test(input.phone.toString())) {
     errors.phone = "* Número de teléfono no válido.";
   }
 

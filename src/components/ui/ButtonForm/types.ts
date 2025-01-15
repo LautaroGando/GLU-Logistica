@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface IButtonFormProps {
-  name: string;
+  children: ReactNode;
 }

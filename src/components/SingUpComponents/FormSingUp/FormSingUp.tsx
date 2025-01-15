@@ -1,23 +1,26 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
 import { motion } from "framer-motion";
 import ButtonForm from "@/components/ui/ButtonForm/ButtonForm";
 import { validateSignUp } from "@/helpers/validateSingUp";
 import { signUp } from "@/services/Auth/SignUp.Service";
 import { IUserSignUp } from "@/interfaces/IUserSignUp";
+import Loading from "@/components/ui/Loading/Loading";
 
 const FormSignUp = () => {
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
+
   const handleSignUp = async (data: IUserSignUp) => {
+    setIsLoading(true);
     try {
-      const response = await signUp({
-        ...data,
-        phone: +data.phone,
-      });
+      const response = await signUp(data);
       console.log("Registro exitoso:", response);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error al registrarse:", error);
+      setIsLoading(false);
     }
   };
 
@@ -35,7 +38,10 @@ const FormSignUp = () => {
         birthdate: "",
       }}
       validate={validateSignUp}
-      onSubmit={handleSignUp}
+      onSubmit={(data, { resetForm }) => {
+        handleSignUp(data);
+        resetForm();
+      }}
     >
       {({ errors, touched }: FormikProps<IUserSignUp>) => (
         <Form className="flex flex-col gap-5">
@@ -94,7 +100,9 @@ const FormSignUp = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.9 }}
           >
-            <ButtonForm name="Registrarse" />
+            <ButtonForm>
+              {isLoading ? <Loading mode="secondary" /> : <h4>Registrarse</h4>}
+            </ButtonForm>
           </motion.div>
         </Form>
       )}

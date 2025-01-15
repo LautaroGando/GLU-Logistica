@@ -1,22 +1,28 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
 import ButtonForm from "@/components/ui/ButtonForm/ButtonForm";
 import { validateSignIn } from "@/helpers/validateSignIn";
 import { signIn } from "@/services/Auth/SignIn.Service";
 import { IUserSignIn } from "@/interfaces/IUserSingIn";
+import Loading from "@/components/ui/Loading/Loading";
 
 export const FormSignIn: React.FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
+
   const handleSubmit = async (values: IUserSignIn) => {
+    setIsLoading(true);
     try {
       const data: IUserSignIn = {
         email: values.email,
         password: values.password,
       };
       await signIn(data);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
+      setIsLoading(false);
     }
   };
 
@@ -58,7 +64,9 @@ export const FormSignIn: React.FC = () => {
               />
             )}
           </div>
-          <ButtonForm name="Iniciar sesión" />
+          <ButtonForm>
+            {isLoading ? <Loading mode="secondary" /> : <h4>Iniciar sesión</h4>}
+          </ButtonForm>
         </Form>
       )}
     </Formik>

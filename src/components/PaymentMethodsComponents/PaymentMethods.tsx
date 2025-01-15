@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Title from "../GeneralComponents/Title/Title";
+import Title from "../ui/Title/Title";
 import PaymentMethodOptionsList from "./PaymentMethodOptionsList/PaymentMethodOptionsList";
 
 const PaymentMethods = () => {

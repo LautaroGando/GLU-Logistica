@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 import registerImg from "@/../public/assets/images/Ilustrations/Register/ilustration-register.svg";
-import Title from "../GeneralComponents/Title/Title";
+import Title from "../ui/Title/Title";
 import FormSingUp from "./FormSingUp/FormSingUp";
-import ButtonGoogle from "../GeneralComponents/ButtonGoogle/ButtonGoogle";
-import ChangeLinkForm from "../GeneralComponents/ChangeLinkForm/ChangeLinkForm";
+import ButtonGoogle from "../ui/ButtonGoogle/ButtonGoogle";
+import ChangeLinkForm from "../ui/ChangeLinkForm/ChangeLinkForm";
 
 const SingUp: React.FC = () => {
   return (

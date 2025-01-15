@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Title from "@/components/GeneralComponents/Title/Title";
+import Title from "@/components/ui/Title/Title";
 import Image from "next/image";
 import React from "react";
 import Timeline from "./Timeline/Timeline";
-import InfoHome from "@/components/GeneralComponents/InfoHome/InfoHome";
+import InfoHome from "@/components/ui/InfoHome/InfoHome";
 
 const slideInFromBottom = {
   hidden: { opacity: 0, y: 50 },

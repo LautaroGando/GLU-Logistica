@@ -1,8 +1,8 @@
-import { IErrorLogin } from "@/interfaces/IErrorLogin";
-import { IInputLogin } from "@/interfaces/IInputLogin";
+import { IErrorSignIn } from "@/interfaces/IErrorInput";
+import { IUserSignIn } from "@/interfaces/IUserSingIn";
 
-export const validateSignIn = async (input: IInputLogin) => {
-  const errors: IErrorLogin = {};
+export const validateSignIn = async (input: IUserSignIn) => {
+  const errors: IErrorSignIn = {};
 
   if (!input.email) errors.email = "* Campo obligatorio.";
 

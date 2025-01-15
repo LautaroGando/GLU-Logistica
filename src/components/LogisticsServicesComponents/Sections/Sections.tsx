@@ -1,9 +1,9 @@
-import Subtitle from "@/components/GeneralComponents/Subtitle/Subtitle";
+import Subtitle from "@/components/ui/Subtitle/Subtitle";
 import { textLogisticsServices } from "@/utils/texts-logistics-services";
 import Image from "next/image";
 import React from "react";
 import { ISectionsProps } from "./types";
-import TriangleSection from "@/components/GeneralComponents/TriangleSection/TriangleSection";
+import TriangleSection from "@/components/ui/TriangleSection/TriangleSection";
 import { motion } from "framer-motion";
 
 const slideUp = {

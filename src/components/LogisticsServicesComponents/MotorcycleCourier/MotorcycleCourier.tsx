@@ -1,6 +1,6 @@
 "use client";
 
-import Subtitle from "@/components/GeneralComponents/Subtitle/Subtitle";
+import Subtitle from "@/components/ui/Subtitle/Subtitle";
 import React from "react";
 import { useChangeService } from "@/context/ChangeServiceContext/ChangeServiceContext";
 import TraditionalMessaging from "./TraditionalMessaging/TraditionalMessaging";

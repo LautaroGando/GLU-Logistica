@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Title from "@/components/GeneralComponents/Title/Title";
+import Title from "@/components/ui/Title/Title";
 import { ICoverageArea } from "@/interfaces/ICoverageArea";
 import { coverageAreas } from "@/utils/coverage-areas";
 import Image from "next/image";

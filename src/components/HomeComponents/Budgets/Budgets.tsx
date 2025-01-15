@@ -1,7 +1,7 @@
 "use client";
 
-import InfoHome from "@/components/GeneralComponents/InfoHome/InfoHome";
-import Title from "@/components/GeneralComponents/Title/Title";
+import InfoHome from "@/components/ui/InfoHome/InfoHome";
+import Title from "@/components/ui/Title/Title";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";

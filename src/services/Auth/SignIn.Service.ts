@@ -1,6 +1,5 @@
 import { IUserSignIn } from "@/interfaces/IUserSingIn";
 import axios from "axios";
-import { log } from "node:console";
 
 const APIURL = process.env.NEXT_PUBLIC_API_URL;
 

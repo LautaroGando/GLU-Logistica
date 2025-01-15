@@ -3,10 +3,10 @@
 import { motion } from "framer-motion"; // Importar motion
 import Image from "next/image";
 import React from "react";
-import Title from "../GeneralComponents/Title/Title";
+import Title from "../ui/Title/Title";
 import FormSignIn from "./FormSignIn/FormSignIn";
-import ChangeLinkForm from "../GeneralComponents/ChangeLinkForm/ChangeLinkForm";
-import ButtonGoogle from "../GeneralComponents/ButtonGoogle/ButtonGoogle";
+import ChangeLinkForm from "../ui/ChangeLinkForm/ChangeLinkForm";
+import ButtonGoogle from "../ui/ButtonGoogle/ButtonGoogle";
 
 export const SignIn: React.FC = () => {
   return (

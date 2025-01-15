@@ -2,7 +2,7 @@ import React from "react";
 import TitleService from "../../TitleService/TitleService";
 import img from "@/../public/assets/images/Ilustrations/Logistics-Services/ilustration-services-MotorcycleCourier.svg";
 import Sections from "../../Sections/Sections";
-import TriangleSection from "@/components/GeneralComponents/TriangleSection/TriangleSection";
+import TriangleSection from "@/components/ui/TriangleSection/TriangleSection";
 
 export const LowCostMessaging: React.FC = () => {
   return (

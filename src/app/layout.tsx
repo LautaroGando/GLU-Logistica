@@ -3,8 +3,8 @@ import "./globals.css";
 import Header from "@/components/HeaderComponents/Header";
 import { MenuProvider } from "@/context/MenuContext/MenuContext";
 import Footer from "@/components/FooterComponents/Footer";
-import NewsLetterModal from "@/components/GeneralComponents/NewsLetterModal/NewsLetterModal";
-import WhatsAppLink from "@/components/GeneralComponents/WhatsAppLink/WhatsAppLink";
+import NewsLetterModal from "@/components/ui/NewsLetterModal/NewsLetterModal";
+import WhatsAppLink from "@/components/ui/WhatsAppLink/WhatsAppLink";
 import { ChangeServiceProvider } from "@/context/ChangeServiceContext/ChangeServiceContext";
 
 

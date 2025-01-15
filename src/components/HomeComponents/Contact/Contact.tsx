@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 import contactImg from "@/../public/assets/images/Ilustrations/Home/ilustration-contact.svg";
-import Title from "@/components/GeneralComponents/Title/Title";
+import Title from "@/components/ui/Title/Title";
 import ContactForm from "./ContactForm/ContactForm";
 
 const Contact: React.FC = () => {

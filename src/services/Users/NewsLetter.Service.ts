@@ -7,6 +7,8 @@ export const suscribeNewsLetter = async (email: string) => {
 
     return response.data;
   } catch (err) {
-    throw new Error(typeof err === "string" ? err : "Ha ocurrido un error desconocido");
+    throw new Error(
+      typeof err === "string" ? err : "Ha ocurrido un error desconocido"
+    );
   }
 };

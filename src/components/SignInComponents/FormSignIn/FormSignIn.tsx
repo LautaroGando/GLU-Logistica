@@ -4,14 +4,16 @@ import React from "react";
 import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
 import ButtonForm from "@/components/ui/ButtonForm/ButtonForm";
 import { validateSignIn } from "@/helpers/validateSignIn";
-import { IInputLogin } from "@/interfaces/IInputLogin";
 import { signIn } from "@/services/Auth/SignIn.Service";
 import { IUserSignIn } from "@/interfaces/IUserSingIn";
 
 export const FormSignIn: React.FC = () => {
-  const handleSubmit = async (values: IInputLogin) => {
+  const handleSubmit = async (values: IUserSignIn) => {
     try {
-      const data: IUserSignIn = { email: values.email, password: values.password };
+      const data: IUserSignIn = {
+        email: values.email,
+        password: values.password,
+      };
       await signIn(data);
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
@@ -24,7 +26,7 @@ export const FormSignIn: React.FC = () => {
       validate={validateSignIn}
       onSubmit={handleSubmit}
     >
-      {({ errors, touched }: FormikProps<IInputLogin>) => (
+      {({ errors, touched }: FormikProps<IUserSignIn>) => (
         <Form className="flex flex-col gap-5">
           <div>
             <Field
@@ -34,7 +36,11 @@ export const FormSignIn: React.FC = () => {
               placeholder="Correo electrónico..."
             />
             {errors.email && touched.email && (
-              <ErrorMessage className="inputFormError" name="email" component="p" />
+              <ErrorMessage
+                className="inputFormError"
+                name="email"
+                component="p"
+              />
             )}
           </div>
           <div>
@@ -45,7 +51,11 @@ export const FormSignIn: React.FC = () => {
               placeholder="Contraseña..."
             />
             {errors.password && touched.password && (
-              <ErrorMessage className="inputFormError" name="password" component="p" />
+              <ErrorMessage
+                className="inputFormError"
+                name="password"
+                component="p"
+              />
             )}
           </div>
           <ButtonForm name="Iniciar sesión" />

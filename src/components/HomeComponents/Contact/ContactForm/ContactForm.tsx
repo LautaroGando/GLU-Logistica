@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { motion } from "framer-motion";
-import validate from "@/helpers/validateContact/validateContact";
+import validate from "@/helpers/validateContact";
 import { IFormContact } from "@/interfaces/IFormContact";
 import { contact } from "@/services/Users/Contact.Service";
 

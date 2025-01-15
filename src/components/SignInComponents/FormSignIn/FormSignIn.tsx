@@ -5,13 +5,14 @@ import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
 import ButtonForm from "@/components/GeneralComponents/ButtonForm/ButtonForm";
 import { validateSignIn } from "@/helpers/validateSignIn";
 import { IInputLogin } from "@/interfaces/IInputLogin";
-import { signIn } from "@/services/Auth/Login.Service";
+import { signIn } from "@/services/Auth/SignIn.Service";
+import { IUserSignIn } from "@/interfaces/IUserSingIn";
 
 export const FormSignIn: React.FC = () => {
   const handleSubmit = async (values: IInputLogin) => {
     try {
-      const response = await signIn(values.email, values.password);
-      console.log("Inicio de sesión exitoso:", response);
+      const data: IUserSignIn = { email: values.email, password: values.password };
+      await signIn(data);
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
     }

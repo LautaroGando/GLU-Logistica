@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
 import ButtonForm from "@/components/ui/ButtonForm/ButtonForm";
 import { validateSignIn } from "@/helpers/validateSignIn";
@@ -8,12 +8,15 @@ import { signIn } from "@/services/Auth/SignIn.Service";
 import { IUserSignIn } from "@/interfaces/IUserSingIn";
 import useSuccessAlert from "@/hooks/useSuccessAlert";
 import useErrorAlert from "@/hooks/useErrorAlert";
+import Loading from "@/components/ui/Loading/Loading"; 
 
 export const FormSignIn: React.FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const showSuccessAlert = useSuccessAlert();
   const showErrorAlert = useErrorAlert();
 
   const handleSubmit = async (values: IUserSignIn) => {
+    setIsLoading(true);
     try {
       const data: IUserSignIn = {
         email: values.email,
@@ -26,6 +29,8 @@ export const FormSignIn: React.FC = () => {
       showSuccessAlert("¡Inicio de sesión exitoso!", `Bienvenido, ${response.user.name}.`);
     } catch {
       showErrorAlert("Error al iniciar sesión", "Inténtalo de nuevo más tarde.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -59,7 +64,10 @@ export const FormSignIn: React.FC = () => {
               <ErrorMessage className="inputFormError" name="password" component="p" />
             )}
           </div>
-          <ButtonForm name="Iniciar sesión" />
+
+          <ButtonForm>
+            {isLoading ? <Loading mode="secondary" hover /> : <h4>Iniciar sesión</h4>}
+          </ButtonForm>
         </Form>
       )}
     </Formik>

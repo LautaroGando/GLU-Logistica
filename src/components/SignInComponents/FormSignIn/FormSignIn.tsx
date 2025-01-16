@@ -1,22 +1,25 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
 import ButtonForm from "@/components/ui/ButtonForm/ButtonForm";
 import { validateSignIn } from "@/helpers/validateSignIn";
 import { signIn } from "@/services/Auth/SignIn.Service";
 import { IUserSignIn } from "@/interfaces/IUserSingIn";
+import Loading from "@/components/ui/Loading/Loading";
 
 export const FormSignIn: React.FC = () => {
-  const handleSubmit = async (values: IUserSignIn) => {
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
+
+  const handleSignIn = async (values: IUserSignIn) => {
+    setIsLoading(true);
     try {
-      const data: IUserSignIn = {
-        email: values.email,
-        password: values.password,
-      };
-      await signIn(data);
+      const data = await signIn(values);
+      console.log("Iniciar sesión exitoso:", data);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
+      setIsLoading(false);
     }
   };
 
@@ -24,7 +27,10 @@ export const FormSignIn: React.FC = () => {
     <Formik
       initialValues={{ email: "", password: "" }}
       validate={validateSignIn}
-      onSubmit={handleSubmit}
+      onSubmit={(values, { resetForm }) => {
+        handleSignIn(values);
+        resetForm();
+      }}
     >
       {({ errors, touched }: FormikProps<IUserSignIn>) => (
         <Form className="flex flex-col gap-5">
@@ -58,7 +64,13 @@ export const FormSignIn: React.FC = () => {
               />
             )}
           </div>
-          <ButtonForm name="Iniciar sesión" />
+          <ButtonForm>
+            {isLoading ? (
+              <Loading mode="secondary" hover />
+            ) : (
+              <h4>Iniciar sesión</h4>
+            )}
+          </ButtonForm>
         </Form>
       )}
     </Formik>

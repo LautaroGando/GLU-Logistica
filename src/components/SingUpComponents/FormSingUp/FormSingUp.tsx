@@ -21,7 +21,7 @@ const FormSignUp = () => {
     try {
       const data = await signUp(values);
       showSuccessAlert("¡Registro exitoso!", `Bienvenido, ${data.user.name}.`);
-    } catch (error) {
+    } catch {
       showErrorAlert("Error al registrarse", "Inténtalo de nuevo más tarde.");
     } finally {
       setIsLoading(false);

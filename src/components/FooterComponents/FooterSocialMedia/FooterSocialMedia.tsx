@@ -9,7 +9,7 @@ const socialMediaLinks = [
     color: "hover:text-pink-500",
   },
   { icon: faLinkedin, link: "#", color: "hover:text-blue-600" },
-  { icon: faFacebook, link: "#", color: "hover:text-blue-500" },
+  { icon: faFacebook, link: "https://www.facebook.com/people/lavueltamotomensajeria/100063996585310/?rdid=4VZhFIbuOPZhKL47&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BMyyYPPbU%2F", color: "hover:text-blue-500" },
   { icon: faTiktok, link: "https://www.tiktok.com/@lavueltalogistica", color: "hover:text-black" },
 ];
 

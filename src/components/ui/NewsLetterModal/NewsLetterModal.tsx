@@ -6,7 +6,7 @@ import useNewsLetter from "@/hooks/useNewsletter";
 
 const NewsLetterModal: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { email, setEmail, handleSubmit } = useNewsLetter();
+  const { email, setEmail, handleSubmit } = useNewsLetter(setIsVisible);
 
   const handleClose = () => {
     setIsVisible(false);

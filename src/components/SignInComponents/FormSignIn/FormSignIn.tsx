@@ -11,34 +11,32 @@ import useErrorAlert from "@/hooks/useErrorAlert";
 import Loading from "@/components/ui/Loading/Loading"; 
 
 export const FormSignIn: React.FC = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
   const showSuccessAlert = useSuccessAlert();
   const showErrorAlert = useErrorAlert();
 
-  const handleSubmit = async (values: IUserSignIn) => {
+  const handleSignIn = async (values: IUserSignIn) => {
     setIsLoading(true);
     try {
-      const data: IUserSignIn = {
-        email: values.email,
-        password: values.password,
-      };
-
-      const response = await signIn(data);
-      console.log(response);
-
-      showSuccessAlert("¡Inicio de sesión exitoso!", `Bienvenido, ${response.user.name}.`);
+      const data = await signIn(values);
+      setIsLoading(false);
+      showSuccessAlert("¡Inicio de sesión exitoso!", `Bienvenido, ${data.user.name}.`);
     } catch {
       showErrorAlert("Error al iniciar sesión", "Inténtalo de nuevo más tarde.");
+      setIsLoading(false);
     } finally {
       setIsLoading(false);
     }
   };
-
+  
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
       validate={validateSignIn}
-      onSubmit={handleSubmit}
+      onSubmit={(values, { resetForm }) => {
+        handleSignIn(values);
+        resetForm();
+      }}
     >
       {({ errors, touched }: FormikProps<IUserSignIn>) => (
         <Form className="flex flex-col gap-5">
@@ -64,7 +62,6 @@ export const FormSignIn: React.FC = () => {
               <ErrorMessage className="inputFormError" name="password" component="p" />
             )}
           </div>
-
           <ButtonForm>
             {isLoading ? <Loading mode="secondary" hover /> : <h4>Iniciar sesión</h4>}
           </ButtonForm>

@@ -19,11 +19,9 @@ export const FormSignIn: React.FC = () => {
     setIsLoading(true);
     try {
       const data = await signIn(values);
-      setIsLoading(false);
       showSuccessAlert("¡Inicio de sesión exitoso!", `Bienvenido, ${data.user.name}.`);
     } catch {
       showErrorAlert("Error al iniciar sesión", "Inténtalo de nuevo más tarde.");
-      setIsLoading(false);
     } finally {
       setIsLoading(false);
     }

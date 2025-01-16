@@ -2,7 +2,7 @@
 
 import React from "react";
 import { IFooterContactProps } from "./types";
-import useNewsLetter from "@/hooks/useNewsLetter";
+import useNewsLetter from "@/hooks/useNewsletter";
 
 const FooterContact: React.FC<IFooterContactProps> = ({ isMobile }) => {
   const { email, setEmail, handleSubmit } = useNewsLetter();

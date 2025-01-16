@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import useNewsLetter from "@/hooks/useNewsLetter";
+import useNewsLetter from "@/hooks/useNewsletter";
 
 const NewsLetterModal: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);

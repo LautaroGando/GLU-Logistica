@@ -4,17 +4,28 @@ import { motion } from "framer-motion";
 import validate from "@/helpers/validateContact";
 import { IFormContact } from "@/interfaces/IFormContact";
 import { contact } from "@/services/Users/Contact.Service";
+import useSuccessAlert from "@/hooks/useSuccessAlert";
+import useErrorAlert from "@/hooks/useErrorAlert";
 
 const ContactForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
+  const showSuccessAlert = useSuccessAlert();
+  const showErrorAlert = useErrorAlert();
+
   const handleFormContact = async (values: IFormContact) => {
     setIsLoading(true);
     try {
-      const data = await contact(values);
-      console.log(data);
-      setIsLoading(false);
+      await contact(values);
+      showSuccessAlert(
+        "¡Mensaje enviado con éxito!",
+        "En breve recibirás una respuesta."
+      );
     } catch (error) {
-      console.log(error);
+      showErrorAlert(
+        "Error al enviar el mensaje",
+        "Inténtalo de nuevo más tarde."
+      );
+    } finally {
       setIsLoading(false);
     }
   };

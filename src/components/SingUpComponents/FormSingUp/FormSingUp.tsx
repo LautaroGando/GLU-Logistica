@@ -8,18 +8,22 @@ import { validateSignUp } from "@/helpers/validateSingUp";
 import { signUp } from "@/services/Auth/SignUp.Service";
 import { IUserSignUp } from "@/interfaces/IUserSignUp";
 import Loading from "@/components/ui/Loading/Loading";
+import useSuccessAlert from "@/hooks/useSuccessAlert";
+import useErrorAlert from "@/hooks/useErrorAlert";
 
 const FormSignUp = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
+  const showSuccessAlert = useSuccessAlert();
+  const showErrorAlert = useErrorAlert();
 
   const handleSignUp = async (values: IUserSignUp) => {
     setIsLoading(true);
     try {
       const data = await signUp(values);
-      console.log("Registro exitoso:", data);
-      setIsLoading(false);
+      showSuccessAlert("¡Registro exitoso!", `Bienvenido, ${data.user.name}.`);
     } catch (error) {
-      console.error("Error al registrarse:", error);
+      showErrorAlert("Error al registrarse", "Inténtalo de nuevo más tarde.");
+    } finally {
       setIsLoading(false);
     }
   };

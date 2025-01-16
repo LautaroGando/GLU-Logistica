@@ -2,31 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { suscribeNewsLetter } from "@/services/Users/NewsLetter.Service";
+import useNewsLetter from "@/hooks/useNewsLetter";
 
 const NewsLetterModal: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-
-    if (!email) {
-      setError("Por favor, ingresa un correo electrónico válido.");
-      return;
-    }
-
-    try {
-      await suscribeNewsLetter(email);
-      setSuccess("Te has suscrito correctamente.");
-      setError(null);
-    } catch {
-      setError("Hubo un error al suscribirse. Intenta nuevamente.");
-      setSuccess(null);
-    }
-  };
+  const { email, setEmail, handleSubmit } = useNewsLetter();
 
   const handleClose = () => {
     setIsVisible(false);
@@ -83,8 +63,6 @@ const NewsLetterModal: React.FC = () => {
               SUSCRIBIRSE
             </button>
           </form>
-          {error && <p className="text-red-500 mt-2">{error}</p>}
-          {success && <p className="text-green-500 mt-2">{success}</p>}
         </div>
       </div>
     </motion.div>

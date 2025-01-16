@@ -12,7 +12,7 @@ export const SignIn: React.FC = () => {
   return (
     <div className="flex flex-col gap-5 mx-auto max-w-[450px] lg:flex-row lg:mx-0 lg:max-w-full lg:justify-evenly">
       <motion.div
-        className="flex justify-center" // Centra horizontalmente la imagen
+        className="flex justify-center"
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1 }}

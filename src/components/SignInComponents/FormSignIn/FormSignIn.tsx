@@ -6,23 +6,29 @@ import ButtonForm from "@/components/ui/ButtonForm/ButtonForm";
 import { validateSignIn } from "@/helpers/validateSignIn";
 import { signIn } from "@/services/Auth/SignIn.Service";
 import { IUserSignIn } from "@/interfaces/IUserSingIn";
-import Loading from "@/components/ui/Loading/Loading";
+import useSuccessAlert from "@/hooks/useSuccessAlert";
+import useErrorAlert from "@/hooks/useErrorAlert";
+import Loading from "@/components/ui/Loading/Loading"; 
 
 export const FormSignIn: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
+  const showSuccessAlert = useSuccessAlert();
+  const showErrorAlert = useErrorAlert();
 
   const handleSignIn = async (values: IUserSignIn) => {
     setIsLoading(true);
     try {
       const data = await signIn(values);
-      console.log("Iniciar sesión exitoso:", data);
       setIsLoading(false);
-    } catch (error) {
-      console.error("Error al iniciar sesión:", error);
+      showSuccessAlert("¡Inicio de sesión exitoso!", `Bienvenido, ${data.user.name}.`);
+    } catch {
+      showErrorAlert("Error al iniciar sesión", "Inténtalo de nuevo más tarde.");
+      setIsLoading(false);
+    } finally {
       setIsLoading(false);
     }
   };
-
+  
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
@@ -42,11 +48,7 @@ export const FormSignIn: React.FC = () => {
               placeholder="Correo electrónico..."
             />
             {errors.email && touched.email && (
-              <ErrorMessage
-                className="inputFormError"
-                name="email"
-                component="p"
-              />
+              <ErrorMessage className="inputFormError" name="email" component="p" />
             )}
           </div>
           <div>
@@ -57,19 +59,11 @@ export const FormSignIn: React.FC = () => {
               placeholder="Contraseña..."
             />
             {errors.password && touched.password && (
-              <ErrorMessage
-                className="inputFormError"
-                name="password"
-                component="p"
-              />
+              <ErrorMessage className="inputFormError" name="password" component="p" />
             )}
           </div>
           <ButtonForm>
-            {isLoading ? (
-              <Loading mode="secondary" hover />
-            ) : (
-              <h4>Iniciar sesión</h4>
-            )}
+            {isLoading ? <Loading mode="secondary" hover /> : <h4>Iniciar sesión</h4>}
           </ButtonForm>
         </Form>
       )}

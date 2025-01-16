@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import validate from "@/helpers/validateContact";
 import { IFormContact } from "@/interfaces/IFormContact";
 import { contact } from "@/services/Users/Contact.Service";
-import Loading from "@/components/ui/Loading/Loading";
 
 const ContactForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(null);

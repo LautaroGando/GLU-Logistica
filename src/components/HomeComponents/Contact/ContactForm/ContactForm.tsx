@@ -20,7 +20,7 @@ const ContactForm: React.FC = () => {
         "¡Mensaje enviado con éxito!",
         "En breve recibirás una respuesta."
       );
-    } catch (error) {
+    } catch {
       showErrorAlert(
         "Error al enviar el mensaje",
         "Inténtalo de nuevo más tarde."

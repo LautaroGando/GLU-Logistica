@@ -12,11 +12,11 @@ import Loading from "@/components/ui/Loading/Loading";
 const FormSignUp = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
 
-  const handleSignUp = async (data: IUserSignUp) => {
+  const handleSignUp = async (values: IUserSignUp) => {
     setIsLoading(true);
     try {
-      const response = await signUp(data);
-      console.log("Registro exitoso:", response);
+      const data = await signUp(values);
+      console.log("Registro exitoso:", data);
       setIsLoading(false);
     } catch (error) {
       console.error("Error al registrarse:", error);
@@ -38,8 +38,8 @@ const FormSignUp = () => {
         birthdate: "",
       }}
       validate={validateSignUp}
-      onSubmit={(data, { resetForm }) => {
-        handleSignUp(data);
+      onSubmit={(values, { resetForm }) => {
+        handleSignUp(values);
         resetForm();
       }}
     >
@@ -101,7 +101,11 @@ const FormSignUp = () => {
             transition={{ duration: 0.5, delay: 0.9 }}
           >
             <ButtonForm>
-              {isLoading ? <Loading mode="secondary" /> : <h4>Registrarse</h4>}
+              {isLoading ? (
+                <Loading mode="secondary" hover />
+              ) : (
+                <h4>Registrarse</h4>
+              )}
             </ButtonForm>
           </motion.div>
         </Form>

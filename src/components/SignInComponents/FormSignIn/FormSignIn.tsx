@@ -11,14 +11,11 @@ import Loading from "@/components/ui/Loading/Loading";
 export const FormSignIn: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
 
-  const handleSubmit = async (values: IUserSignIn) => {
+  const handleSignIn = async (values: IUserSignIn) => {
     setIsLoading(true);
     try {
-      const data: IUserSignIn = {
-        email: values.email,
-        password: values.password,
-      };
-      await signIn(data);
+      const data = await signIn(values);
+      console.log("Iniciar sesión exitoso:", data);
       setIsLoading(false);
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
@@ -30,7 +27,10 @@ export const FormSignIn: React.FC = () => {
     <Formik
       initialValues={{ email: "", password: "" }}
       validate={validateSignIn}
-      onSubmit={handleSubmit}
+      onSubmit={(values, { resetForm }) => {
+        handleSignIn(values);
+        resetForm();
+      }}
     >
       {({ errors, touched }: FormikProps<IUserSignIn>) => (
         <Form className="flex flex-col gap-5">
@@ -65,7 +65,11 @@ export const FormSignIn: React.FC = () => {
             )}
           </div>
           <ButtonForm>
-            {isLoading ? <Loading mode="secondary" /> : <h4>Iniciar sesión</h4>}
+            {isLoading ? (
+              <Loading mode="secondary" hover />
+            ) : (
+              <h4>Iniciar sesión</h4>
+            )}
           </ButtonForm>
         </Form>
       )}

@@ -126,7 +126,7 @@ const ContactForm: React.FC = () => {
 
                 <span
                   className={`absolute right-[100%] text-white text-sm font-medium opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:right-10 ${
-                    isLoading && "opacity-100 right-10"
+                    isLoading && "opacity-100 right-9"
                   }`}
                 >
                   {isLoading ? "Procesando..." : "Enviar"}

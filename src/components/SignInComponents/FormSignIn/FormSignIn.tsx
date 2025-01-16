@@ -1,30 +1,40 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
 import ButtonForm from "@/components/ui/ButtonForm/ButtonForm";
 import { validateSignIn } from "@/helpers/validateSignIn";
 import { signIn } from "@/services/Auth/SignIn.Service";
 import { IUserSignIn } from "@/interfaces/IUserSingIn";
+import useSuccessAlert from "@/hooks/useSuccessAlert";
+import useErrorAlert from "@/hooks/useErrorAlert";
+import Loading from "@/components/ui/Loading/Loading"; 
 
 export const FormSignIn: React.FC = () => {
-  const handleSubmit = async (values: IUserSignIn) => {
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
+  const showSuccessAlert = useSuccessAlert();
+  const showErrorAlert = useErrorAlert();
+
+  const handleSignIn = async (values: IUserSignIn) => {
+    setIsLoading(true);
     try {
-      const data: IUserSignIn = {
-        email: values.email,
-        password: values.password,
-      };
-      await signIn(data);
-    } catch (error) {
-      console.error("Error al iniciar sesión:", error);
+      const data = await signIn(values);
+      showSuccessAlert("¡Inicio de sesión exitoso!", `Bienvenido, ${data.user.name}.`);
+    } catch {
+      showErrorAlert("Error al iniciar sesión", "Inténtalo de nuevo más tarde.");
+    } finally {
+      setIsLoading(false);
     }
   };
-
+  
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
       validate={validateSignIn}
-      onSubmit={handleSubmit}
+      onSubmit={(values, { resetForm }) => {
+        handleSignIn(values);
+        resetForm();
+      }}
     >
       {({ errors, touched }: FormikProps<IUserSignIn>) => (
         <Form className="flex flex-col gap-5">
@@ -36,11 +46,7 @@ export const FormSignIn: React.FC = () => {
               placeholder="Correo electrónico..."
             />
             {errors.email && touched.email && (
-              <ErrorMessage
-                className="inputFormError"
-                name="email"
-                component="p"
-              />
+              <ErrorMessage className="inputFormError" name="email" component="p" />
             )}
           </div>
           <div>
@@ -51,14 +57,12 @@ export const FormSignIn: React.FC = () => {
               placeholder="Contraseña..."
             />
             {errors.password && touched.password && (
-              <ErrorMessage
-                className="inputFormError"
-                name="password"
-                component="p"
-              />
+              <ErrorMessage className="inputFormError" name="password" component="p" />
             )}
           </div>
-          <ButtonForm name="Iniciar sesión" />
+          <ButtonForm>
+            {isLoading ? <Loading mode="secondary" hover /> : <h4>Iniciar sesión</h4>}
+          </ButtonForm>
         </Form>
       )}
     </Formik>

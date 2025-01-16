@@ -46,3 +46,17 @@ body {
 .inputFormError {
   @apply text-red-400 text-xs;
 }
+
+.custom-popup {
+  background-color: #28a745;
+  color: white; 
+}
+
+.custom-title {
+  font-size: 24px;
+}
+
+.custom-text {
+  font-size: 16px;
+  color: #333;
+}

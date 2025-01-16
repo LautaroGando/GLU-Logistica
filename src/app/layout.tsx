@@ -7,7 +7,6 @@ import NewsLetterModal from "@/components/ui/NewsLetterModal/NewsLetterModal";
 import WhatsAppLink from "@/components/ui/WhatsAppLink/WhatsAppLink";
 import { ChangeServiceProvider } from "@/context/ChangeServiceContext/ChangeServiceContext";
 
-
 export const metadata: Metadata = {
   title: "La Vuelta Logística",
   description: "",

@@ -1,31 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { suscribeNewsLetter } from "@/services/Users/NewsLetter.Service";
+import React from "react";
 import { IFooterContactProps } from "./types";
+import useNewsLetter from "@/hooks/useNewsletter";
 
 const FooterContact: React.FC<IFooterContactProps> = ({ isMobile }) => {
-  const [email, setEmail] = useState<string>("");
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
-
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-
-    if (!email) {
-      setError("Por favor, ingresa un correo electrónico válido.");
-      return;
-    }
-
-    try {
-      await suscribeNewsLetter(email);
-      setSuccess("Te has suscrito correctamente.");
-      setError(null);
-    } catch {
-      setError("Hubo un error al suscribirse. Intenta nuevamente.");
-      setSuccess(null);
-    }
-  };
+  const { email, setEmail, handleSubmit } = useNewsLetter();
 
   return (
     <div className={`text-[14px] ${isMobile ? "mt-6 sm:mt-0 lg:hidden" : "hidden lg:block"}`}>
@@ -49,8 +29,6 @@ const FooterContact: React.FC<IFooterContactProps> = ({ isMobile }) => {
           />
         </div>
       </form>
-      {error && <p className="text-red-500 mt-2">{error}</p>}
-      {success && <p className="text-green-500 mt-2">{success}</p>}
     </div>
   );
 };

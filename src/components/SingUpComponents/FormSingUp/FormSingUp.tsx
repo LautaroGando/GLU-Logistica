@@ -1,23 +1,30 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik, FormikProps } from "formik";
 import { motion } from "framer-motion";
 import ButtonForm from "@/components/ui/ButtonForm/ButtonForm";
 import { validateSignUp } from "@/helpers/validateSingUp";
 import { signUp } from "@/services/Auth/SignUp.Service";
 import { IUserSignUp } from "@/interfaces/IUserSignUp";
+import Loading from "@/components/ui/Loading/Loading";
+import useSuccessAlert from "@/hooks/useSuccessAlert";
+import useErrorAlert from "@/hooks/useErrorAlert";
 
 const FormSignUp = () => {
-  const handleSignUp = async (data: IUserSignUp) => {
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
+  const showSuccessAlert = useSuccessAlert();
+  const showErrorAlert = useErrorAlert();
+
+  const handleSignUp = async (values: IUserSignUp) => {
+    setIsLoading(true);
     try {
-      const response = await signUp({
-        ...data,
-        phone: +data.phone,
-      });
-      console.log("Registro exitoso:", response);
+      const data = await signUp(values);
+      showSuccessAlert("¡Registro exitoso!", `Bienvenido, ${data.user.name}.`);
     } catch (error) {
-      console.error("Error al registrarse:", error);
+      showErrorAlert("Error al registrarse", "Inténtalo de nuevo más tarde.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -35,7 +42,10 @@ const FormSignUp = () => {
         birthdate: "",
       }}
       validate={validateSignUp}
-      onSubmit={handleSignUp}
+      onSubmit={(values, { resetForm }) => {
+        handleSignUp(values);
+        resetForm();
+      }}
     >
       {({ errors, touched }: FormikProps<IUserSignUp>) => (
         <Form className="flex flex-col gap-5">
@@ -94,7 +104,13 @@ const FormSignUp = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.9 }}
           >
-            <ButtonForm name="Registrarse" />
+            <ButtonForm>
+              {isLoading ? (
+                <Loading mode="secondary" hover />
+              ) : (
+                <h4>Registrarse</h4>
+              )}
+            </ButtonForm>
           </motion.div>
         </Form>
       )}

@@ -14,7 +14,7 @@ const FooterLinksGrid = () => {
         {[
           { href: "/warehouse", text: "Depósito" },
           { href: "/logistics-services", text: "Servicios de logística" },
-          { href: "/payment-methods", text: "Pago" },
+          { href: "/payment-methods", text: "Medios de pago" },
         ].map((item, index) => (
           <Link href={item.href} key={index} className="group relative w-fit">
             <div className="relative w-fit transition-colors">

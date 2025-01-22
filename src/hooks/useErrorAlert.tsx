@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 
 const useErrorAlert = () => {
-  const showErrorAlert = (title: string, description: string) => {
+  const showErrorAlert = (title: string, description: string,customStyles?: { popup?: string; title?: string }) => {
     Swal.fire({
       icon: "error",
       title,
@@ -13,9 +13,9 @@ const useErrorAlert = () => {
       color: "#721C24",
       customClass: {
         popup: "rounded-lg shadow-xl",
-        title: "font-bold text-xl",
+        title: customStyles?.title || "custom-title",
       },
-      timer: 2000,
+      timer: 3500,
       timerProgressBar: true,
     });
   };

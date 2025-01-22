@@ -13,6 +13,7 @@ const slideUp = {
 };
 
 export const Sections: React.FC = () => {
+
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">

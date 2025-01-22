@@ -33,10 +33,10 @@ export const Timeline: React.FC = () => {
         {timeline.map((time: ITimeline, i: number) => (
           <div className="flex lg:flex-col lg:items-center" key={i}>
             <div className="flex flex-col items-center">
-              <h3 className="text-pcPrincipal font-bold sm:text-2xl lg:text-[28px] xl:text-[32px]">
+              <h3 className="text-pcPrincipal font-bold sm:text-lg lg:text-xl xl:text-2xl">
                 {time.age}
               </h3>
-              <h4 className="text-sc text-xs text-center sm:text-base lg:text-xl xl:text-2xl">
+              <h4 className="text-sc text-xs text-center sm:text-base lg:text-lg xl:text-xl">
                 {time.text}
               </h4>
             </div>

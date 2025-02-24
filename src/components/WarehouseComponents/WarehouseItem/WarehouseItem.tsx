@@ -10,7 +10,7 @@ const WarehouseItem: React.FC<IWarehouseItemProps> = ({ title, description }) =>
 
       {description && (
         <div className="mt-4 sm:mt-[24px] ">
-          <div className="text-sm leading-[1.35] whitespace-pre-line sm:text-[16px] md:text-[20px] xl:text-[24px]">
+          <div className="text-sm leading-[1.35] whitespace-pre-line sm:text-base md:text-lg xl:text-xl">
             {description}
           </div>
         </div>

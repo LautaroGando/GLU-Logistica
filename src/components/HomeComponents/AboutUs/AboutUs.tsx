@@ -6,7 +6,6 @@ import Image from "next/image";
 import React from "react";
 import Timeline from "./Timeline/Timeline";
 import InfoHome from "@/components/ui/InfoHome/InfoHome";
-import { useUserContext } from "@/context/UserContext/UserContext";
 
 const slideInFromBottom = {
   hidden: { opacity: 0, y: 50 },
@@ -14,9 +13,6 @@ const slideInFromBottom = {
 };
 
 export const AboutUs: React.FC = () => {
-  const user = useUserContext()
-  console.log(user);
-
   return (
     <div className="flex flex-col gap-5 -mt-10 relative lg:flex-row lg:items-center">
       <div className="flex flex-col gap-5 lg:w-[50%]">

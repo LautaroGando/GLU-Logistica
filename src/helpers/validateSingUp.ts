@@ -46,7 +46,7 @@ export const validateSignUp = async (input: IUserSignUp) => {
 
   if (!input.phone) {
     errors.phone = "* Campo obligatorio.";
-  } else if (!/^\d{10}$/.test(input.phone.toString())) {
+  } else if (!/^\d{10}$/.test(input.phone)) {
     errors.phone = "* Número de teléfono no válido.";
   }
 

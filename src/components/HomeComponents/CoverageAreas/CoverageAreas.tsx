@@ -72,7 +72,7 @@ export const CoverageAreas: React.FC = () => {
 
       <div className="gap-3 hidden sm:flex">
         <div className="w-[50px] h-[50px] bg-mapColorCABA relative after:content-['CABA'] after:absolute after:-bottom-6 after:text-center after:w-full after:text-sc after:text-sm"></div>
-        <div className="w-[50px] h-[50px] bg-pcPrincipal relative after:content-['GBA1'] after:absolute after:-bottom-6 after:text-center after:w-full after:text-sc after:text-sm"></div>
+        <div className="w-[50px] h-[50px] bg-mapColorGBA1 relative after:content-['GBA1'] after:absolute after:-bottom-6 after:text-center after:w-full after:text-sc after:text-sm"></div>
         <div className="w-[50px] h-[50px] bg-mapColorGBA2 relative after:content-['GBA2'] after:absolute after:-bottom-6 after:text-center after:w-full after:text-sc after:text-sm"></div>
         <div className="w-[50px] h-[50px] bg-mapColorGBA3 relative after:content-['GBA3'] after:absolute after:-bottom-6 after:text-center after:w-full after:text-sc after:text-sm"></div>
       </div>

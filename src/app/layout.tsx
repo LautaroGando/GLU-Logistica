@@ -8,6 +8,7 @@ import WhatsAppLink from "@/components/ui/WhatsAppLink/WhatsAppLink";
 import { ChangeServiceProvider } from "@/context/ChangeServiceContext/ChangeServiceContext";
 import { TokenContextProvider } from "@/context/TokenContext/TokenContext";
 import { UserContextProvider } from "@/context/UserContext/UserContext";
+import { MenuDashboardProvider } from "@/context/MenuDashboardContext/MenuDashboardContext";
 
 export const metadata: Metadata = {
   title: "La Vuelta Logística",
@@ -27,11 +28,15 @@ export default function RootLayout({
           <UserContextProvider>
             <MenuProvider>
               <ChangeServiceProvider>
-                <Header />
-                <main className="px-3 my-10 sm:px-4 lg:max-w-[1200px] lg:mx-auto">{children}</main>
-                <NewsLetterModal />
-                <WhatsAppLink />
-                <Footer />
+                <MenuDashboardProvider>
+                  <Header />
+                  <main className="px-3 my-10 sm:px-4 lg:max-w-[1200px] lg:mx-auto">
+                    {children}
+                  </main>
+                  <NewsLetterModal />
+                  <WhatsAppLink />
+                  <Footer />
+                </MenuDashboardProvider>
               </ChangeServiceProvider>
             </MenuProvider>
           </UserContextProvider>

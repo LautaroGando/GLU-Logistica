@@ -26,7 +26,11 @@ export const Budgest: React.FC = () => {
           viewport={{ once: true, amount: 0.7 }}
           variants={{
             hidden: { opacity: 0, y: 50 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6, ease: "easeOut" },
+            },
           }}
         >
           <Title label="PRESUPUESTOS" />
@@ -38,9 +42,21 @@ export const Budgest: React.FC = () => {
           viewport={{ once: true, amount: 0.7 }}
           variants={{
             hidden: { opacity: 0, y: 50 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6, ease: "easeOut" },
+            },
           }}
         >
+          <Image
+            className="w-[260px] mx-auto sm:w-[430px] lg:hidden"
+            src="/assets/images/Ilustrations/Home/ilustration-budgets.svg"
+            alt="Vector de presupuestos"
+            width={500}
+            height={500}
+            priority
+          />
           <InfoHome index={1} />
         </motion.div>
       </div>
@@ -51,7 +67,11 @@ export const Budgest: React.FC = () => {
         viewport={{ once: true, amount: 0.7 }}
         variants={{
           hidden: { opacity: 0, y: 50 },
-          visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" },
+          },
         }}
       >
         <Image

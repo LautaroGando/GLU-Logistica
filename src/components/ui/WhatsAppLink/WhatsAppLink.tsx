@@ -1,9 +1,14 @@
+"use client";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 export const WhatsAppLink: React.FC = () => {
+  const pathname = usePathname();
+  if (pathname.startsWith("/admin")) return;
+
   return (
     <Link
       href="https://wa.me/541168605718"

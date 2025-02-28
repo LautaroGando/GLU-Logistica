@@ -1,10 +1,11 @@
 import Image from "next/image";
 import React from "react";
-import { motion } from "framer-motion";
+import Link from "next/link";
 
 export const Logo: React.FC = () => {
   return (
-    <motion.a whileTap={{ scale: 0.9 }} href="/" className="flex gap-2 items-center">
+ 
+    <Link href="/" className="flex gap-2 items-center transition-all duration-200 active:scale-[.9]">
       <Image
         className="w-[32px] h-[32px] sm:w-[50px] sm:h-[50px] md:w-[56px] md:h-[56px]"
         src="/assets/images/Header/logo.svg"
@@ -19,7 +20,7 @@ export const Logo: React.FC = () => {
           LOGÍSTICA
         </h4>
       </div>
-    </motion.a>
+    </Link>
   );
 };
 

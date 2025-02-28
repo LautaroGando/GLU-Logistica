@@ -8,6 +8,6 @@ export interface IUser {
   birthdate: string;
   email: string;
   password: string;
-  role: "admin" | "user";
+  role: "user" | "carrier" | "admin";
   newsletter: boolean;
 }

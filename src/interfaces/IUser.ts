@@ -9,5 +9,7 @@ export interface IUser {
   email: string;
   password: string;
   role: "user" | "carrier" | "admin";
+  status: "Activo" | "Desactivado";
   newsletter: boolean;
+  updatedAt: string; 
 }

@@ -1,26 +1,28 @@
 import React from "react";
 import { faBan, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import usersData from "@/data/usersData/usersData";
 import UsersTableHeader from "./UsersTableHeader/UsersTableHeader";
+import { useUsersTableFilters } from "@/context/AdminComponents/UserTableFiltersContext/UserTableFiltersContext";
 
 const UsersTable = () => {
+  const { users } = useUsersTableFilters();
+
   return (
     <div className="mt-6 overflow-x-auto">
       <table className="w-full table-auto border-collapse">
         <UsersTableHeader />
 
         <tbody className="bg-admin-secondary">
-          {usersData.map((user) => (
+          {users.map((user) => (
             <tr key={user.id}>
               <td className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40">
-                {user.name}
+                {user.name} {user.surname}
               </td>
               <td className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40">
                 {user.email}
               </td>
               <td className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40">
-                {user.document}
+                {user.idNumber}
               </td>
               <td className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40">
                 {user.phone}
@@ -29,11 +31,14 @@ const UsersTable = () => {
                 {user.birthdate}
               </td>
               <td className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40">
+                {user.updatedAt}
+              </td>
+              <td className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40">
                 {user.location}
               </td>
 
               <td
-                className={`px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40 ${user.role === "Transportista" ? "text-admin-yellow" : ""}`}
+                className={`px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40 ${user.role === "carrier" ? "text-admin-yellow" : ""}`}
               >
                 {user.role}
               </td>

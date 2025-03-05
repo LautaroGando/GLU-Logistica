@@ -1,7 +1,7 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ICreateButtonProps from "./types";
-import { useCreateModal } from "@/context/CreateModalContext/CreateModalContext";
+import { useCreateModal } from "@/context/AdminComponents/CreateModalContext/CreateModalContext";
 import { usePathname } from "next/navigation";
 
 const CreateButton: React.FC<ICreateButtonProps> = ({ text }) => {

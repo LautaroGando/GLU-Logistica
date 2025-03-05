@@ -4,6 +4,7 @@ export const usersTableHeaders = [
   "Documento",
   "Teléfono",
   "Fecha Nac.",
+  "Fecha Actualización",
   "Localidad",
   "Rol",
   "Estado",

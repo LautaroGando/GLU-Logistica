@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import FooterLogo from "./FooterLogo/FooterLogo";
 import FooterLinksGrid from "./FooterLinksGrid/FooterLinksGrid";
@@ -5,8 +7,12 @@ import FooterLocation from "./FooterLocation/FooterLocation";
 import FooterContact from "./FooterContact/FooterContact";
 import FooterSocialMedia from "./FooterSocialMedia/FooterSocialMedia";
 import FooterCopyright from "./FooterCopyright/FooterCopyright";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const pathname = usePathname();
+  if (pathname.startsWith("/admin")) return;
+
   return (
     <footer className="text-pcSecondary bg-pcPrincipal px-3 pt-11 pb-6 sm:p-5 lg:py-10">
       <div className="lg:max-w-[1200px] lg:mx-auto">

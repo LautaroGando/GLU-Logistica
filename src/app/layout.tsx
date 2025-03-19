@@ -8,6 +8,9 @@ import WhatsAppLink from "@/components/ui/WhatsAppLink/WhatsAppLink";
 import { ChangeServiceProvider } from "@/context/ChangeServiceContext/ChangeServiceContext";
 import { TokenContextProvider } from "@/context/TokenContext/TokenContext";
 import { UserContextProvider } from "@/context/UserContext/UserContext";
+import { headers as getHeaders } from "next/headers";
+import clsx from "clsx";
+import BackgroundUpdater from "@/helpers/BackgroundUpdater";
 import { MenuDashboardProvider } from "@/context/MenuDashboardContext/MenuDashboardContext";
 
 export const metadata: Metadata = {
@@ -16,23 +19,24 @@ export const metadata: Metadata = {
   icons: "/assets/images/Header/logo.svg",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const serverHeaders = getHeaders() as unknown as Headers;
+  const pageClass = serverHeaders.get("x-page-class") || "default-layout";
+
   return (
     <html lang="es">
-      <body className="antialiase">
+      <body
+        id="site-layout"
+        className={clsx("site-layout antialiase", pageClass === "/admin" && "bg-admin-primary")}
+      >
         <TokenContextProvider>
           <UserContextProvider>
             <MenuProvider>
               <ChangeServiceProvider>
                 <MenuDashboardProvider>
                   <Header />
-                  <main className="px-3 my-10 sm:px-4 lg:max-w-[1200px] lg:mx-auto">
-                    {children}
-                  </main>
+                  <BackgroundUpdater />
+                  <main>{children}</main>
                   <NewsLetterModal />
                   <WhatsAppLink />
                   <Footer />

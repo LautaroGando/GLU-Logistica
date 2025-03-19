@@ -3,10 +3,12 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import useNewsLetter from "@/hooks/useNewsletter";
+import { useUser } from "@/context/UserContext/UserContext";
 
 const NewsLetterModal: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { email, setEmail, handleSubmit } = useNewsLetter(setIsVisible);
+  const user = useUser();
 
   const handleClose = () => {
     setIsVisible(false);
@@ -19,6 +21,8 @@ const NewsLetterModal: React.FC = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  if (user) return;
 
   return (
     <motion.div

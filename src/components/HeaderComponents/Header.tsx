@@ -5,8 +5,13 @@ import ResponsiveMenu from "./ResponsiveMenu/ResponsiveMenu";
 import Button from "./Button/Button";
 import Links from "./Links/Links";
 import Banner from "./Banner/Banner";
+import { usePathname } from "next/navigation";
 
 export const Header: React.FC = () => {
+  const pathname = usePathname();
+
+  if (pathname.startsWith("/admin")) return;
+
   return (
     <>
       <div className="w-full h-[50px] flex justify-center shadow-sm sticky top-0 z-50 bg-pcSecondary shadow-tcExtra sm:h-[62px] md:h-[89px]">

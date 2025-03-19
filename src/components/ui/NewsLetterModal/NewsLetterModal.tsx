@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import useNewsLetter from "@/hooks/useNewsletter";
-import { useUserContext } from "@/context/UserContext/UserContext";
+import { useUser } from "@/context/UserContext/UserContext";
 
 const NewsLetterModal: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { email, setEmail, handleSubmit } = useNewsLetter(setIsVisible);
-  const user = useUserContext();
+  const user = useUser();
 
   const handleClose = () => {
     setIsVisible(false);

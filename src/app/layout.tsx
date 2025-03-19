@@ -33,19 +33,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <UserContextProvider>
             <MenuProvider>
               <ChangeServiceProvider>
-
-                <Header />
-                <BackgroundUpdater />
-                <main>{children}</main>
-                <NewsLetterModal />
-                <WhatsAppLink />
-                <Footer />
-
                 <MenuDashboardProvider>
                   <Header />
-                  <main className="px-3 my-10 sm:px-4 lg:max-w-[1200px] lg:mx-auto">
-                    {children}
-                  </main>
+                  <BackgroundUpdater />
+                  <main>{children}</main>
                   <NewsLetterModal />
                   <WhatsAppLink />
                   <Footer />

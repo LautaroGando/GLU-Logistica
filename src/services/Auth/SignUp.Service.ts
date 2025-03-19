@@ -7,6 +7,8 @@ export const signUp = async (data: IUserSignUp) => {
     const response = await axios.post(`${API_URL}/auth/signup`, data);
     return response.data;
   } catch (err) {
-    throw new Error(typeof err === "string" ? err : "Ha ocurrido un error desconocido");
+    throw new Error(
+      typeof err === "string" ? err : "Ha ocurrido un error desconocido"
+    );
   }
 };

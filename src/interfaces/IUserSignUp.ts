@@ -6,6 +6,6 @@ export interface IUserSignUp {
     password: string;
     repeatPassword: string;
     location: string;
-    phone: number;
+    phone: string;
     birthdate: string;
 };

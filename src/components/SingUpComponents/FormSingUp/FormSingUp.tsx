@@ -38,7 +38,7 @@ const FormSignUp = () => {
         password: "",
         repeatPassword: "",
         location: "",
-        phone: +"",
+        phone: "",
         birthdate: "",
       }}
       validate={validateSignUp}
@@ -69,7 +69,7 @@ const FormSignUp = () => {
               placeholder: "Repetir contraseña...",
             },
             { name: "location", type: "text", placeholder: "Localidad..." },
-            { name: "phone", type: "number", placeholder: "Teléfono..." },
+            { name: "phone", type: "text", placeholder: "Teléfono..." },
             {
               name: "birthdate",
               type: "date",

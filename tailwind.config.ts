@@ -21,6 +21,18 @@ export default {
         mapColorGBA2: "#4b5acb",
         mapColorGBA3: "#0C1177",
         blackPage: "#222",
+
+        admin: {
+          primary: "#343A49",
+          secondary: "#2D333F",
+          letterColor: "#FAFAFA",
+          green: "#24BA63",
+          red: "#FF8181",
+          redAlt: "#F05858",
+          blue: "#8FA6FF",
+          yellow: "#FFD593",
+          orange: "#F59E0B"
+        },
       },
       fontFamily: {
         nunito: ["Nunito", "sans-serif"],
@@ -41,6 +53,8 @@ export default {
       },
       boxShadow: {
         methodCard: "0 4px 4px 0 rgba(36, 186, 99, 0.50)",
+        adminHeader: '0 4px 4px rgba(0, 0, 0, 0.25)',
+
       },
     },
   },

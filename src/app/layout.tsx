@@ -16,7 +16,7 @@ import { MenuDashboardProvider } from "@/context/MenuDashboardContext/MenuDashbo
 export const metadata: Metadata = {
   title: "La Vuelta Logística",
   description: "",
-  icons: "/assets/images/Header/logo.svg",
+  icons: "/assets/images/Header/logoWhite.svg",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

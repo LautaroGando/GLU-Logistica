@@ -22,7 +22,7 @@ export const TraditionalMessaging: React.FC = () => {
         <TitleService
           title="Mensajería tradicional"
           img={img}
-          description="En LA VUELTA, nos especializamos en ofrecer soluciones de mensajería confiables y eficientes para satisfacer todas tus necesidades de transporte y gestión de documentos. Nuestro servicio de mensajería tradicional está diseñado para facilitar tus trámites diarios y/o semanales."
+          description="En GLU, nos especializamos en ofrecer soluciones de mensajería confiables y eficientes para satisfacer todas tus necesidades de transporte y gestión de documentos. Nuestro servicio de mensajería tradicional está diseñado para facilitar tus trámites diarios y/o semanales."
         />
       </motion.div>
       <TriangleSection isClose={false} />

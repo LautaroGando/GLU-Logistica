@@ -43,7 +43,7 @@ const NewsLetterModal: React.FC = () => {
 
         <div className="text-center">
           <h3 className="text-pcPrincipal text-2xl font-semibold leading-tight sm:text-3xl">
-            ¡Mantenete al día con La Vuelta!
+            ¡Mantenete al día con GLU!
           </h3>
           <p className="text-base mt-3 leading-relaxed sm:text-lg">
             Sé el primero en conocer nuestras novedades y servicios exclusivos.

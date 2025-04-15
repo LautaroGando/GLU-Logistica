@@ -17,8 +17,8 @@ export default {
         tcExtra: "#ACB0B8",
         transparentColor: "#00000080",
         mapColorCABA: "#ACB0B8",
-        mapColorGBA1: "#3498DB",
-        mapColorGBA2: "#4b5acb",
+        mapColorGBA1: "#5E70D6",
+        mapColorGBA2: "#2B35A3",
         mapColorGBA3: "#0C1177",
         blackPage: "#222",
 
@@ -31,7 +31,7 @@ export default {
           redAlt: "#F05858",
           blue: "#8FA6FF",
           yellow: "#FFD593",
-          orange: "#F59E0B"
+          orange: "#F59E0B",
         },
       },
       fontFamily: {
@@ -53,8 +53,7 @@ export default {
       },
       boxShadow: {
         methodCard: "0 4px 4px 0 rgba(36, 186, 99, 0.50)",
-        adminHeader: '0 4px 4px rgba(0, 0, 0, 0.25)',
-
+        adminHeader: "0 4px 4px rgba(0, 0, 0, 0.25)",
       },
     },
   },

@@ -10,7 +10,7 @@ export const FreightSection: React.FC = () => {
       <TitleService
         title="Fletes"
         img={img}
-        description="En LA VUELTA, nos especializamos en ofrecer servicios de fletes para cubrir todas tus necesidades de transporte de mercancías. Ya sea que necesites mover productos de gran volumen o simplemente un traslado más grande, nuestro equipo se encarga de hacer el proceso fácil y seguro. Con una flota adaptada a diferentes cargas y tiempos de entrega flexibles, garantizamos que tu mercancía llegue a tiempo y en perfectas condiciones."
+        description="En GLU, nos especializamos en ofrecer servicios de fletes para cubrir todas tus necesidades de transporte de mercancías. Ya sea que necesites mover productos de gran volumen o simplemente un traslado más grande, nuestro equipo se encarga de hacer el proceso fácil y seguro. Con una flota adaptada a diferentes cargas y tiempos de entrega flexibles, garantizamos que tu mercancía llegue a tiempo y en perfectas condiciones."
       />
       <TriangleSection isClose={false} />
       <Sections id="freight" />

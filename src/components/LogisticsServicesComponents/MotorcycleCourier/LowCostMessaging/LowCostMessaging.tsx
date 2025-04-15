@@ -10,7 +10,7 @@ export const LowCostMessaging: React.FC = () => {
       <TitleService
         title="Mensajería Low Cost"
         img={img}
-        description="En LA VUELTA, te ofrecemos soluciones de mensajería low cost para que puedas enviar documentos y paquetes sin gastar de más. Nuestro servicio está diseñado para brindar una opción económica, rápida y confiable, asegurando que tus envíos lleguen a su destino con la mejor relación calidad-precio. Ideal para quienes buscan eficiencia y ahorro en sus gestiones diarias."
+        description="En GLU, te ofrecemos soluciones de mensajería low cost para que puedas enviar documentos y paquetes sin gastar de más. Nuestro servicio está diseñado para brindar una opción económica, rápida y confiable, asegurando que tus envíos lleguen a su destino con la mejor relación calidad-precio. Ideal para quienes buscan eficiencia y ahorro en sus gestiones diarias."
       />
       <TriangleSection isClose={false} />
       <Sections id="lowCostMessaging" />

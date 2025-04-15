@@ -1,5 +1,10 @@
 import { ISection } from "@/interfaces/ISection";
-import { faCreditCard, faTruckFast, faWarehouse } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCreditCard,
+  faQuestion,
+  faTruckFast,
+  faWarehouse,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const sections: ISection[] = [
   {
@@ -16,5 +21,10 @@ export const sections: ISection[] = [
     icon: faCreditCard,
     name: "MEDIOS DE PAGO",
     href: "/payment-methods",
+  },
+  {
+    icon: faQuestion,
+    name: "PREGUNTAS FRECUENTES",
+    href: "/questions",
   },
 ];

@@ -6,7 +6,6 @@ import React from "react";
 import registerImg from "@/../public/assets/images/Ilustrations/Register/ilustration-register.svg";
 import Title from "../ui/Title/Title";
 import FormSingUp from "./FormSingUp/FormSingUp";
-import ButtonGoogle from "../ui/ButtonGoogle/ButtonGoogle";
 import ChangeLinkForm from "../ui/ChangeLinkForm/ChangeLinkForm";
 
 const SingUp: React.FC = () => {
@@ -48,22 +47,22 @@ const SingUp: React.FC = () => {
 
           <FormSingUp />
 
-          <motion.span
+          {/* <motion.span
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
             className="flex items-center justify-center gap-3 text-tcSecondary font-light before:content-[''] before:flex-1 before:h-[1px] before:bg-tcSecondary after:content-[''] after:flex-1 after:h-[1px] after:bg-tcSecondary"
           >
             o
-          </motion.span>
+          </motion.span> */}
 
-          <motion.div
+          {/* <motion.div
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
           >
             <ButtonGoogle text="Registrarse con google" />
-          </motion.div>
+          </motion.div> */}
 
           <motion.div
             initial={{ y: 50, opacity: 0 }}

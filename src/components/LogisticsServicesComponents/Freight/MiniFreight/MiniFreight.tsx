@@ -26,7 +26,7 @@ export const MiniFreight: React.FC = () => {
         <TitleService
           title="Mini Fletes"
           img={img}
-          description="En LA VUELTA, ofrecemos el servicio de mini fletes, pensado para aquellos traslados más pequeños pero igualmente importantes. Si necesitas enviar muebles, electrodomésticos o cualquier otro objeto voluminoso en un vehículo de menor capacidad, nuestro servicio de mini fletes es la opción perfecta. Con un enfoque personalizado y precios accesibles, nos aseguramos de que tu carga sea transportada de manera eficiente y segura."
+          description="En GLU, ofrecemos el servicio de mini fletes, pensado para aquellos traslados más pequeños pero igualmente importantes. Si necesitas enviar muebles, electrodomésticos o cualquier otro objeto voluminoso en un vehículo de menor capacidad, nuestro servicio de mini fletes es la opción perfecta. Con un enfoque personalizado y precios accesibles, nos aseguramos de que tu carga sea transportada de manera eficiente y segura."
         />
       </motion.div>
       <TriangleSection isClose={false} />

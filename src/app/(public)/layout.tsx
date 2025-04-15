@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "La Vuelta Logística",
+  title: "GLU Logística",
   description: "",
   icons: "/assets/images/Header/logo.svg",
 };

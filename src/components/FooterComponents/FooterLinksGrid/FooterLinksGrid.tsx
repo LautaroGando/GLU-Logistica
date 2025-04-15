@@ -52,7 +52,7 @@ const FooterLinksGrid = () => {
         <div className="text-[14px] mt-4 sm:text-[16px] lg:text-[20px] sm:mt-0">
           <div className="flex flex-col gap-2">
             <a
-              href="https://wa.me/541168605718"
+              href="https://wa.me/541171826912"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative w-fit"
@@ -63,20 +63,20 @@ const FooterLinksGrid = () => {
                   className="text-[16px] size-[16px] sm:size-[20px] sm:text-[20px] lg:size-[24px] lg:text-[24px]"
                 />
                 <p className="group-hover:text-pcPrimary hover:text-pcSecondary/80">
-                  +54 011 6860-5718
+                  +54 011 7182-6912
                 </p>
                 <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-pcSecondary/80 transition-all group-hover:w-full"></span>
               </div>
             </a>
 
-            <a href="mailto:lavueltalogistica@gmail.com" className="group relative w-fit">
+            <a href="mailto:logisticaglu@gmail.com" className="group relative w-fit">
               <div className="relative w-fit transition-colors flex items-center gap-2">
                 <FontAwesomeIcon
                   icon={faEnvelope}
                   className="text-[16px] size-[16px] lg:text-[20px] lg:size-[20px]"
                 />
                 <p className="group-hover:text-pcPrimary hover:text-pcSecondary/80">
-                  lavueltalogistica@gmail.com
+                logisticaglu@gmail.com
                 </p>
                 <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-pcSecondary/80 transition-all group-hover:w-full"></span>
               </div>

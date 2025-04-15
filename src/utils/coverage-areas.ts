@@ -11,6 +11,7 @@ export const coverageAreas: ICoverageArea[] = [
       "Vicente López",
       "San Martín",
       "3 de Febrero",
+      "La Matanza",
       "Lomas de Zamora",
       "Lanús",
       "Avellaneda",

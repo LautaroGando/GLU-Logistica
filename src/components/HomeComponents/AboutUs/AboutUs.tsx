@@ -47,10 +47,10 @@ export const AboutUs: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
           variants={slideInFromBottom}
-          className="relative -z-10 mx-auto w-[200px] after:content-[''] after:absolute after:max-w-[500px] after:w-full after:h-[5px] after:bg-aboutUsGradientImage after:-bottom-2 sm:w-[400px] sm:after:-bottom-4 sm:after:h-[11px] lg:w-[528px] lg:after:-bottom-5 lg:after:h-[16px] lg:mx-0 xl:w-[624px] xl:after:h-[26px] xl:after:-bottom-8"
+          className="relative -z-10 mx-auto w-[200px] sm:w-[400px] lg:w-[528px] lg:mx-0 xl:w-[624px]"
         >
           <Image
-            src="/assets/images/Home/img.svg"
+            src="/assets/gif/truck.gif"
             alt="Imagen del about us"
             width={500}
             height={500}

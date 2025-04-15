@@ -3,11 +3,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Title from "../ui/Title/Title";
-import PaymentMethodOptionsList from "./PaymentMethodOptionsList/PaymentMethodOptionsList";
+import InfoPayments from "./InfoPayments/InfoPayments";
 
 const PaymentMethods = () => {
   return (
-    <main className="h-[60vh] text-sc">
+    <div className="text-sc">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -15,8 +15,8 @@ const PaymentMethods = () => {
       >
         <Title label="Medios de pago" />
       </motion.div>
-      <PaymentMethodOptionsList />
-    </main>
+      <InfoPayments />
+    </div>
   );
 };
 

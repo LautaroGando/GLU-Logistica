@@ -2,7 +2,7 @@ export const warehouseData = [
   {
     title: "Almacenamiento y Entrega Eficiente",
     description:
-      "En LA VUELTA, ofrecemos un servicio integral de almacenamiento y entrega que garantiza la seguridad y eficiencia en el manejo de tus paquetes. Nuestro objetivo es facilitar la logística de tus pedidos, asegurando que lleguen a su destino de manera puntual y segura.",
+      "En GLU, ofrecemos un servicio integral de almacenamiento y entrega que garantiza la seguridad y eficiencia en el manejo de tus paquetes. Nuestro objetivo es facilitar la logística de tus pedidos, asegurando que lleguen a su destino de manera puntual y segura.",
   },
   {
     title: "Almacenamiento Seguro",
@@ -29,6 +29,6 @@ export const warehouseData = [
   {
     title: "Compromiso con la Calidad",
     description:
-      "En LA VUELTA, nos comprometemos a ofrecer un servicio de almacenamiento y entrega de alta calidad, priorizando la satisfacción del cliente. Nuestro equipo está dedicado a superar tus expectativas, asegurando que cada paquete llegue a su destino de manera segura y puntual.",
+      "En GLU, nos comprometemos a ofrecer un servicio de almacenamiento y entrega de alta calidad, priorizando la satisfacción del cliente. Nuestro equipo está dedicado a superar tus expectativas, asegurando que cada paquete llegue a su destino de manera segura y puntual.",
   },
 ];

@@ -14,9 +14,9 @@ import BackgroundUpdater from "@/helpers/BackgroundUpdater";
 import { MenuDashboardProvider } from "@/context/MenuDashboardContext/MenuDashboardContext";
 
 export const metadata: Metadata = {
-  title: "La Vuelta Logística",
+  title: "GLU Logística",
   description: "",
-  icons: "/assets/images/Header/logo.svg",
+  icons: "/assets/images/Header/logoWhite.svg",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

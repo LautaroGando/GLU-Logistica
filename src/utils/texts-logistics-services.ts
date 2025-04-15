@@ -15,7 +15,7 @@ export const textLogisticsServices = [
     id: "traditionalMessaging",
     title: "Flexibilidad y Comodidad",
     img: "/assets/images/Ilustrations/Logistics-Services/flex.svg",
-    text: "Con LA VUELTA, tenés la libertad de elegir el día y la hora que más te convengan para tus envíos. Nuestro compromiso es ofrecerte un servicio personalizado que se ajuste a tu agenda, brindándote la tranquilidad de saber que tus envíos están en buenas manos.",
+    text: "Con GLU, tenés la libertad de elegir el día y la hora que más te convengan para tus envíos. Nuestro compromiso es ofrecerte un servicio personalizado que se ajuste a tu agenda, brindándote la tranquilidad de saber que tus envíos están en buenas manos.",
   },
   {
     id: "traditionalMessaging",
@@ -27,7 +27,7 @@ export const textLogisticsServices = [
     id: "lowCostMessaging",
     title: "Soluciones para tu E-commerce",
     img: "/assets/images/Ilustrations/Logistics-Services/solutions.svg",
-    text: "En LA VUELTA, entendemos las necesidades únicas de los negocios en línea y estamos aquí para ofrecerte una solución de mensajería económica y eficiente que se adapta perfectamente a tu e-commerce.",
+    text: "En GLU, entendemos las necesidades únicas de los negocios en línea y estamos aquí para ofrecerte una solución de mensajería económica y eficiente que se adapta perfectamente a tu e-commerce.",
   },
   {
     id: "lowCostMessaging",
@@ -57,7 +57,7 @@ export const textLogisticsServices = [
     id: "miniFreight",
     title: "Autos y utilitarios: Soluciones de Transporte para tus Necesidades",
     img: "/assets/images/Ilustrations/Logistics-Services/transport.svg",
-    text: "En LA VUELTA, ofrecemos un servicio de mini fletes diseñado para facilitar el traslado de paquetería mediana y grande, así como muebles medianos y otros artículos voluminosos. Nuestro objetivo es proporcionarte una solución de transporte confiable y eficiente que se adapte a tus necesidades específicas.",
+    text: "En GLU, ofrecemos un servicio de mini fletes diseñado para facilitar el traslado de paquetería mediana y grande, así como muebles medianos y otros artículos voluminosos. Nuestro objetivo es proporcionarte una solución de transporte confiable y eficiente que se adapte a tus necesidades específicas.",
   },
   {
     id: "miniFreight",

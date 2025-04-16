@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import usersTableHeaders from "@/data/usersData/usersTableHeaders";
+import tableHeaders from "@/data/parcelData/parcelDataHeaders";
 
 const theadVariants = {
   hidden: { opacity: 0 },
@@ -29,11 +29,11 @@ const thVariants = {
   },
 };
 
-const UsersTableHeader = () => {
+const ParcelTableHeader = () => {
   return (
     <motion.thead initial="hidden" animate="visible" variants={theadVariants}>
-      <motion.tr layout className="border border-admin-letterColor/40">
-        {usersTableHeaders.map((header, i) => (
+      <motion.tr layout className="border border-admin-letterColor/40 bg-admin-secondary/20">
+        {tableHeaders.map((header, i) => (
           <motion.th
             key={i}
             variants={thVariants}
@@ -47,4 +47,4 @@ const UsersTableHeader = () => {
   );
 };
 
-export default UsersTableHeader;
+export default ParcelTableHeader;

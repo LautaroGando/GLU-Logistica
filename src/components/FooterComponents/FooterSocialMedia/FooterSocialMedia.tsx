@@ -14,7 +14,11 @@ const socialMediaLinks = [
     link: "https://www.instagram.com/logisticaglu?igsh=MXZkNnY2bWh4NW51Zw==",
     color: "hover:text-pink-500",
   },
-  { icon: faLinkedin, link: "#", color: "hover:text-blue-600" },
+  {
+    icon: faLinkedin,
+    link: "https://www.linkedin.com/company/107006755/admin/dashboard/",
+    color: "hover:text-blue-600",
+  },
   {
     icon: faFacebook,
     link: "https://www.facebook.com/profile.php?id=61575198383170&locale=es_LA",
@@ -22,7 +26,7 @@ const socialMediaLinks = [
   },
   {
     icon: faTiktok,
-    link: "#",
+    link: "https://www.tiktok.com/@logistica.glu?_t=ZM-8va5QNivnLK&_r=1",
     color: "hover:text-black",
   },
   {

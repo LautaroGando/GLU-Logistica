@@ -1,3 +1,6 @@
+import { IStatePackage } from "./IStatePackage";
+import { IUser } from "./IUser";
+
 export interface IPackage {
   id: string;
   packageNumber: string;
@@ -6,7 +9,8 @@ export interface IPackage {
   receivedDate: string;
   emissionDate?: string;
   deliveryDate?: string;
-  status: "Depósito" | "En camino" | "Entregado";
+  status: IStatePackage;
   updateStatus: () => void;
   role: "Cliente" | "Empresa";
+  user: IUser | null;
 }

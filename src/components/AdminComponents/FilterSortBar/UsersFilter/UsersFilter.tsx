@@ -14,7 +14,12 @@ const UsersFilter: React.FC = () => {
           <select
             id="filter"
             className="mt-1 px-3 py-2 bg-admin-secondary border border-transparent outline-none transition-all duration-100 cursor-pointer hover:border-admin-letterColor/50 focus:border-admin-letterColor/50"
-            onChange={(e) => setUsersFilter(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (value === "all" || value === "active" || value === "inactive") {
+                setUsersFilter(value);
+              }
+            }}
           >
             <option value="all">Todo</option>
             <option value="active">Activo</option>
@@ -29,7 +34,22 @@ const UsersFilter: React.FC = () => {
           <select
             id="sort"
             className="mt-1 px-3 py-2 bg-admin-secondary border border-transparent outline-none transition-all duration-100 cursor-pointer hover:border-admin-letterColor/50 focus:border-admin-letterColor/50"
-            onChange={(e) => setUsersOrder(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              const validOrders = [
+                "newest",
+                "oldest",
+                "name_asc",
+                "name_desc",
+                "email_asc",
+                "email_desc",
+                "role",
+              ] as const;
+
+              if (validOrders.includes(value as (typeof validOrders)[number])) {
+                setUsersOrder(value as (typeof validOrders)[number]);
+              }
+            }}
           >
             <option value="newest">Más reciente</option>
             <option value="oldest">Más antiguo</option>

@@ -14,10 +14,11 @@ const Admin = () => {
       <RecordsCount text="Usuarios registrados" number={512} />
 
       <FilterSortBar />
+      <div className="min-h-[600px]">
+        <AdminTable />
 
-      <AdminTable />
-
-      <TableActions />
+        <TableActions />
+      </div>
     </div>
   );
 };

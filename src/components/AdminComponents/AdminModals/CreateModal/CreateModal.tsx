@@ -5,10 +5,12 @@ import { useCreateModal } from "@/context/AdminComponents/CreateModalContext/Cre
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import validateCreateModal from "@/helpers/validateCreateModal";
 import { succesAlert } from "@/utils/Alerts/succesAlert";
-
+import { useParcelTableFilter } from "@/context/AdminComponents/ParcelTableFiltersContext/ParcelTableFiltersContext";
+import { IPackageDto } from "@/dto/IPackageDto";
 
 const CreateModal = () => {
   const { isModalOpen, closeModal, hideOverlay } = useCreateModal();
+  const { handleCreatePackage, fetchAllPackages } = useParcelTableFilter();
 
   const initialValues = {
     orderNumber: "",
@@ -19,16 +21,32 @@ const CreateModal = () => {
   };
 
   const handleSubmit = (values: typeof initialValues) => {
-    console.log("Datos del paquete:", values);
-    succesAlert("¡Éxito!","El paquete se creó correctamente","success")
-    closeModal();
+    try {
+      const payload: IPackageDto = {
+        packageNumber: values.orderNumber,
+        clientName: values.clientName,
+        companyName: values.customerType === "Company" ? values.companyName : "",
+        receivedDate: values.receivedDate,
+        status: "DEPOSITO",
+      };
+
+      console.log(payload);
+      
+
+      handleCreatePackage(payload);
+      fetchAllPackages();
+      succesAlert("¡Éxito!", "El paquete se creó correctamente", "success");
+      closeModal();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
     <AnimatePresence>
       {isModalOpen && (
         <motion.div
-          className="fixed inset-0 flex items-center justify-center z-10 bg-black/60 px-4"
+          className="fixed inset-0 flex items-center justify-center z-50 bg-black/60 px-4"
           onClick={closeModal}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

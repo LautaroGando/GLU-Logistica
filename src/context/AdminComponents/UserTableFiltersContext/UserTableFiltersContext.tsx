@@ -33,7 +33,6 @@ export const UserTableFiltersProvider = ({ children }: { children: ReactNode }) 
   const [usersOrder, setUsersOrder] = useState<TUserOrder>("newest");
   const [usersSearchBar, setUsersSearchBar] = useState<string>("");
 
-  // 🔹 Fetch de usuarios desde el backend
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -51,7 +50,6 @@ export const UserTableFiltersProvider = ({ children }: { children: ReactNode }) 
     fetchUsers();
   }, []);
 
-  // 🔹 Aplicar filtros, orden y búsqueda
   useEffect(() => {
     let processed = [...rawUsers];
 

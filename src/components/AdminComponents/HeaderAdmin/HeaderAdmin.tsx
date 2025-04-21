@@ -21,7 +21,7 @@ const HeaderAdmin: React.FC = () => {
     ];
 
     return (
-      <div className="w-full bg-admin-primary shadow-lg pb-[14px] pt-[9px] sticky top-0 z-40">
+      <div className="w-full bg-admin-primary shadow-lg pb-[14px] pt-[9px] sticky top-0 z-10">
         <div className="mx-auto px-3 sm:px-4 lg:max-w-[1400px]">
           <div className="w-max mb-[25px] lg:-[37px] xl:mb-[46px]">
             <Logo lightMode />

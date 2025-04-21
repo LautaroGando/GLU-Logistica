@@ -3,7 +3,7 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import IParcelTableFiltersProps from "./types";
 import { IPackage } from "@/interfaces/IParcel";
-import { createPackage, getAllPackages } from "@/services/package";
+import { createPackage, deletePackage, editPackage, getAllPackages } from "@/services/package";
 import { IPackageDto } from "@/dto/IPackageDto";
 
 const ParcelTableFiltersContext = createContext<IParcelTableFiltersProps | undefined>(undefined);
@@ -32,10 +32,19 @@ export const ParcelTableFiltersProvider = ({ children }: { children: ReactNode }
 
   const handleCreatePackage = async (values: IPackageDto) => {
     try {
-      const created = await createPackage(values);
-      setPackages((prev) => (prev ? [...prev, created] : [created]));
+      const createdPackage = await createPackage(values);
+      setPackages((prev) => (prev ? [...prev, createdPackage] : [createdPackage]));
     } catch (err) {
       console.error("Error al crear paquete:", err);
+    }
+  };
+
+  const handleEditPackage = async (packageId: string, values: IPackageDto) => {
+    try {
+      const editedPackage = await editPackage(packageId, values);
+      setPackages((prev) => prev?.map((pkg) => (pkg.id === packageId ? editedPackage : pkg)) ?? []);
+    } catch (err) {
+      console.log(`Error al editar el paquete ${err}`);
     }
   };
 
@@ -60,6 +69,22 @@ export const ParcelTableFiltersProvider = ({ children }: { children: ReactNode }
   useEffect(() => {
     fetchAllPackages();
   }, []);
+
+  const handleDeletePackage = async (packageId: string) => {
+    try {
+      setLoading(true);
+      await deletePackage(packageId);
+
+      setPackages((prev) => prev?.filter((pack) => pack.id !== packageId) || null);
+      setFilteredPackages((prev) => prev?.filter((pack) => pack.id !== packageId) || null);
+      setError(null);
+    } catch (err) {
+      console.error("Error al eliminar paquete:", err);
+      setError("No se pudo eliminar el paquete.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (!packages) return;
@@ -110,6 +135,8 @@ export const ParcelTableFiltersProvider = ({ children }: { children: ReactNode }
         setParcelSearchBar,
         handleCreatePackage,
         fetchAllPackages,
+        handleDeletePackage,
+        handleEditPackage
       }}
     >
       {children}

@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage, FormikValues } from "formik";
 import { succesAlert } from "@/utils/Alerts/succesAlert";
 import { useEditModal } from "@/context/AdminComponents/EditModalContext/EditModalContext";
 import validateEditModal from "@/helpers/validateEditModal";
+import { useParcelTableFilter } from "@/context/AdminComponents/ParcelTableFiltersContext/ParcelTableFiltersContext";
 
 const EditModalParcel: React.FC = () => {
   const { isModalOpen, closeModal, hideOverlay, packageData } = useEditModal();
@@ -39,7 +40,7 @@ const EditModalParcel: React.FC = () => {
     <AnimatePresence>
       {isModalOpen && (
         <motion.div
-          className="fixed inset-0 flex items-center justify-center z-10 bg-black/60 px-4"
+          className="fixed inset-0 flex items-center justify-center z-20 bg-black/60 px-4"
           onClick={closeModal}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

@@ -10,6 +10,7 @@ export interface IParcelTableFiltersProps {
   setParcelOrder: (text: string) => void;
   setParcelSearchBar: (text: string) => void;
   handleCreatePackage: (values: IPackageDto) => void;
+  handleDeletePackage: (packageId: string) => void;
 }
 
 export default IParcelTableFiltersProps;

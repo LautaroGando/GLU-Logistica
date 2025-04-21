@@ -11,6 +11,7 @@ import clsx from "clsx";
 import ParcelTableHeader from "./ParcelTableHeader/ParcelTableHeader";
 import React from "react";
 import { IStatePackage } from "@/interfaces/IStatePackage";
+import PersonalizedPopUp from "@/components/ui/PersonalizedPopUp/PersonalizedPopUp";
 
 const rowVariants = {
   hidden: { opacity: 0, x: -30 },
@@ -30,7 +31,22 @@ const cellVariants = {
 const ParcelTable = () => {
   const { openModal, setPackageData } = useEditModal();
   const { loading, error, packages } = useParcelTableFilter();
+  const { handleDeletePackage } = useParcelTableFilter();
 
+  const deletePackage = async (packageId: string) => {
+    await PersonalizedPopUp({
+      withResult: true,
+      title: "¿Estás seguro?",
+      text: "Esta acción eliminará el paquete de forma permanente.",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+      titleSuccess: "Paquete eliminado",
+      textSuccess: "El paquete ha sido eliminado correctamente.",
+      titleError: "Error",
+      textError: "No se pudo eliminar el paquete. Intenta nuevamente.",
+      genericFunction: () => handleDeletePackage(packageId),
+    });
+  };
 
   return (
     <div className=" mt-6 overflow-x-auto">
@@ -53,8 +69,8 @@ const ParcelTable = () => {
                   parcel.status === IStatePackage.DEPOSIT
                     ? "Enviar"
                     : parcel.status === IStatePackage.IN_TRANSIT
-                    ? "Entregar"
-                    : "Entregado";
+                      ? "Entregar"
+                      : "Entregado";
 
                 return (
                   <motion.tr
@@ -66,25 +82,46 @@ const ParcelTable = () => {
                     exit="exit"
                     className="border-b transition-shadow hover:shadow-md"
                   >
-                    <motion.td variants={cellVariants} className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40">
+                    <motion.td
+                      variants={cellVariants}
+                      className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40"
+                    >
                       {parcel.packageNumber}
                     </motion.td>
-                    <motion.td variants={cellVariants} className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40">
-                      {parcel.clientName ? parcel.clientName : "-" }
+                    <motion.td
+                      variants={cellVariants}
+                      className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40"
+                    >
+                      {parcel.clientName ? parcel.clientName : "-"}
                     </motion.td>
-                    <motion.td variants={cellVariants} className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40">
+                    <motion.td
+                      variants={cellVariants}
+                      className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40"
+                    >
                       {parcel.companyName || "-"}
                     </motion.td>
-                    <motion.td variants={cellVariants} className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40">
+                    <motion.td
+                      variants={cellVariants}
+                      className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40"
+                    >
                       {parcel.role}
                     </motion.td>
-                    <motion.td variants={cellVariants} className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40">
+                    <motion.td
+                      variants={cellVariants}
+                      className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40"
+                    >
                       {parcel.receivedDate}
                     </motion.td>
-                    <motion.td variants={cellVariants} className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40">
+                    <motion.td
+                      variants={cellVariants}
+                      className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40"
+                    >
                       {parcel.emissionDate || "-"}
                     </motion.td>
-                    <motion.td variants={cellVariants} className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40">
+                    <motion.td
+                      variants={cellVariants}
+                      className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40"
+                    >
                       {parcel.deliveryDate || "-"}
                     </motion.td>
                     <motion.td
@@ -97,7 +134,10 @@ const ParcelTable = () => {
                     >
                       {parcel.status}
                     </motion.td>
-                    <motion.td variants={cellVariants} className="px-4 h-[50px] border-y border-admin-letterColor/40">
+                    <motion.td
+                      variants={cellVariants}
+                      className="px-4 h-[50px] border-y border-admin-letterColor/40"
+                    >
                       <button
                         className={clsx(
                           "h-[30px] w-[88px] rounded-[2px] transition-all duration-200",
@@ -110,7 +150,10 @@ const ParcelTable = () => {
                         {buttonText}
                       </button>
                     </motion.td>
-                    <motion.td variants={cellVariants} className="px-4 h-[50px] text-center border-y border-admin-letterColor/40">
+                    <motion.td
+                      variants={cellVariants}
+                      className="px-4 h-[50px] text-center border-y border-admin-letterColor/40"
+                    >
                       <button
                         onClick={() => {
                           setPackageData(parcel);
@@ -123,9 +166,15 @@ const ParcelTable = () => {
                         />
                       </button>
                     </motion.td>
-                    <motion.td variants={cellVariants} className="px-4 h-[50px] text-center text-admin-red border-y border-admin-letterColor/40">
-                      <button>
-                        <FontAwesomeIcon icon={faBan} className="text-[20px] hover:text-admin-red/60" />
+                    <motion.td
+                      variants={cellVariants}
+                      className="px-4 h-[50px] text-center text-admin-red border-y border-admin-letterColor/40"
+                    >
+                      <button onClick={() => deletePackage(parcel.id)}>
+                        <FontAwesomeIcon
+                          icon={faBan}
+                          className="text-[20px] hover:text-admin-red/60"
+                        />
                       </button>
                     </motion.td>
                   </motion.tr>

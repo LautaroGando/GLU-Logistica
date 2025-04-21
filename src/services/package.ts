@@ -33,3 +33,33 @@ export const createPackage = async (values: IPackageDto) => {
     }
   }
 };
+
+export const editPackage = async (packageId: string, values: IPackageDto) => {
+  try {
+    const { data } = await axios.patch(`${API_URL}/package/${packageId}`, values);
+    return data;
+  } catch (err) {
+    if (axios.isAxiosError(err)) {
+      console.error("Error al actualizar el paquete");
+      throw new Error("No se pudo actualizar el paquete.");
+    } else {
+      console.error("Error inesperado al actualizar el paquete");
+      throw new Error("Error inesperado al actualizar el paquete.");
+    }
+  }
+};
+
+export const deletePackage = async (packageId: string) => {
+  try {
+    const { data } = await axios.delete(`${API_URL}/package/${packageId}`);
+    return data;
+  } catch (err) {
+    if (axios.isAxiosError(err)) {
+      console.error("Error al eliminar el paquete");
+      throw new Error("No se pudo eliminar el paquete.");
+    } else {
+      console.error("Error inesperado al eliminar el paquete");
+      throw new Error("Error inesperado al eliminar el paquete.");
+    }
+  }
+};

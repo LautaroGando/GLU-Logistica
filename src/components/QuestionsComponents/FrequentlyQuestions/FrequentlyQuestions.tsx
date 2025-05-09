@@ -21,7 +21,7 @@ export const FrequentlyQuestions: React.FC = () => {
             onClick={() => handleToggleIsOpen(question.id)}
             className="flex w-full items-center justify-between h-[60px] text-pcPrincipal gap-5"
           >
-            <h3 className="font-bold md:text-lg">{question.question}</h3>
+            <h3 className="font-bold text-left md:text-lg">{question.question}</h3>
             <FontAwesomeIcon
               className={clsx(
                 "text-[15px] w-[15px] transition-all duration-300",

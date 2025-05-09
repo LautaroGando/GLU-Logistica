@@ -6,14 +6,14 @@ export const ResponsiveMenu: React.FC = () => {
   const { menu, handleToggleMenu } = useMenu();
 
   return (
-    <div className="lg:hidden">
+    <div className="md:hidden">
       <button
         onClick={() => handleToggleMenu()}
         className={`relative w-[24px] h-[24px] z-20 sm:w-[30px] sm:h-[30px]`}
       >
         <span
           className={`absolute block w-full h-[2px] left-0 origin-center transition-all transform ${
-            menu ? "rotate-45 translate-y-0 bg-pcSecondary" : "bg-sc -translate-y-[8px]"
+            menu ? "rotate-45 translate-y-0 bg-pcPrincipal" : "bg-sc -translate-y-[8px]"
           }`}
         ></span>
         <span
@@ -23,7 +23,7 @@ export const ResponsiveMenu: React.FC = () => {
         ></span>
         <span
           className={`absolute block w-full h-[2px] left-0 origin-center transition-all transform ${
-            menu ? "-rotate-45 translate-y-0 bg-pcSecondary" : "bg-sc translate-y-[8px]"
+            menu ? "-rotate-45 translate-y-0 bg-pcPrincipal" : "bg-sc translate-y-[8px]"
           }`}
         ></span>
       </button>

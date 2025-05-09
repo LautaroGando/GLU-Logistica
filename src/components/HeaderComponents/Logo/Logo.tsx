@@ -10,7 +10,7 @@ export const Logo: React.FC<ILogoProps> = ({ lightMode }: ILogoProps) => {
       className="flex gap-2 items-center transition-all duration-200 active:scale-[.9]"
     >
       <Image
-        className="w-[80px] sm:w-[120px] md:w-[140px]"
+        className="w-[140px]"
         src={
           lightMode
             ? "/assets/images/Header/logoWhite.svg"

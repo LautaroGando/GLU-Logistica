@@ -2,9 +2,7 @@
 
 import { motion } from "framer-motion";
 import Title from "@/components/ui/Title/Title";
-import Image from "next/image";
 import React from "react";
-import Timeline from "./Timeline/Timeline";
 import InfoHome from "@/components/ui/InfoHome/InfoHome";
 
 const slideInFromBottom = {
@@ -41,24 +39,7 @@ export const AboutUs: React.FC = () => {
         >
           <InfoHome index={0} />
         </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={slideInFromBottom}
-          className="relative -z-10 mx-auto w-[200px] sm:w-[400px] lg:w-[528px] lg:mx-0 xl:w-[624px]"
-        >
-          <Image
-            src="/assets/gif/truck.gif"
-            alt="Imagen del about us"
-            width={500}
-            height={500}
-            priority
-          />
-        </motion.div>
       </div>
-      <Timeline />
     </div>
   );
 };

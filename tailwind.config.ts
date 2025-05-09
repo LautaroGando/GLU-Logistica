@@ -15,7 +15,7 @@ export default {
         tcPrincipal: "#323FBD",
         tcSecondary: "#6E6E6E",
         tcExtra: "#ACB0B8",
-        transparentColor: "#00000080",
+        transparentColor: "#000000cc",
         mapColorCABA: "#ACB0B8",
         mapColorGBA1: "#5E70D6",
         mapColorGBA2: "#2B35A3",
@@ -45,7 +45,7 @@ export default {
           "linear-gradient(350deg, #FAFAFA 45.45%, #EEEEEE 46.73%)",
         banner: "linear-gradient(344deg, #FAFAFA 48%, #00000000 49%)",
         bannerGradientImage:
-          "linear-gradient(263deg, #0C1177CC 0%, #323FBDCC 100%)",
+          "linear-gradient(263deg, #0C1177aa 0%, #0C1177aa 100%)",
         aboutUsGradientImage:
           "linear-gradient(177deg, #0C1177 45%, #00000000 55%)",
         aboutUsGradientBorder:

@@ -6,12 +6,8 @@ import Footer from "@/components/FooterComponents/Footer";
 import NewsLetterModal from "@/components/ui/NewsLetterModal/NewsLetterModal";
 import WhatsAppLink from "@/components/ui/WhatsAppLink/WhatsAppLink";
 import { ChangeServiceProvider } from "@/context/ChangeServiceContext/ChangeServiceContext";
-import { TokenContextProvider } from "@/context/TokenContext/TokenContext";
-import { UserContextProvider } from "@/context/UserContext/UserContext";
 import { headers as getHeaders } from "next/headers";
 import clsx from "clsx";
-import BackgroundUpdater from "@/helpers/BackgroundUpdater";
-import { MenuDashboardProvider } from "@/context/MenuDashboardContext/MenuDashboardContext";
 
 export const metadata: Metadata = {
   title: "GLU Logística",
@@ -19,7 +15,11 @@ export const metadata: Metadata = {
   icons: "/assets/images/Header/logoWhite.svg",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const serverHeaders = getHeaders() as unknown as Headers;
   const pageClass = serverHeaders.get("x-page-class") || "default-layout";
 
@@ -27,24 +27,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es">
       <body
         id="site-layout"
-        className={clsx("site-layout antialiase", pageClass === "/admin" && "bg-admin-primary")}
+        className={clsx(
+          "site-layout antialiase",
+          pageClass === "/admin" && "bg-admin-primary"
+        )}
       >
-        <TokenContextProvider>
-          <UserContextProvider>
-            <MenuProvider>
-              <ChangeServiceProvider>
-                <MenuDashboardProvider>
-                  <Header />
-                  <BackgroundUpdater />
-                  <main>{children}</main>
-                  <NewsLetterModal />
-                  <WhatsAppLink />
-                  <Footer />
-                </MenuDashboardProvider>
-              </ChangeServiceProvider>
-            </MenuProvider>
-          </UserContextProvider>
-        </TokenContextProvider>
+        <MenuProvider>
+          <ChangeServiceProvider>
+            <Header />
+            <main className="p-2 max-w-[1200px] mx-auto sm:p-4">{children}</main>
+            <NewsLetterModal />
+            <WhatsAppLink />
+            <Footer />
+          </ChangeServiceProvider>
+        </MenuProvider>
       </body>
     </html>
   );

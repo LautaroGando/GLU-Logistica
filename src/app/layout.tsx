@@ -10,11 +10,21 @@ import { headers as getHeaders } from "next/headers";
 import clsx from "clsx";
 
 export const metadata: Metadata = {
-  title: "GLU Logística",
+  title: "GLU Logística | Transporte de Paquetes en Argentina",
   description:
     "GLU Logística ofrece soluciones rápidas, seguras y eficientes en transporte de paquetes para empresas y particulares. Optimiza tus envíos con nuestro servicio confiable y personalizado.",
-    keywords
-  icons: "/assets/images/Header/logoWhite.svg",
+  keywords: [
+    "logística",
+    "envíos",
+    "transporte de paquetes",
+    "mensajería",
+    "logística empresarial",
+    "servicios de logística",
+    "envíos seguros",
+    "logística para empresas",
+    "envíos rápidos",
+    "logística en Argentina",
+  ],
 };
 
 export default function RootLayout({

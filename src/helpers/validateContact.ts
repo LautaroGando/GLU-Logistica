@@ -4,16 +4,16 @@ import { IFormContact } from "@/interfaces/IFormContact";
 const validateContact = (values: IFormContact) => {
   const errors: IErrorFormContact = {};
 
-  if (!values.subject) {
-    errors.subject = "El nombre es obligatorio";
-  } else if (values.subject.length < 3) {
-    errors.subject = "El nombre debe tener al menos 3 caracteres";
+  if (!values.fullname) {
+    errors.fullname = "El nombre es obligatorio";
+  } else if (values.fullname.length < 3) {
+    errors.fullname = "El nombre debe tener al menos 3 caracteres";
   }
 
-  if (!values.from) {
-    errors.from = "El correo electrónico es obligatorio";
-  } else if (!/\S+@\S+\.\S+/.test(values.from)) {
-    errors.from = "Correo electrónico inválido";
+  if (!values.email) {
+    errors.email = "El correo electrónico es obligatorio";
+  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+    errors.email = "Correo electrónico inválido";
   }
 
   if (!values.message) {

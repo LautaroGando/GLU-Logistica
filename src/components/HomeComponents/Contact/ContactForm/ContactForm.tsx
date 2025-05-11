@@ -5,15 +5,19 @@ import validate from "@/helpers/validateContact";
 import { IFormContact } from "@/interfaces/IFormContact";
 import useErrorAlert from "@/hooks/useErrorAlert";
 import emailjs from "@emailjs/browser";
+import useSuccessAlert from "@/hooks/useSuccessAlert";
 
 const ContactForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
   const showErrorAlert = useErrorAlert();
+  const showSuccessAlert = useSuccessAlert();
 
-  const handleFormContact = async (values: IFormContact, resetFormn;) => {
+  const handleFormContact = async (
+    values: IFormContact,
+    resetForm: () => void
+  ) => {
     setIsLoading(true);
     try {
-
       const templateParams = {
         name: values.fullname,
         email: values.email,
@@ -26,17 +30,27 @@ const ContactForm: React.FC = () => {
 
       emailjs
         .send(
-          "service_zbo6j4o",
-          'template_udxxqpm',
+          "service_oc8uh0r",
+          "template_udxxqpm",
           templateParams,
           "2vOcYwcKHv3oVzOtE"
         )
         .then(() => {
           resetForm();
-          sendFormSuccessPopUp();
+          showSuccessAlert(
+            "Mensaje enviado con éxito.",
+            "A la brevedad estaremos respondiendo su consulta."
+          );
         })
-        .catch(() => sendFormErrorPopUp());
-    } catch {
+        .catch((err) => {
+          console.log(err);
+          showErrorAlert(
+            "Error al enviar el mensaje",
+            "Inténtalo de nuevo más tarde."
+          );
+        });
+    } catch (err) {
+      console.log(err);
       showErrorAlert(
         "Error al enviar el mensaje",
         "Inténtalo de nuevo más tarde."
@@ -49,14 +63,13 @@ const ContactForm: React.FC = () => {
   return (
     <Formik
       initialValues={{
-        subject: "",
-        from: "",
+        fullname: "",
+        email: "",
         message: "",
       }}
       validate={validate}
       onSubmit={(values, { resetForm }) => {
-        handleFormContact(values);
-        resetForm();
+        handleFormContact(values, resetForm);
       }}
     >
       {() => (
@@ -72,12 +85,12 @@ const ContactForm: React.FC = () => {
               >
                 <Field
                   type="text"
-                  name="subject"
+                  name="fullname"
                   placeholder="Nombre..."
                   className="inputForm"
                 />
                 <ErrorMessage
-                  name="subject"
+                  name="fullname"
                   component="div"
                   className="text-red-500"
                 />
@@ -92,12 +105,12 @@ const ContactForm: React.FC = () => {
               >
                 <Field
                   type="text"
-                  name="from"
+                  name="email"
                   placeholder="Correo electrónico..."
                   className="inputForm"
                 />
                 <ErrorMessage
-                  name="from"
+                  name="email"
                   component="div"
                   className="text-red-500"
                 />

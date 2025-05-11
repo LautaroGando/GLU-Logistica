@@ -6,8 +6,7 @@ import Footer from "@/components/FooterComponents/Footer";
 import NewsLetterModal from "@/components/ui/NewsLetterModal/NewsLetterModal";
 import WhatsAppLink from "@/components/ui/WhatsAppLink/WhatsAppLink";
 import { ChangeServiceProvider } from "@/context/ChangeServiceContext/ChangeServiceContext";
-import { headers as getHeaders } from "next/headers";
-import clsx from "clsx";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "GLU Logística | Transporte de Paquetes en Argentina",
@@ -26,7 +25,9 @@ export const metadata: Metadata = {
     "logística en Argentina",
   ],
   icons: {
-    icon: "/assets/images/Header/IsoLogo.svg",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
 };
 
@@ -35,18 +36,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const serverHeaders = getHeaders() as unknown as Headers;
-  const pageClass = serverHeaders.get("x-page-class") || "default-layout";
-
   return (
     <html lang="es">
-      <body
-        id="site-layout"
-        className={clsx(
-          "site-layout antialiase",
-          pageClass === "/admin" && "bg-admin-primary"
-        )}
-      >
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <body id="site-layout" className="site-layout antialiase">
         <MenuProvider>
           <ChangeServiceProvider>
             <Header />

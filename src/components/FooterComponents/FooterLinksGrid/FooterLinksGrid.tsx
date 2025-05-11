@@ -10,11 +10,14 @@ const FooterLinksGrid = () => {
   return (
     <div className="sm:flex sm:justify-between sm:items-start lg:items-start">
       <div className="flex flex-col gap-2 text-[14px] sm:text-[16px] lg:text-[20px]">
-        <h4 className="text-[16px] font-bold sm:text-[20px] lg:text-[24px]">Servicios</h4>
+        <h4 className="text-[16px] font-bold sm:text-[20px] lg:text-[24px]">
+          Servicios
+        </h4>
         {[
           { href: "/warehouse", text: "Depósito" },
           { href: "/logistics-services", text: "Servicios de logística" },
           { href: "/payment-methods", text: "Medios de pago" },
+          { href: "/questions", text: "Preguntas frecuentes" },
         ].map((item, index) => (
           <Link href={item.href} key={index} className="group relative w-fit">
             <div className="relative w-fit transition-colors">
@@ -28,7 +31,9 @@ const FooterLinksGrid = () => {
       </div>
 
       <div className="flex flex-col gap-2 text-[14px] mt-4 sm:text-[16px] lg:text-[20px] sm:mt-0">
-        <h4 className="text-[16px] font-bold sm:text-[20px] lg:text-[24px]">Información</h4>
+        <h4 className="text-[16px] font-bold sm:text-[20px] lg:text-[24px]">
+          Información
+        </h4>
 
         {[
           { text: "¿Quiénes somos?", href: "/#about-us" },
@@ -48,7 +53,9 @@ const FooterLinksGrid = () => {
       </div>
 
       <div className="text-[14px] mt-4 sm:text-[16px] lg:text-[20px] sm:mt-0">
-        <h4 className="text-[16px] font-bold sm:text-[20px] lg:text-[24px]">Soporte</h4>
+        <h4 className="text-[16px] font-bold sm:text-[20px] lg:text-[24px]">
+          Soporte
+        </h4>
         <div className="text-[14px] mt-4 sm:text-[16px] lg:text-[20px] sm:mt-0">
           <div className="flex flex-col gap-2">
             <a
@@ -69,14 +76,17 @@ const FooterLinksGrid = () => {
               </div>
             </a>
 
-            <a href="mailto:logisticaglu@gmail.com" className="group relative w-fit">
+            <a
+              href="mailto:logisticaglu@gmail.com"
+              className="group relative w-fit"
+            >
               <div className="relative w-fit transition-colors flex items-center gap-2">
                 <FontAwesomeIcon
                   icon={faEnvelope}
                   className="text-[16px] size-[16px] lg:text-[20px] lg:size-[20px]"
                 />
                 <p className="group-hover:text-pcPrimary hover:text-pcSecondary/80">
-                logisticaglu@gmail.com
+                  logisticaglu@gmail.com
                 </p>
                 <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-pcSecondary/80 transition-all group-hover:w-full"></span>
               </div>

@@ -1,5 +1,5 @@
 export interface IErrorFormContact {
-  from?: string;
-  subject?: string;
+  fullname?: string;
+  email?: string;
   message?: string;
 }

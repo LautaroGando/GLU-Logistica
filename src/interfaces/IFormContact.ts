@@ -1,5 +1,5 @@
 export interface IFormContact {
-  subject: string;
-  from: string;
+  fullname: string;
+  email: string;
   message: string;
 }

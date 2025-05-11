@@ -3,23 +3,39 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { motion } from "framer-motion";
 import validate from "@/helpers/validateContact";
 import { IFormContact } from "@/interfaces/IFormContact";
-import { contact } from "@/services/Users/Contact.Service";
-import useSuccessAlert from "@/hooks/useSuccessAlert";
 import useErrorAlert from "@/hooks/useErrorAlert";
+import emailjs from "@emailjs/browser";
 
 const ContactForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
-  const showSuccessAlert = useSuccessAlert();
   const showErrorAlert = useErrorAlert();
 
-  const handleFormContact = async (values: IFormContact) => {
+  const handleFormContact = async (values: IFormContact, resetFormn;) => {
     setIsLoading(true);
     try {
-      await contact(values);
-      showSuccessAlert(
-        "¡Mensaje enviado con éxito!",
-        "En breve recibirás una respuesta."
-      );
+
+      const templateParams = {
+        name: values.fullname,
+        email: values.email,
+        message: values.message,
+        time: new Date().toLocaleString("es-AR", {
+          dateStyle: "short",
+          timeStyle: "short",
+        }),
+      };
+
+      emailjs
+        .send(
+          "service_zbo6j4o",
+          'template_udxxqpm',
+          templateParams,
+          "2vOcYwcKHv3oVzOtE"
+        )
+        .then(() => {
+          resetForm();
+          sendFormSuccessPopUp();
+        })
+        .catch(() => sendFormErrorPopUp());
     } catch {
       showErrorAlert(
         "Error al enviar el mensaje",

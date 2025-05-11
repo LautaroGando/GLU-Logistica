@@ -10,9 +10,21 @@ import { headers as getHeaders } from "next/headers";
 import clsx from "clsx";
 
 export const metadata: Metadata = {
-  title: "GLU Logística",
-  description: "",
-  icons: "/assets/images/Header/logoWhite.svg",
+  title: "GLU Logística | Transporte de Paquetes en Argentina",
+  description:
+    "GLU Logística ofrece soluciones rápidas, seguras y eficientes en transporte de paquetes para empresas y particulares. Optimiza tus envíos con nuestro servicio confiable y personalizado.",
+  keywords: [
+    "logística",
+    "envíos",
+    "transporte de paquetes",
+    "mensajería",
+    "logística empresarial",
+    "servicios de logística",
+    "envíos seguros",
+    "logística para empresas",
+    "envíos rápidos",
+    "logística en Argentina",
+  ],
 };
 
 export default function RootLayout({
@@ -35,7 +47,9 @@ export default function RootLayout({
         <MenuProvider>
           <ChangeServiceProvider>
             <Header />
-            <main className="p-2 max-w-[1200px] mx-auto sm:p-4">{children}</main>
+            <main className="p-2 max-w-[1200px] mx-auto sm:p-4">
+              {children}
+            </main>
             <NewsLetterModal />
             <WhatsAppLink />
             <Footer />

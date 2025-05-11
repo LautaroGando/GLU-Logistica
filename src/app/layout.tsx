@@ -7,6 +7,7 @@ import NewsLetterModal from "@/components/ui/NewsLetterModal/NewsLetterModal";
 import WhatsAppLink from "@/components/ui/WhatsAppLink/WhatsAppLink";
 import { ChangeServiceProvider } from "@/context/ChangeServiceContext/ChangeServiceContext";
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "GLU Logística | Transporte de Paquetes en Argentina",
@@ -51,6 +52,7 @@ export default function RootLayout({
             <NewsLetterModal />
             <WhatsAppLink />
             <Footer />
+            <Analytics />
           </ChangeServiceProvider>
         </MenuProvider>
       </body>

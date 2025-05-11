@@ -11,7 +11,9 @@ import clsx from "clsx";
 
 export const metadata: Metadata = {
   title: "GLU Logística",
-  description: "",
+  description:
+    "GLU Logística ofrece soluciones rápidas, seguras y eficientes en transporte de paquetes para empresas y particulares. Optimiza tus envíos con nuestro servicio confiable y personalizado.",
+    keywords
   icons: "/assets/images/Header/logoWhite.svg",
 };
 
@@ -35,7 +37,9 @@ export default function RootLayout({
         <MenuProvider>
           <ChangeServiceProvider>
             <Header />
-            <main className="p-2 max-w-[1200px] mx-auto sm:p-4">{children}</main>
+            <main className="p-2 max-w-[1200px] mx-auto sm:p-4">
+              {children}
+            </main>
             <NewsLetterModal />
             <WhatsAppLink />
             <Footer />

@@ -6,7 +6,7 @@ import useNewsLetter from "@/hooks/useNewsletter";
 
 const NewsLetterModal: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { email, setEmail, handleSubmit } = useNewsLetter(setIsVisible);
+  const { email, setEmail } = useNewsLetter(setIsVisible);
 
   const handleClose = () => {
     setIsVisible(false);
@@ -45,7 +45,7 @@ const NewsLetterModal: React.FC = () => {
             Sé el primero en conocer nuestras novedades y servicios exclusivos.
           </p>
           <form
-            onSubmit={handleSubmit}
+            onSubmit={() => {}}
             className="flex flex-col gap-3 mt-6 sm:flex-row sm:items-center"
           >
             <input
@@ -60,7 +60,7 @@ const NewsLetterModal: React.FC = () => {
               type="submit"
               className="h-12 px-6 w-full text-white bg-pcPrincipal font-bold rounded-md hover:bg-opacity-90 transition-all sm:w-auto sm:rounded-r-md"
             >
-              SUSCRIBIRSE
+              Proximamente...
             </button>
           </form>
         </div>

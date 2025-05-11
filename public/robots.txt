@@ -1,0 +1,12 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Host
+Host: https://www.glulogistica.com.ar
+
+# Sitemaps
+Sitemap: https://www.glulogistica.com.ar/sitemap.xml

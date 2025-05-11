@@ -56,7 +56,10 @@ const Warehouse = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.7 }}
             >
-              <WarehouseItem title={item.title} description={item.description} />
+              <WarehouseItem
+                title={item.title}
+                description={item.description}
+              />
             </motion.div>
           ))}
         </motion.div>

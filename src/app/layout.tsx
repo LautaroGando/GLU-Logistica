@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     "envíos rápidos",
     "logística en Argentina",
   ],
+  icons: {
+    icon: "/assets/images/Header/IsoLogo.svg",
+  },
 };
 
 export default function RootLayout({

@@ -9,7 +9,7 @@ export const Banner: React.FC = () => {
   return (
     <>
       {pathname === "/" && (
-        <div className="relative w-full h-[70vh] -z-10 select-none">
+        <div className="relative w-full h-[70vh] min-h-[200px] -z-10 select-none">
           <div className="w-full h-full absolute top-0 bg-transparentColor"></div>
           <div className="w-full h-full absolute top-0 bg-bannerGradientImage flex items-center px-3 sm:px-4">
             <BannerInfo />

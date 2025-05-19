@@ -71,7 +71,6 @@ const ParcelTable = () => {
                     : parcel.status === IStatePackage.IN_TRANSIT
                       ? "Entregar"
                       : "Entregado";
-
                 return (
                   <motion.tr
                     key={parcel.id}
@@ -93,18 +92,6 @@ const ParcelTable = () => {
                       className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40"
                     >
                       {parcel.clientName ? parcel.clientName : "-"}
-                    </motion.td>
-                    <motion.td
-                      variants={cellVariants}
-                      className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40"
-                    >
-                      {parcel.companyName || "-"}
-                    </motion.td>
-                    <motion.td
-                      variants={cellVariants}
-                      className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40"
-                    >
-                      {parcel.role}
                     </motion.td>
                     <motion.td
                       variants={cellVariants}
@@ -156,7 +143,7 @@ const ParcelTable = () => {
                     >
                       <button
                         onClick={() => {
-                          setPackageData(parcel);
+                          setPackageData(parcel);      
                           openModal();
                         }}
                       >

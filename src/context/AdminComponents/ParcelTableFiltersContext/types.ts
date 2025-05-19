@@ -11,6 +11,7 @@ export interface IParcelTableFiltersProps {
   setParcelSearchBar: (text: string) => void;
   handleCreatePackage: (values: IPackageDto) => void;
   handleDeletePackage: (packageId: string) => void;
+  handleEditPackage: (packageId: string, value: IPackageDto) => void;
 }
 
 export default IParcelTableFiltersProps;

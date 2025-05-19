@@ -1,7 +1,6 @@
 export interface IPackageDto {
   packageNumber: string;
-  companyName?: string;
-  clientName: string;
+  clientId: string
   receivedDate: string;
   emissionDate?: string;
   deliveryDate?: string;

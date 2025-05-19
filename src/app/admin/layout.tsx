@@ -4,6 +4,7 @@ import HeaderAdmin from "@/components/AdminComponents/HeaderAdmin/HeaderAdmin";
 import { CreateModalProvider } from "@/context/AdminComponents/CreateModalContext/CreateModalContext";
 import { EditModalProvider } from "@/context/AdminComponents/EditModalContext/EditModalContext";
 import { ParcelTableFiltersProvider } from "@/context/AdminComponents/ParcelTableFiltersContext/ParcelTableFiltersContext";
+import { UsersSelectModalProvider } from "@/context/AdminComponents/UsersSelectModalContext/UsersSelectModalContext";
 import { UserTableFiltersProvider } from "@/context/AdminComponents/UserTableFiltersContext/UserTableFiltersContext";
 
 export const metadata = {
@@ -18,14 +19,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <CreateModalProvider>
           <ParcelTableFiltersProvider>
             <UserTableFiltersProvider>
-              <CreateModal />
-              <EditModalParcel />
-              <HeaderAdmin />
-              <div className="flex-grow">
-                <div className="root-main px-3 sm:px-4 lg:max-w-[1400px] lg:mx-auto">
-                  {children}
+              <UsersSelectModalProvider>
+                <CreateModal />
+                <EditModalParcel />
+                <HeaderAdmin />
+                <div className="flex-grow">
+                  <div className="root-main px-3 sm:px-4 lg:max-w-[1400px] lg:mx-auto">
+                    {children}
+                  </div>
                 </div>
-              </div>
+              </UsersSelectModalProvider>
             </UserTableFiltersProvider>
           </ParcelTableFiltersProvider>
         </CreateModalProvider>

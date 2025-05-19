@@ -5,6 +5,7 @@ import IParcelTableFiltersProps from "./types";
 import { IPackage } from "@/interfaces/IParcel";
 import { createPackage, deletePackage, editPackage, getAllPackages } from "@/services/package";
 import { IPackageDto } from "@/dto/IPackageDto";
+import { IStatePackage } from "@/interfaces/IStatePackage";
 
 const ParcelTableFiltersContext = createContext<IParcelTableFiltersProps | undefined>(undefined);
 
@@ -42,7 +43,12 @@ export const ParcelTableFiltersProvider = ({ children }: { children: ReactNode }
   const handleEditPackage = async (packageId: string, values: IPackageDto) => {
     try {
       const editedPackage = await editPackage(packageId, values);
-      setPackages((prev) => prev?.map((pkg) => (pkg.id === packageId ? editedPackage : pkg)) ?? []);
+      setPackages((prev) => {
+        if (!prev) return [editedPackage];
+
+        const filtered = prev.filter((pkg) => pkg.id !== packageId);
+        return [editedPackage, ...filtered];
+      });
     } catch (err) {
       console.log(`Error al editar el paquete ${err}`);
     }
@@ -91,10 +97,12 @@ export const ParcelTableFiltersProvider = ({ children }: { children: ReactNode }
 
     let processed = [...packages];
 
-    if (parcelFilter === "client") {
-      processed = processed.filter((pack) => !pack.companyName);
-    } else if (parcelFilter === "company") {
-      processed = processed.filter((pack) => pack.companyName);
+    if (parcelFilter === IStatePackage.DEPOSIT) {
+      processed = processed.filter((pack) => pack.status === IStatePackage.DEPOSIT);
+    } else if (parcelFilter === IStatePackage.IN_TRANSIT) {
+      processed = processed.filter((pack) => pack.status === IStatePackage.IN_TRANSIT);
+    } else if (parcelFilter === IStatePackage.DELIVERED) {
+      processed = processed.filter((pack) => pack.status === IStatePackage.DELIVERED);
     }
 
     if (parcelOrder === "oldest") {
@@ -107,9 +115,9 @@ export const ParcelTableFiltersProvider = ({ children }: { children: ReactNode }
       );
     } else {
       const statusOrder: Record<string, number> = {
-        Entregado: parcelOrder === "delivered" ? 0 : 2,
-        "En camino": parcelOrder === "in_transit" ? 0 : 2,
-        Depósito: parcelOrder === "warehouse" ? 0 : 2,
+        [IStatePackage.DEPOSIT]: parcelOrder === IStatePackage.DEPOSIT ? 0 : 2,
+        [IStatePackage.IN_TRANSIT]: parcelOrder === IStatePackage.IN_TRANSIT ? 0 : 2,
+        [IStatePackage.DELIVERED]: parcelOrder === IStatePackage.DELIVERED ? 0 : 2,
       };
 
       processed.sort((a, b) => statusOrder[a.status] - statusOrder[b.status]);
@@ -136,7 +144,7 @@ export const ParcelTableFiltersProvider = ({ children }: { children: ReactNode }
         handleCreatePackage,
         fetchAllPackages,
         handleDeletePackage,
-        handleEditPackage
+        handleEditPackage,
       }}
     >
       {children}

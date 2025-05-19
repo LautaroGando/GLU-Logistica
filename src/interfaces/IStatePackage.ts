@@ -1,5 +1,5 @@
 export enum IStatePackage {
-    DEPOSIT = 'DEPOSITO',
-    IN_TRANSIT = 'EN_CAMINO',
+    DEPOSIT = 'DEPÓSITO',
+    IN_TRANSIT = 'EN CAMINO',
     DELIVERED = 'ENTREGADO',
 }

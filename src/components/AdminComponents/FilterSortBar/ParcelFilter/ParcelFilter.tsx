@@ -1,4 +1,5 @@
 import { useParcelTableFilter } from "@/context/AdminComponents/ParcelTableFiltersContext/ParcelTableFiltersContext";
+import { IStatePackage } from "@/interfaces/IStatePackage";
 import React from "react";
 
 const ParcelFilter = () => {
@@ -16,8 +17,9 @@ const ParcelFilter = () => {
             onChange={(e) => setParcelFilter(e.target.value)}
           >
             <option value="all">Todo</option>
-            <option value="client">Cliente</option>
-            <option value="company">Empresa</option>
+            <option value={IStatePackage.DEPOSIT}>{IStatePackage.DEPOSIT}</option>
+            <option value={IStatePackage.IN_TRANSIT}>{IStatePackage.IN_TRANSIT}</option>
+            <option value={IStatePackage.DELIVERED}>{IStatePackage.DELIVERED}</option>
           </select>
         </div>
 
@@ -32,9 +34,9 @@ const ParcelFilter = () => {
           >
             <option value="newest">Más reciente</option>
             <option value="oldest">Más antiguo</option>
-            <option value="delivered">Entregado</option>
-            <option value="in_transit">En camino</option>
-            <option value="warehouse">Depósito</option>
+            <option value={IStatePackage.DEPOSIT}>{IStatePackage.DEPOSIT}</option>
+            <option value={IStatePackage.IN_TRANSIT}>{IStatePackage.IN_TRANSIT}</option>
+            <option value={IStatePackage.DELIVERED}>{IStatePackage.DELIVERED}</option>
           </select>
         </div>
       </div>

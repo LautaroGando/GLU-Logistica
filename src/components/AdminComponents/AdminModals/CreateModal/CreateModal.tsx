@@ -7,10 +7,13 @@ import validateCreateModal from "@/helpers/validateCreateModal";
 import { succesAlert } from "@/utils/Alerts/succesAlert";
 import { useParcelTableFilter } from "@/context/AdminComponents/ParcelTableFiltersContext/ParcelTableFiltersContext";
 import { IPackageDto } from "@/dto/IPackageDto";
+import { useUsersSelectModal } from "@/context/AdminComponents/UsersSelectModalContext/UsersSelectModalContext";
+import UsersSelectModal from "@/components/ui/AdminComponents/usersSelectModal/usersSelectModal";
 
 const CreateModal = () => {
   const { isModalOpen, closeModal, hideOverlay } = useCreateModal();
   const { handleCreatePackage, fetchAllPackages } = useParcelTableFilter();
+  const { openModal, selectedUser } = useUsersSelectModal();
 
   const initialValues = {
     orderNumber: "",
@@ -24,14 +27,10 @@ const CreateModal = () => {
     try {
       const payload: IPackageDto = {
         packageNumber: values.orderNumber,
-        clientName: values.clientName,
-        companyName: values.customerType === "Company" ? values.companyName : "",
+        clientId: selectedUser?.id || "",
         receivedDate: values.receivedDate,
         status: "DEPOSITO",
       };
-
-      console.log(payload);
-      
 
       handleCreatePackage(payload);
       fetchAllPackages();
@@ -43,183 +42,120 @@ const CreateModal = () => {
   };
 
   return (
-    <AnimatePresence>
-      {isModalOpen && (
-        <motion.div
-          className="fixed inset-0 flex items-center justify-center z-50 bg-black/60 px-4"
-          onClick={closeModal}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={hideOverlay ? { opacity: 0 } : {}}
-          transition={{ duration: 0.2 }}
-        >
+    <>
+      <AnimatePresence>
+        {isModalOpen && (
           <motion.div
-            className="bg-admin-secondary w-full max-w-[400px] max-h-[calc(100vh-2rem)] p-4 my-4 
-            overflow-y-auto rounded-[4px] shadow-lg sm:max-w-[500px] sm:px-10 sm:py-8 xl:max-w-[560px] xl:px-12 xl:py-10"
-            onClick={(e) => e.stopPropagation()}
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
+            className="fixed inset-0 flex items-center justify-center z-50 bg-black/60 px-4"
+            onClick={closeModal}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={hideOverlay ? { opacity: 0 } : {}}
+            transition={{ duration: 0.2 }}
           >
-            <Formik
-              initialValues={initialValues}
-              validationSchema={validateCreateModal}
-              onSubmit={handleSubmit}
+            <motion.div
+              className="bg-admin-secondary w-full max-w-[400px] max-h-[calc(100vh-2rem)] p-4 my-4 
+            overflow-y-auto rounded-[4px] shadow-lg sm:max-w-[500px] sm:px-10 sm:py-8 xl:max-w-[560px] xl:px-12 xl:py-10"
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
             >
-              {({ values }) => (
-                <Form className="text-admin-letterColor">
-                  <h3 className="text-[20px] font-black text-center mb-8 sm:text-[24px]">
-                    CREAR NUEVO PAQUETE
-                  </h3>
+              <Formik
+                initialValues={initialValues}
+                validationSchema={validateCreateModal}
+                onSubmit={handleSubmit}
+              >
+                {() => (
+                  <Form className="text-admin-letterColor">
+                    <h3 className="text-[20px] font-black text-center mb-8 sm:text-[24px]">
+                      CREAR NUEVO PAQUETE
+                    </h3>
 
-                  <div className="flex flex-col gap-[22px] sm:gap-8">
-                    <div className="flex flex-col gap-1">
-                      <label htmlFor="orderNumber" className="font-bold">
-                        Número de Pedido:
-                      </label>
-                      <Field
-                        type="text"
-                        id="orderNumber"
-                        name="orderNumber"
-                        className="h-[36px] bg-admin-primary px-2 placeholder:text-[14px] outline-none transition-all duration-200 
-                        border-2 border-transparent focus:border-admin-green placeholder:text-admin-letterColor/50 sm:placeholder:text-[16px] sm:h-[40px]"
-                        placeholder="Ej. 0800648"
-                      />
-                      <ErrorMessage
-                        name="orderNumber"
-                        component="div"
-                        className="text-admin-red text-sm"
-                      />
-                    </div>
-
-                    <div className="flex justify-center gap-20 font-bold">
-                      <div className="flex items-center gap-2">
-                        <label htmlFor="client">Cliente</label>
-                        <Field
-                          type="radio"
-                          id="client"
-                          name="customerType"
-                          value="Client"
-                          className="sm:w-5 h-5"
-                        />
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <label htmlFor="company">Empresa</label>
-                        <Field
-                          type="radio"
-                          id="company"
-                          name="customerType"
-                          value="Company"
-                          className="sm:w-5 h-5"
-                        />
-                      </div>
-                    </div>
-
-                    {values.customerType === "Company" && (
-                      <>
-                        <div className="flex flex-col gap-1">
-                          <label htmlFor="companyName" className="font-bold">
-                            Nombre de Empresa:
-                          </label>
-                          <Field
-                            type="text"
-                            id="companyName"
-                            name="companyName"
-                            className="h-[36px] bg-admin-primary px-2 placeholder:text-[14px] outline-none transition-all duration-200 
-                          border-2 border-transparent focus:border-admin-green placeholder:text-admin-letterColor/50 sm:placeholder:text-[16px] sm:h-[40px]"
-                            placeholder="Ej. Nike"
-                          />
-                          <ErrorMessage
-                            name="companyName"
-                            component="div"
-                            className="text-admin-red text-sm"
-                          />
-                        </div>
-
-                        <div className="flex flex-col gap-1">
-                          <label htmlFor="clientName" className="font-bold">
-                            Nombre de Cliente:
-                          </label>
-                          <Field
-                            type="text"
-                            id="clientName"
-                            name="clientName"
-                            className="h-[36px] bg-admin-primary px-2 placeholder:text-[14px] outline-none transition-all duration-200 
-  border-2 border-transparent focus:border-admin-green placeholder:text-admin-letterColor/50 sm:placeholder:text-[16px] sm:h-[40px]"
-                            placeholder="Ej. Juan Pérez"
-                          />
-                          <ErrorMessage
-                            name="clientName"
-                            component="div"
-                            className="text-admin-red text-sm"
-                          />
-                        </div>
-                      </>
-                    )}
-
-                    {values.customerType === "Client" && (
+                    <div className="flex flex-col gap-[22px] sm:gap-8">
                       <div className="flex flex-col gap-1">
-                        <label htmlFor="clientName" className="font-bold">
-                          Nombre de Cliente:
+                        <label htmlFor="orderNumber" className="font-bold">
+                          Número de Paquete:
                         </label>
                         <Field
                           type="text"
-                          id="clientName"
-                          name="clientName"
+                          id="orderNumber"
+                          name="orderNumber"
                           className="h-[36px] bg-admin-primary px-2 placeholder:text-[14px] outline-none transition-all duration-200 
-                          border-2 border-transparent focus:border-admin-green placeholder:text-admin-letterColor/50 sm:placeholder:text-[16px] sm:h-[40px]"
-                          placeholder="Ej. Juan Pérez"
+                        border-2 border-transparent focus:border-admin-green placeholder:text-admin-letterColor/50 sm:placeholder:text-[16px] sm:h-[40px]"
+                          placeholder="Ej. 0800648"
                         />
                         <ErrorMessage
-                          name="clientName"
+                          name="orderNumber"
                           component="div"
                           className="text-admin-red text-sm"
                         />
                       </div>
-                    )}
 
-                    <div className="flex flex-col gap-1">
-                      <label htmlFor="receivedDate" className="font-bold">
-                        Fecha de Recibido:
-                      </label>
-                      <Field
-                        type="date"
-                        id="receivedDate"
-                        name="receivedDate"
-                        className="h-[36px] bg-admin-primary px-2 outline-none transition-all duration-200 
+                      <div className="flex flex-col gap-1">
+                        <label htmlFor="receivedDate" className="font-bold">
+                          Fecha de Recibido:
+                        </label>
+                        <Field
+                          type="date"
+                          id="receivedDate"
+                          name="receivedDate"
+                          className="h-[36px] bg-admin-primary px-2 outline-none transition-all duration-200 
                         border-2 border-transparent focus:border-admin-green placeholder:text-admin-letterColor/50 sm:h-[40px]"
-                      />
-                      <ErrorMessage
-                        name="receivedDate"
-                        component="div"
-                        className="text-admin-red text-sm"
-                      />
+                        />
+                        <ErrorMessage
+                          name="receivedDate"
+                          component="div"
+                          className="text-admin-red text-sm"
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="flex justify-between mt-11 h-[36px]">
-                    <button
-                      onClick={closeModal}
-                      type="button"
-                      className="bg-admin-letterColor/50 w-[130px] font-bold duration-200 transition-all rounded-[2px] hover:bg-admin-letterColor/30 sm:w-[160px] sm:h-[40px]"
-                    >
-                      Cancelar
-                    </button>
-                    <button
-                      type="submit"
-                      className="bg-admin-green w-[130px] font-bold duration-200 transition-all rounded-[2px] hover:bg-admin-green/80 sm:w-[160px] sm:h-[40px]"
-                    >
-                      Crear paquete
-                    </button>
-                  </div>
-                </Form>
-              )}
-            </Formik>
+                    <div className="flex flex-col mt-8 gap-1">
+                      <label htmlFor="clientId" className="font-bold">
+                        Cliente:
+                      </label>
+
+                      <button
+                        type="button"
+                        onClick={openModal}
+                        className="h-[36px] bg-admin-primary px-2 flex items-center justify-between border-2 border-transparent focus:border-admin-green rounded transition-all duration-200 sm:h-[40px]"
+                      >
+                        {selectedUser ? selectedUser.name : "Seleccionar cliente"}
+                      </button>
+
+                      {!selectedUser && (
+                        <div className="text-admin-red text-sm mt-1">
+                          Debes seleccionar un cliente
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex justify-between mt-11 h-[36px]">
+                      <button
+                        onClick={closeModal}
+                        type="button"
+                        className="bg-admin-letterColor/50 w-[130px] font-bold duration-200 transition-all rounded-[2px] hover:bg-admin-letterColor/30 sm:w-[160px] sm:h-[40px]"
+                      >
+                        Cancelar
+                      </button>
+                      <button
+                        type="submit"
+                        className="bg-admin-green w-[130px] font-bold duration-200 transition-all rounded-[2px] hover:bg-admin-green/80 sm:w-[160px] sm:h-[40px]"
+                      >
+                        Crear paquete
+                      </button>
+                    </div>
+                  </Form>
+                )}
+              </Formik>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        )}
+      </AnimatePresence>
+      <UsersSelectModal />
+    </>
   );
 };
 

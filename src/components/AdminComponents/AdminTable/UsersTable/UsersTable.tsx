@@ -98,19 +98,13 @@ const UsersTable = () => {
                     variants={cellVariants}
                     className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40"
                   >
-                    {user.updatedAt}
+                    Fecha desactivacion
                   </motion.td>
                   <motion.td
                     variants={cellVariants}
                     className="px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40"
                   >
                     {user.location}
-                  </motion.td>
-                  <motion.td
-                    variants={cellVariants}
-                    className={`px-4 h-[50px] whitespace-nowrap border-y border-admin-letterColor/40 ${user.role === "carrier" ? "text-admin-yellow" : ""}`}
-                  >
-                    {user.role}
                   </motion.td>
                   <motion.td
                     variants={cellVariants}

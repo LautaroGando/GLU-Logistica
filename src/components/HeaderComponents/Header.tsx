@@ -5,6 +5,7 @@ import ResponsiveMenu from "./ResponsiveMenu/ResponsiveMenu";
 import Links from "./Links/Links";
 import Banner from "./Banner/Banner";
 import { usePathname } from "next/navigation";
+import Button from "./Button/Button";
 
 export const Header: React.FC = () => {
   const pathname = usePathname();
@@ -17,8 +18,9 @@ export const Header: React.FC = () => {
         <div className="w-full max-w-[1200px] h-full flex justify-between items-center px-2 sm:px-4 xl:w-[1200px] xl:p-0">
           <Logo />
           <ResponsiveMenu />
-          <div className="hidden items-center gap-3 md:flex">
+          <div className="hidden items-center gap-3 lg:flex">
             <Links />
+            <Button />
           </div>
         </div>
       </div>

@@ -8,13 +8,14 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useSize } from "@/hooks/useSize";
+import Button from "../../Button/Button";
 
 export const Links: React.FC = () => {
   const { menu, handleCloseMenu } = useMenu();
   const size = useSize();
 
   useEffect(() => {
-    if (size.size > 768) handleCloseMenu();
+    if (size.size >= 1024) handleCloseMenu();
   }, [size, handleCloseMenu]);
 
   return (
@@ -61,6 +62,7 @@ export const Links: React.FC = () => {
                   </Link>
                 </div>
               ))}
+              <Button />
             </div>
           </motion.div>
         </motion.div>

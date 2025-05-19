@@ -14,7 +14,7 @@ export const InfoPayments: React.FC = () => {
             i % 2 === 0 ? "items-start" : "items-end"
           )}
         >
-          <div className="max-w-[600px]">
+          <div className="max-w-[600px] border-l-4 border-pcPrincipal pl-2">
             <h3 className="text-pcPrincipal font-semibold text-2xl text-left w-full">
               {method.method}
             </h3>
@@ -22,7 +22,9 @@ export const InfoPayments: React.FC = () => {
           </div>
         </div>
       ))}
-      <p className="text-center border-t pt-10 text-pcPrincipal underline">Realizamos FACTURA C</p>
+      <p className="text-center border-t pt-10 text-pcPrincipal underline">
+        Realizamos FACTURA C
+      </p>
     </div>
   );
 };

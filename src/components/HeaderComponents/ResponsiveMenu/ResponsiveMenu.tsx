@@ -6,7 +6,7 @@ export const ResponsiveMenu: React.FC = () => {
   const { menu, handleToggleMenu } = useMenu();
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         onClick={() => handleToggleMenu()}
         className={`relative w-[24px] h-[24px] z-20 sm:w-[30px] sm:h-[30px]`}

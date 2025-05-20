@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function SignInPage() {
   return (
     <div>
-      <SignIn />;
+      <SignIn />
     </div>
   );
 }

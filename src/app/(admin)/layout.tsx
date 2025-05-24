@@ -11,7 +11,7 @@ export default function AdminLayout({
     <div>
       <Header />
       <Menu />
-      <main className="ml-[120px] p-5">{children}</main>
+      <main className="mb-[80px] md:ml-[120px] md:mb-0 p-5">{children}</main>
     </div>
   );
 }

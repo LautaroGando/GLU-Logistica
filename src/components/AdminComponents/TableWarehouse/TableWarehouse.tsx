@@ -5,7 +5,7 @@ import { tableData } from "@/data/adminData/tableData/tableData";
 import { ButtonAdd } from "@/components/ui/AdminComponents/ButtonAdd/ButtonAdd";
 import { Modal } from "@/enum/Modal";
 
-export const TableClients = () => {
+export const TableWarehouse = () => {
   return (
     <div className="w-full flex flex-col gap-5 p-3">
       <div className="flex flex-col gap-5 sm:flex-row sm:justify-between">
@@ -13,10 +13,10 @@ export const TableClients = () => {
         <Pagination />
       </div>
       <div className="w-full overflow-auto">
-        <Table tableHeadData={tableData[0].tableHeadData} tableBodyData={tableData[0].tableBodyData} />
+        <Table tableHeadData={tableData[1].tableHeadData} tableBodyData={tableData[1].tableBodyData} />
       </div>
       <div className="w-full flex justify-end">
-        <ButtonAdd label="Añadir cliente" modalType={Modal.CLIENT} />
+        <ButtonAdd label="Añadir producto" modalType={Modal.WAREHOUSE} />
       </div>
     </div>
   );

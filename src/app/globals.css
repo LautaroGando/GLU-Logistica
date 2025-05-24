@@ -22,7 +22,7 @@
 
   &::-webkit-scrollbar {
     width: 8px;
-    height: 2px;
+    height: 8px;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -59,4 +59,8 @@ body {
 .custom-text {
   font-size: 16px;
   color: #333;
+}
+
+.input {
+  @apply h-[40px] px-3 border-b-2 w-full bg-transparent border-tcExtra transition-all duration-300 rounded-sm outline-none focus:border-pcPrincipal;
 }

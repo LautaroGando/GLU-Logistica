@@ -5,9 +5,9 @@ import useSuccessAlert from "@/hooks/useSuccessAlert";
 import useErrorAlert from "@/hooks/useErrorAlert";
 import Loading from "@/components/ui/Loading/Loading";
 import { useRouter } from "next/navigation";
-import { IUserSignIn } from "@/interfaces/IUserSignIn";
+import { IUserSignIn } from "@/interfaces/IUser";
 import { validateSignIn } from "@/helpers/validateSignIn";
-import { signIn } from "@/services/Auth/SignIn.Service";
+import { signIn } from "@/services/Auth/Auth.service";
 
 export const FormSignIn: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(null);

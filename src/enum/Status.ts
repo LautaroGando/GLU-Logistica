@@ -1,6 +1,7 @@
 export enum Status {
-  FOR_PACKAGING = "Por empaquetar",
-  PACKAGING = "Empaquetado",
-  ON_THE_WAY = "En camino",
-  DELIVERED = "Entregado",
+  FOR_PACKAGING = "POR EMPAQUETAR",
+  PACKAGING = "EMPAQUETADO",
+  ON_THE_WAY = "EN CAMINO",
+  DISPATCHED = "DESPACHADO",
+  DELIVERED = "ENTREGADO",
 }

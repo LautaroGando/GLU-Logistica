@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { ISearchProps } from "./types";
+import { useAdminStore } from "@/store/adminStore/useAdminStore";
 
 export const Search: React.FC<ISearchProps> = ({
   name,
@@ -12,6 +13,7 @@ export const Search: React.FC<ISearchProps> = ({
   path,
 }: ISearchProps) => {
   const pathname = usePathname();
+  const { setSearchTerm } = useAdminStore();
 
   if (!(pathname === path)) return null;
 
@@ -26,7 +28,12 @@ export const Search: React.FC<ISearchProps> = ({
         />
         <div className="w-[1px] h-[25px] bg-pcPrincipal"></div>
         <input
-          onChange={() => {}}
+          onChange={(e) => {
+            const value = e.target.value.toLowerCase();
+            if (pathname === path) {
+              setSearchTerm(value);
+            }
+          }}
           className="w-full rounded-tr-[50px] rounded-br-[50px] h-full bg-transparent text-pcSecondary outline-none placeholder:text-pcSecondary"
           type="text"
           name={name}

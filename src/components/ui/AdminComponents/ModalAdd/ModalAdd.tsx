@@ -10,7 +10,7 @@ import {
 } from "@/data/adminData/formData/formData";
 
 export const ModalAdd = () => {
-  const { modal, closeModal } = useAdminStore();
+  const { modal, closeModal, closeModalProducts } = useAdminStore();
   useDisableScroll(!!modal);
 
   return (
@@ -20,7 +20,10 @@ export const ModalAdd = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3, ease: "backInOut" }}
-      onClick={() => closeModal()}
+      onClick={() => {
+        closeModal();
+        closeModalProducts();
+      }}
       className="w-full h-[100vh] bg-black/80 fixed top-0 left-0 z-50"
     >
       <div

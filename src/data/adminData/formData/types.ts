@@ -11,15 +11,15 @@ export interface IFormDataClients {
 }
 
 export interface IFormDataWarehouse {
-  id: string;
   product: string;
   quantity: number;
   company: string;
 }
 
 export interface IFormDataShipments {
+  customerId: string;
   orderId: string;
-  products: string[];
+  products: { depositId: string; quantity: number }[];
   address: string;
   locality: string;
   postalCode: string;

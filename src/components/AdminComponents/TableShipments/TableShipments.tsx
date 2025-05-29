@@ -1,19 +1,73 @@
+"use client";
 import { Filter } from "@/components/ui/AdminComponents/Filter/Filter";
 import Pagination from "@/components/ui/AdminComponents/Pagination/Pagination";
 import { Table } from "@/components/ui/AdminComponents/Table/Table";
 import { tableData } from "@/data/adminData/tableData/tableData";
 import { ButtonAdd } from "@/components/ui/AdminComponents/ButtonAdd/ButtonAdd";
 import { Modal } from "@/enum/Modal";
+import { useAdminStore } from "@/store/adminStore/useAdminStore";
+import { useEffect, useMemo, useState } from "react";
+import { ITableShipments } from "@/data/adminData/tableData/types";
+import { IFilter } from "@/interfaces/IFilter";
 
 export const TableShipments = () => {
+  const { orders, getOrders, searchTerm } = useAdminStore();
+  const [filteredOrders, setFilteredOrders] = useState<ITableShipments[]>([]);
+  const [selectedFilter, setSelectedFilter] = useState<string>("");
+
+  useEffect(() => {
+    getOrders();
+  }, [getOrders]);
+
+  useEffect(() => {
+    const listOrder = orders?.data || [];
+
+    if (!listOrder.length) {
+      setFilteredOrders([]);
+      return;
+    }
+
+    const result = listOrder.filter((order) => {
+      const matchesCompany = selectedFilter
+        ? order.company?.toLowerCase().includes(selectedFilter)
+        : true;
+
+      const matchesSearch = searchTerm
+        ? order.company?.toLowerCase().includes(searchTerm) ||
+          order.orderId?.toLowerCase().includes(searchTerm)
+        : true;
+
+      return matchesCompany && matchesSearch;
+    });
+
+    setFilteredOrders(result);
+  }, [selectedFilter, orders, searchTerm]);
+
+  const companyFilterOptions: IFilter[] = useMemo(() => {
+    if (!orders) return [];
+    const uniqueCompanies = Array.from(
+      new Set(orders.data.map((o) => o.company).filter(Boolean))
+    );
+    return uniqueCompanies.map((company) => ({
+      label: company!,
+      value: company!.toLowerCase(),
+    }));
+  }, [orders]);
+
   return (
     <div className="w-full flex flex-col gap-5 p-3">
       <div className="flex flex-col gap-5 sm:flex-row sm:justify-between">
-        <Filter filter={[]} filterId="" />
-        <Pagination />
+        <Filter
+          filter={companyFilterOptions}
+          onChange={(value) => setSelectedFilter(value)}
+        />
+        <Pagination table="shipments" />
       </div>
       <div className="w-full overflow-auto">
-        <Table tableHeadData={tableData[2].tableHeadData} tableBodyData={tableData[2].tableBodyData} />
+        <Table
+          tableHeadData={tableData[2].tableHeadData}
+          tableBodyData={filteredOrders}
+        />
       </div>
       <div className="w-full flex justify-end">
         <ButtonAdd label="Añadir órden" modalType={Modal.SHIPMENT} />

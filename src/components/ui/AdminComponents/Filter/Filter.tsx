@@ -1,10 +1,11 @@
 "use client";
+
 import React, { useState } from "react";
 import Select, { SingleValue } from "react-select";
 import { IFilterProps } from "./types";
 import { IFilter } from "@/interfaces/IFilter";
 
-export const Filter: React.FC<IFilterProps> = ({ filter }: IFilterProps) => {
+export const Filter: React.FC<IFilterProps> = ({ filter, onChange }) => {
   const [selectedFilter, setSelectedFilter] =
     useState<SingleValue<IFilter>>(null);
 
@@ -14,11 +15,14 @@ export const Filter: React.FC<IFilterProps> = ({ filter }: IFilterProps) => {
         <div className="min-w-[180px]">
           <Select
             options={filter}
-            placeholder="Filtro"
+            placeholder="Empresa"
             isClearable
             instanceId="filter-select"
             value={selectedFilter}
-            onChange={() => {}}
+            onChange={(option) => {
+              setSelectedFilter(option);
+              onChange?.(option?.value || "");
+            }}
             styles={{
               control: (baseStyles, { isFocused }) => ({
                 ...baseStyles,
@@ -37,9 +41,10 @@ export const Filter: React.FC<IFilterProps> = ({ filter }: IFilterProps) => {
                 backgroundColor: "#FAFAFA",
                 boxShadow: "0 0 3px #000000",
               }),
-              option: (baseStyles, { isFocused }) => ({
+              option: (baseStyles, { isFocused, isSelected }) => ({
                 ...baseStyles,
-                backgroundColor: isFocused ? "#0C117744" : "",
+                backgroundColor: isFocused ? "#CACACAaa" : "",
+                color: isSelected ? "#0C1177" : baseStyles.color,
               }),
             }}
           />

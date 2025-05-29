@@ -16,13 +16,13 @@ export const formDataClients: IFormDataClients = {
 };
 
 export const formDataWarehouse: IFormDataWarehouse = {
-  id: "",
   product: "",
-  quantity: 0,
+  quantity: 1,
   company: "",
 };
 
 export const formDataShipments: IFormDataShipments = {
+  customerId: "",
   orderId: "",
   products: [],
   address: "",

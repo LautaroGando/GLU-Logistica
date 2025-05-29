@@ -1,5 +1,6 @@
-import { Dashboard } from "@/components/DashboardComponents/Dashboard";
+import React from "react";
 import { Metadata } from "next";
+import { UserSidebar, UserSidebarMobile } from "@/components";
 
 export const metadata: Metadata = {
   title: "Perfil | GLU Logística",
@@ -30,10 +31,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DashboardPage() {
+export default function UserLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div>
-      <Dashboard />
-    </div>
+    <main className="flex flex-col lg:flex-row min-h-[75vh] lg:min-h-[80vh] ">
+      <div className="block lg:hidden">
+        <UserSidebarMobile />
+      </div>
+      <aside className="min-w-[220px] border-r border-gray-200 hidden lg:block">
+        <UserSidebar />
+      </aside>
+      <section className="lg:flex-1 lg:pl-6 lg:overflow-auto lg:min-w-0">
+        {children}
+      </section>
+    </main>
   );
 }

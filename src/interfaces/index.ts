@@ -7,5 +7,5 @@ export type { ILink } from "./ILink";
 export type { ILogisticService } from "./ILogisticService";
 export type { ISection } from "./ISection";
 export type { ITimeline } from "./ITimeline";
-export type { IUserSignIn } from "./IUser";
+export type * from "./IUser";
 export * from "./IShipment";

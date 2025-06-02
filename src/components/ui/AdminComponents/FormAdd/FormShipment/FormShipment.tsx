@@ -10,16 +10,18 @@ import {
   ITableShipments,
 } from "@/data/adminData/tableData/types";
 import { Status } from "@/enum/Status";
+import { Shipment } from "@/enum/Shipment";
+import { Province } from "@/enum/Province";
 
 export const FormShipment = () => {
-  const { toggleModalProducts, users, getUsers, products, getProducts } =
+  const { toggleModalProducts, users, getUsers, products, getAllProducts } =
     useAdminStore();
   const { values, setFieldValue } = useFormikContext<ITableShipments>();
 
   useEffect(() => {
     getUsers();
-    getProducts();
-  }, [getUsers, getProducts]);
+    getAllProducts();
+  }, [getUsers, getAllProducts]);
 
   useEffect(() => {
     const selectedCompany = values.company;
@@ -144,7 +146,51 @@ export const FormShipment = () => {
           id="province"
           type="text"
           placeholder="Provincia:"
-        />
+          as="select"
+        >
+          <option value="">Seleccione provincia</option>
+          <option value={Province.CABA}>CABA</option>
+          <option value={Province.GBA_1}>GBA 1</option>
+          <option value={Province.GBA_2}>GBA 2</option>
+          <option value={Province.GBA_3}>GBA 3</option>
+          <option value={Province.TIERRA_DEL_FUEGO}>Tierra del Fuego</option>
+          <option value={Province.SANTA_CRUZ}>Santa Cruz</option>
+          <option value={Province.CHUBUT}>Chubut</option>
+          <option value={Province.RIO_NEGRO}>Río Negro</option>
+          <option value={Province.NEUQUEN}>Neuquén</option>
+          <option value={Province.MENDOZA}>Mendoza</option>
+          <option value={Province.SALTA}>Salta</option>
+          <option value={Province.SANTA_FE}>Santa Fe</option>
+          <option value={Province.SANTIAGO_DEL_ESTERO}>
+            Santiago del Estero
+          </option>
+          <option value={Province.SAN_JUAN}>San Juan</option>
+          <option value={Province.SAN_LUIS}>San Luis</option>
+          <option value={Province.BUENOS_AIRES}>Buenos Aires</option>
+          <option value={Province.MISIONES}>Misiones</option>
+          <option value={Province.CHACO}>Chaco</option>
+          <option value={Province.FORMOSA}>Formosa</option>
+          <option value={Province.LA_PAMPA}>La Pampa</option>
+          <option value={Province.CORDOBA}>Córdoba</option>
+          <option value={Province.CORRIENTES}>Corrientes</option>
+          <option value={Province.TUCUMAN}>Tucumán</option>
+          <option value={Province.LA_RIOJA}>La Rioja</option>
+          <option value={Province.JUJUY}>Jujuy</option>
+          <option value={Province.ENTRE_RIOS}>Entre Ríos</option>
+          <option value={Province.CATAMARCA}>Catamarca</option>
+        </Field>
+      </div>
+      <div className="w-full">
+        <Field
+          className="input"
+          name="shipmentType"
+          id="shipmentType"
+          as="select"
+        >
+          <option value="">Seleccione el tipo envío</option>
+          <option value={Shipment.DOMICILIE}>Domicilio</option>
+          <option value={Shipment.BRANCH}>Sucursal</option>
+        </Field>
       </div>
       <div className="w-full">
         <Field

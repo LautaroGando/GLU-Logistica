@@ -147,6 +147,17 @@ export const Table: React.FC<ITableProps> = ({
                         >
                           {value}
                         </span>
+                      ) : key === "shipmentType" ? (
+                        <span
+                          className={clsx(
+                            "text-xs font-bold",
+                            value === "DOMICILIO"
+                              ? "text-black"
+                              : value === "SUCURSAL" && "text-admin-orange"
+                          )}
+                        >
+                          {value}
+                        </span>
                       ) : (
                         value
                       )}

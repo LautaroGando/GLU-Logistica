@@ -27,6 +27,12 @@ export const Header = () => {
         id="order"
         placeholder="Buscar órden..."
       />
+      <Search
+        path="/admin/table-delivered"
+        name="delivered"
+        id="delivered"
+        placeholder="Buscar órden..."
+      />
     </div>
   );
 };

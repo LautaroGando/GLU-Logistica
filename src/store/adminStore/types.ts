@@ -34,6 +34,7 @@ export interface IAdminStoreProps {
     limit: number;
   } | null;
   setProductsPage: (page: number) => void;
+  getAllProducts: () => void;
   getProducts: () => void;
   addProduct: (values: ITableWarehouse) => void;
   deleteProduct: (id: string) => void;

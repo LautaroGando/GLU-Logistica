@@ -1,20 +1,33 @@
 import { IShipment } from "@/interfaces";
+import clsx from "clsx";
 
-export const buildShipmentTable = (shipments: IShipment[]) => {
+interface BuildShipmentTableOptions {
+  onlyDelivered?: boolean;
+}
+
+export const buildShipmentTable = (shipments: IShipment[], options?: BuildShipmentTableOptions) => {
   const headers = ["Orden", "Productos", "Dirección", "Localidad", "CP", "Provincia", "Estado"];
 
-  const rows = shipments.map((shipment) => {
+  const filteredShipments = options?.onlyDelivered
+    ? shipments.filter((s) => s.status === "ENTREGADO")
+    : shipments;
+
+  const rows = filteredShipments.map((shipment) => {
     const productNames = shipment.shipmentProducts
       .map((sp) => sp.product?.product)
       .filter(Boolean)
       .join(", ");
 
-    const statusColor =
-      shipment.status === "ENTREGADO"
-        ? "text-green-600 border-green-500"
-        : shipment.status === "EN CAMINO"
-          ? "text-yellow-600 border-yellow-500"
-          : "text-blue-600 border-blue-500";
+    const statusClass = clsx(
+      shipment.status === "POR EMPAQUETAR" && "text-admin-red border-admin-red",
+      shipment.status === "EMPAQUETADO" && "text-admin-orange border-admin-orange",
+      shipment.status === "EN CAMINO" && "text-admin-green border-admin-green",
+      shipment.status === "DESPACHADO" && "text-pcPrincipal border-pcPrincipal",
+      shipment.status === "ENTREGADO" && "text-pcPrincipal border-pcPrincipal",
+      !["POR EMPAQUETAR", "EMPAQUETADO", "EN CAMINO", "DESPACHADO", "ENTREGADO"].includes(
+        shipment.status
+      ) && "text-gray-600 border-gray-300"
+    );
 
     return [
       shipment.orderId,
@@ -23,7 +36,10 @@ export const buildShipmentTable = (shipments: IShipment[]) => {
       shipment.locality,
       shipment.postalCode,
       shipment.province,
-      <span key={shipment.id} className={`px-2 py-2 text-xs rounded-md border font-semibold ${statusColor}`}>
+      <span
+        key={shipment.id}
+        className={clsx("px-2 py-2 text-xs rounded-md border font-semibold", statusClass)}
+      >
         {shipment.status}
       </span>,
     ];

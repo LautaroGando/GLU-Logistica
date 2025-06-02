@@ -8,9 +8,12 @@ export const signIn = async (values: IUserSignIn) => {
     const response = await axios.post(`${API_URL}/auth/signin`, values);
     return response.data;
   } catch (err) {
-    throw new Error(
-      typeof err === "string" ? err : "Ha ocurrido un error desconocido"
-    );
+    if (axios.isAxiosError(err)) {
+      const message = err.response?.data?.message || "Error del servidor al iniciar sesión";
+      throw new Error(message);
+    }
+
+    throw new Error("Error desconocido al iniciar sesión");
   }
 };
 

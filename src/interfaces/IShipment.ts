@@ -11,7 +11,13 @@ export interface IShipment {
   shipmentProducts: IShipmentProduct[];
 }
 
-export type ShipmentStatus = "ENTREGADO" | "EN CAMINO" | "POR EMPAQUETAR";
+export type ShipmentStatus =
+  | "POR EMPAQUETAR"
+  | "EMPAQUETADO"
+  | "DESPACHADO"
+  | "EN CAMINO"
+  | "ENTREGADO";
+
 
 export interface ICustomer {
   id: string;

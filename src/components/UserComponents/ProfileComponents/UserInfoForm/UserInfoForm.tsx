@@ -1,23 +1,39 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import { userInfoFields } from "@/utils";
 import { UserInfoFormField } from "../UserInfoFormField/UserInfoFormField";
 import { UserInfoButton } from "../UserInfoButton/UserInfoButton";
 import { validateUserInfo } from "@/helpers";
+import { IUser } from "@/interfaces";
 
 export const UserInfoForm = () => {
-  const [isEditing, setIsEditing] = React.useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [userData, setUserData] = useState<IUser | null>(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        setUserData(parsedUser);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }, []);
+
+  if (!userData) return null;
 
   return (
     <Formik
       initialValues={{
-        email: "agustinanconadev@gmail.com",
-        dni: "43087171",
-        city: "CABA",
-        phone: "1133792293",
-        birthdate: "2001-02-12",
+        email: userData.email || "",
+        dni: userData.dni || "",
+        city: userData.address || "",
+        phone: userData.phone || "",
+        birthdate: userData.birthdate?.split("T")[0] || "",
       }}
       validationSchema={validateUserInfo}
       onSubmit={async (values, actions) => {

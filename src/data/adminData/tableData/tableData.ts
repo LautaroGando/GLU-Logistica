@@ -28,6 +28,7 @@ export const tableData: ITableData[] = [
       "Código postal",
       "Provincia",
       "Empresa",
+      "Envío",
       "Estado",
       "Acciones",
     ],

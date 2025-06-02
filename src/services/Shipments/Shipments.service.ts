@@ -14,6 +14,7 @@ export const getOrders = async (page = 1) => {
 };
 
 export const addOrder = async (values: ITableShipments) => {
+  console.log(values)
   try {
     const { data } = await axios.post(`${API_URL}/shipment`, values);
     return data;

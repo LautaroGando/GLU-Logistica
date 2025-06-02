@@ -1,3 +1,4 @@
+import { Shipment } from "@/enum/Shipment";
 import { Status } from "@/enum/Status";
 
 export interface IFormDataClients {
@@ -26,4 +27,5 @@ export interface IFormDataShipments {
   province: string;
   company: string;
   status: Status;
+  shipmentType: Shipment | string;
 }

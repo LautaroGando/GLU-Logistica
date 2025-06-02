@@ -10,7 +10,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ITableShipments } from "@/data/adminData/tableData/types";
 import { IFilter } from "@/interfaces/IFilter";
 
-export const TableShipments = () => {
+export const TableDelivered = () => {
   const { orders, getOrders, searchTerm } = useAdminStore();
   const [filteredOrders, setFilteredOrders] = useState<ITableShipments[]>([]);
   const [selectedFilter, setSelectedFilter] = useState<string>("");
@@ -28,7 +28,7 @@ export const TableShipments = () => {
     }
 
     const result = listOrder
-      .filter((order) => order.status !== "ENTREGADO")
+      .filter((order) => order.status === "ENTREGADO")
       .filter((order) => {
         const matchesCompany = selectedFilter
           ? order.company?.toLowerCase().includes(selectedFilter)

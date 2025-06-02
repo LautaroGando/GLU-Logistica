@@ -29,6 +29,7 @@ export interface ITableShipments {
   postalCode: string;
   province: string;
   company: string;
+  shipmentType: string;
   status: Status;
 }
 

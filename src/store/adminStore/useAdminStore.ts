@@ -5,6 +5,7 @@ import { deleteUser, getUsers } from "@/services/Users/Users.service";
 import {
   addProduct,
   deleteProduct,
+  getAllProducts,
   getProducts,
 } from "@/services/Warehouse/Warehouse.service";
 import {
@@ -63,6 +64,14 @@ export const useAdminStore = create<IAdminStoreProps>((set, get) => ({
   setProductsPage: async (page) => {
     const data = await getProducts(page);
     set({ products: data });
+  },
+  getAllProducts: async () => {
+    try {
+      const data = await getAllProducts();
+      set({ products: data });
+    } catch (error) {
+      console.log(error);
+    }
   },
   getProducts: async () => {
     try {

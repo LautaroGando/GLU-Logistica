@@ -1,4 +1,5 @@
 import {
+  faFlagCheckered,
   faTruckFast,
   faUser,
   faWarehouse,
@@ -20,5 +21,10 @@ export const linksData: ILinkData[] = [
     icon: faTruckFast,
     href: "/admin/table-shipments",
     label: "Envíos",
+  },
+  {
+    icon: faFlagCheckered,
+    href: "/admin/table-delivered",
+    label: "Entregados",
   },
 ];

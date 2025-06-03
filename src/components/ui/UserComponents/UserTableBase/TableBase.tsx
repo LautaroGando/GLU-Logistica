@@ -5,7 +5,7 @@ const getColumnWidth = (header: string) => {
   switch (header) {
     case "Orden":
     case "CP":
-      return "w-[80px] px-4 py-2";
+      return "w-[90px] px-4 py-2";
     case "Cantidad":
       return "w-[30%] sm:w-[20%] lg:w-[15%] xl:w-[10%] p-2";
     case "Estado":

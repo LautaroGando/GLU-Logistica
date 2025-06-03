@@ -9,6 +9,7 @@ export interface IShipment {
   status: ShipmentStatus;
   customer: ICustomer;
   shipmentProducts: IShipmentProduct[];
+  shipmentType: string;
 }
 
 export type ShipmentStatus =
@@ -17,7 +18,6 @@ export type ShipmentStatus =
   | "DESPACHADO"
   | "EN CAMINO"
   | "ENTREGADO";
-
 
 export interface ICustomer {
   id: string;

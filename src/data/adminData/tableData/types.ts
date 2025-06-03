@@ -21,17 +21,37 @@ export interface ITableWarehouse {
 
 export interface ITableShipments {
   id: string;
-  customerId: string;
   orderId: string;
-  products: { depositId: string; quantity: number }[];
+  shipmentProducts: {
+    id: string;
+    quantity: number;
+    product: {
+      id: string;
+      product: string;
+      quantity: number;
+      company: string;
+    };
+  }[];
   address: string;
   locality: string;
   postalCode: string;
   province: string;
   company: string;
-  shipmentType: string;
+  shipmentType: "DOMICILIO" | "SUCURSAL";
   status: Status;
+  customer: {
+    id: string;
+    fullName: string;
+    email: string;
+    dni: string;
+    address: string;
+    phone: string;
+    birthdate: string;
+    company: string;
+    role: "CLIENTE";
+  };
 }
+
 
 export interface ITableData {
   table: string;

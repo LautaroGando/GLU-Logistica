@@ -6,17 +6,31 @@ interface BuildShipmentTableOptions {
 }
 
 export const buildShipmentTable = (shipments: IShipment[], options?: BuildShipmentTableOptions) => {
-  const headers = ["Orden", "Productos", "Dirección", "Localidad", "CP", "Provincia", "Estado"];
+  const headers = [
+    "Orden",
+    "Productos",
+    "Dirección",
+    "Localidad",
+    "CP",
+    "Provincia",
+    "Envío",
+    "Estado",
+  ];
 
   const filteredShipments = options?.onlyDelivered
     ? shipments.filter((s) => s.status === "ENTREGADO")
-    : shipments;
+    : shipments.filter((s) => s.status !== "ENTREGADO");
 
   const rows = filteredShipments.map((shipment) => {
     const productNames = shipment.shipmentProducts
       .map((sp) => sp.product?.product)
       .filter(Boolean)
       .join(", ");
+
+    const shipmentTypeClass = clsx(
+      shipment.shipmentType === "DOMICILIO" && "font-bold",
+      shipment.shipmentType === "SUCURSAL" && "text-admin-orange"
+    );
 
     const statusClass = clsx(
       shipment.status === "POR EMPAQUETAR" && "text-admin-red border-admin-red",
@@ -36,6 +50,11 @@ export const buildShipmentTable = (shipments: IShipment[], options?: BuildShipme
       shipment.locality,
       shipment.postalCode,
       shipment.province,
+
+      <span key={shipment.id} className={clsx("text-xs", shipmentTypeClass)}>
+        {shipment.shipmentType}
+      </span>,
+
       <span
         key={shipment.id}
         className={clsx("px-2 py-2 text-xs rounded-md border font-semibold", statusClass)}

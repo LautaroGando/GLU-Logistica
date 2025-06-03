@@ -28,6 +28,13 @@ export const getAllProducts = async () => {
     };
   } catch (error) {
     console.error(error);
+    return {
+      data: [],
+      total: 0,
+      page: 1,
+      totalPages: 1,
+      limit: 0,
+    };
   }
 };
 

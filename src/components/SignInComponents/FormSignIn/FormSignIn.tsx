@@ -25,14 +25,24 @@ export const FormSignIn: React.FC = () => {
 
       if (!data.token || !data.userResponse) throw new Error("Respuesta inválida del servidor");
 
+      // LocalStorage (opcional, si seguís queriendo esto)
       localStorage.setItem("token", JSON.stringify(data.token));
       localStorage.setItem("user", JSON.stringify(data.userResponse));
 
-      Cookies.set("user-storage", JSON.stringify(data.userResponse), {
-        path: "/",
-        expires: 7,
-      });
+      // Cookie con token y user
+      Cookies.set(
+        "user-storage",
+        JSON.stringify({
+          token: data.token,
+          user: data.userResponse,
+        }),
+        {
+          path: "/",
+          expires: 7,
+        }
+      );
 
+      // Zustand
       useUserStore.getState().setUser(data.userResponse);
 
       showSuccessAlert("¡Inicio de sesión exitoso!", `Bienvenido, ${data.userResponse.fullName}.`);

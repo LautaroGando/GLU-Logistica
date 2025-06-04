@@ -9,6 +9,7 @@ export const getOrders = async () => {
     const { data } = await axios.get(`${API_URL}/shipment`, {
       headers: getAuthHeader(),
     });
+    
     return data;
   } catch (error) {
     console.log(error);

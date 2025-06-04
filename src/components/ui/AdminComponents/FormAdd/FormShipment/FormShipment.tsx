@@ -83,19 +83,23 @@ export const FormShipment = () => {
         />
       </div>
       <div className="w-full p-2 bg-tcExtra/40 rounded-md">
-        {Array.isArray(values.shipmentProducts) &&
-          values.shipmentProducts.length > 0 && (
-            <div className="pb-2 flex gap-2 text-sm flex-wrap max-h-[80px] overflow-auto">
-              {values.shipmentProducts.map((item, i) => (
+        {values.products.length > 0 && (
+          <div className="pb-2 flex gap-2 text-sm flex-wrap max-h-[80px] overflow-auto">
+            {values.products.map((product, i) => {
+              const productInfo = products?.find(
+                (prod) => prod.id === product.depositId
+              );
+              return (
                 <div
                   key={i}
                   className="text-pcPrincipal bg-pcPrincipal/10 px-2 py-1 rounded-xl"
                 >
-                  {item.product?.product} ({item.quantity})
+                  {productInfo?.product} ({product.quantity})
                 </div>
-              ))}
-            </div>
-          )}
+              );
+            })}
+          </div>
+        )}
 
         <button
           disabled={!selectedCompany}

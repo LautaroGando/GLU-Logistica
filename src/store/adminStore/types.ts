@@ -14,27 +14,14 @@ export interface IAdminStoreProps {
   searchTerm: string;
   setSearchTerm: (value: string) => void;
   /* USUARIOS */
-  users: {
-    data: ITableClients[];
-    total: number;
-    page: number;
-    totalPages: number;
-    limit: number;
-  } | null;
-  setUsersPage: (page: number) => void;
+  users: ITableClients[] | null;
+  setUsersPage: () => void;
   getUsers: () => void;
   addUser: (values: ITableClients) => void;
   deleteUser: (id: string) => void;
   /* DEPOSITO */
-  products: {
-    data: ITableWarehouse[];
-    total: number;
-    page: number;
-    totalPages: number;
-    limit: number;
-  } | null;
-  setProductsPage: (page: number) => void;
-  getAllProducts: () => void;
+  products: ITableWarehouse[] | null;
+  setProductsPage: () => void;
   getProducts: () => void;
   addProduct: (values: ITableWarehouse) => void;
   deleteProduct: (id: string) => void;
@@ -43,14 +30,8 @@ export interface IAdminStoreProps {
   modalProducts: boolean;
   toggleModalProducts: () => void;
   closeModalProducts: () => void;
-  orders: {
-    data: ITableShipments[];
-    total: number;
-    page: number;
-    totalPages: number;
-    limit: number;
-  } | null;
-  setOrdersPage: (page: number) => void;
+  orders: ITableShipments[] | null;
+  setOrdersPage: () => void;
   getOrders: () => void;
   addOrder: (values: ITableShipments) => void;
   deleteOrder: (id: string) => void;

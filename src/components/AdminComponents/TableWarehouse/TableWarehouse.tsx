@@ -23,14 +23,12 @@ export const TableWarehouse = () => {
   }, [getProducts]);
 
   useEffect(() => {
-    const productList = products?.data || [];
-
-    if (!productList.length) {
+    if (!products) {
       setFilteredProducts([]);
       return;
     }
 
-    const result = productList.filter((product) => {
+    const result = products.filter((product) => {
       const matchesCompany = selectedFilter
         ? product.company?.toLowerCase().includes(selectedFilter)
         : true;
@@ -48,7 +46,7 @@ export const TableWarehouse = () => {
   const companyFilterOptions: IFilter[] = useMemo(() => {
     if (!products) return [];
     const uniqueCompanies = Array.from(
-      new Set(products.data.map((p) => p.company).filter(Boolean))
+      new Set(products.map((p) => p.company).filter(Boolean))
     );
     return uniqueCompanies.map((company) => ({
       label: company!,

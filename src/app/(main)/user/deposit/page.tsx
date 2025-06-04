@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { getOrders, getProducts } from "@/services";
+import { getOrders, getProductByCompanyName } from "@/services";
 import { buildDepositTable } from "@/data";
 import { TableBase, UserTitle } from "@/components";
 
@@ -27,11 +27,8 @@ export default async function DepositPage() {
 
   if (!company) return <div>Error: empresa no disponible.</div>;
 
-  const { data: depositData } = await getProducts();
-  const { data: shipmentsData } = await getOrders();
-
-  console.log(depositData);
-  console.log(shipmentsData);
+  const depositData = await getProductByCompanyName(company);
+  const shipmentsData = await getOrders();
 
   const { headers, rows } = buildDepositTable(depositData, shipmentsData, company);
 

@@ -4,6 +4,23 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { getAuthHeader } from "@/utils/getAuthHeader";
 
+export const getProductByCompanyName = async (companyName: string) => {
+  console.log(companyName);
+  
+  try {
+    const { data } = await axios.get(`${API_URL}/deposit/${companyName}`, {
+      headers: getAuthHeader(),
+    });
+
+    console.log(data);
+    
+
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const getProducts = async () => {
   try {
     const { data } = await axios.get(`${API_URL}/deposit`, {

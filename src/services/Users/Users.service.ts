@@ -2,10 +2,13 @@ import { API_URL } from "@/config/envs";
 import { IFormContact } from "@/interfaces/IFormContact";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { getAuthHeader } from "@/utils/getAuthHeader";
 
 export const getUsers = async () => {
   try {
-    const { data } = await axios.get(`${API_URL}/users`);
+    const { data } = await axios.get(`${API_URL}/users`, {
+      headers: getAuthHeader(),
+    });
     return data;
   } catch (error) {
     console.log(error);
@@ -14,7 +17,9 @@ export const getUsers = async () => {
 
 export const deleteUser = async (id: string) => {
   try {
-    const { data } = await axios.delete(`${API_URL}/users/${id}`);
+    const { data } = await axios.delete(`${API_URL}/users/${id}`, {
+      headers: getAuthHeader(),
+    });
     if (data) {
       Swal.fire({
         icon: "success",

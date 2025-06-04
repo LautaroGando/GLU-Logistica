@@ -2,10 +2,13 @@ import axios from "axios";
 import { ITableShipments } from "../../data/adminData/tableData/types";
 import { API_URL } from "@/config/envs";
 import Swal from "sweetalert2";
+import { getAuthHeader } from "@/utils/getAuthHeader";
 
 export const getOrders = async () => {
   try {
-    const { data } = await axios.get(`${API_URL}/shipment`);
+    const { data } = await axios.get(`${API_URL}/shipment`, {
+      headers: getAuthHeader(),
+    });
     return data;
   } catch (error) {
     console.log(error);
@@ -14,7 +17,10 @@ export const getOrders = async () => {
 
 export const addOrder = async (values: ITableShipments) => {
   try {
-    const { data } = await axios.post(`${API_URL}/shipment`, values);
+    const { data } = await axios.post(`${API_URL}/shipment`, values, {
+      headers: getAuthHeader(),
+    });
+
     if (data) {
       Swal.fire({
         icon: "success",
@@ -28,6 +34,7 @@ export const addOrder = async (values: ITableShipments) => {
         timerProgressBar: true,
       });
     }
+
     return data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
@@ -48,7 +55,10 @@ export const addOrder = async (values: ITableShipments) => {
 
 export const deleteOrder = async (id: string) => {
   try {
-    const { data } = await axios.delete(`${API_URL}/shipment/${id}`);
+    const { data } = await axios.delete(`${API_URL}/shipment/${id}`, {
+      headers: getAuthHeader(),
+    });
+
     if (data) {
       Swal.fire({
         icon: "success",
@@ -62,6 +72,7 @@ export const deleteOrder = async (id: string) => {
         timerProgressBar: true,
       });
     }
+
     return data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
@@ -82,9 +93,14 @@ export const deleteOrder = async (id: string) => {
 
 export const updateOrderStatus = async (id: string, status: string) => {
   try {
-    const { data } = await axios.patch(`${API_URL}/shipment/${id}/status`, {
-      status,
-    });
+    const { data } = await axios.patch(
+      `${API_URL}/shipment/${id}/status`,
+      { status },
+      {
+        headers: getAuthHeader(),
+      }
+    );
+
     if (data) {
       Swal.fire({
         icon: "success",
@@ -98,6 +114,7 @@ export const updateOrderStatus = async (id: string, status: string) => {
         timerProgressBar: true,
       });
     }
+
     return data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {

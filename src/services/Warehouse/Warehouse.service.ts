@@ -2,10 +2,13 @@ import { API_URL } from "@/config/envs";
 import { ITableWarehouse } from "@/data/adminData/tableData/types";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { getAuthHeader } from "@/utils/getAuthHeader";
 
 export const getProducts = async () => {
   try {
-    const { data } = await axios.get(`${API_URL}/deposit`);
+    const { data } = await axios.get(`${API_URL}/deposit`, {
+      headers: getAuthHeader(),
+    });
     return data;
   } catch (error) {
     console.log(error);
@@ -14,7 +17,9 @@ export const getProducts = async () => {
 
 export const addProduct = async (values: ITableWarehouse) => {
   try {
-    const { data } = await axios.post(`${API_URL}/deposit`, values);
+    const { data } = await axios.post(`${API_URL}/deposit`, values, {
+      headers: getAuthHeader(),
+    });
     if (data) {
       Swal.fire({
         icon: "success",
@@ -48,7 +53,9 @@ export const addProduct = async (values: ITableWarehouse) => {
 
 export const deleteProduct = async (id: string) => {
   try {
-    const { data } = await axios.delete(`${API_URL}/deposit/${id}`);
+    const { data } = await axios.delete(`${API_URL}/deposit/${id}`, {
+      headers: getAuthHeader(),
+    });
     if (data) {
       Swal.fire({
         icon: "success",
@@ -82,7 +89,9 @@ export const deleteProduct = async (id: string) => {
 
 export const incrementProduct = async (id: string) => {
   try {
-    const { data } = await axios.post(`${API_URL}/deposit/increment/${id}`);
+    const { data } = await axios.post(`${API_URL}/deposit/increment/${id}`, null, {
+      headers: getAuthHeader(),
+    });
     return data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
@@ -103,7 +112,9 @@ export const incrementProduct = async (id: string) => {
 
 export const decrementProduct = async (id: string) => {
   try {
-    const { data } = await axios.post(`${API_URL}/deposit/decrement/${id}`);
+    const { data } = await axios.post(`${API_URL}/deposit/decrement/${id}`, null, {
+      headers: getAuthHeader(),
+    });
     return data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {

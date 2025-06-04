@@ -6,6 +6,9 @@ import { getAuthHeader } from "@/utils/getAuthHeader";
 
 export const getProductByCompanyName = async (companyName: string) => {
   console.log(companyName);
+
+  const headers = getAuthHeader();
+console.log("🚀 Sending Authorization header:", headers);
   
   try {
     const { data } = await axios.get(`${API_URL}/deposit/${companyName}`, {

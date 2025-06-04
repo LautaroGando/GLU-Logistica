@@ -2,6 +2,15 @@ import { API_URL } from "@/config/envs";
 import { ITableClients } from "@/data/adminData/tableData/types";
 import { IUserSignIn } from "@/interfaces/IUser";
 import axios from "axios";
+import Cookies from "js-cookie";
+
+const getTokenHeader = () => {
+  const cookieData = Cookies.get("user-storage");
+  const token = cookieData ? JSON.parse(cookieData).token : null;
+  return {
+    Authorization: `Bearer ${token}`,
+  };
+};
 
 export const signIn = async (values: IUserSignIn) => {
   try {
@@ -19,7 +28,9 @@ export const signIn = async (values: IUserSignIn) => {
 
 export const addUser = async (values: ITableClients) => {
   try {
-    const { data } = await axios.post(`${API_URL}/auth/signUp`, values);
+    const { data } = await axios.post(`${API_URL}/auth/signUp`, values, {
+      headers: getTokenHeader(),
+    });
     return data;
   } catch (error) {
     console.log(error);

@@ -14,7 +14,7 @@ export const Menu = () => {
   const pathname = usePathname();
 
   return (
-    <div className="w-full z-50 h-[80px] overflow-auto md:w-[120px] md:h-[90vh] bg-pcSecondary shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] md:shadow-md md:rounded-tr-[30px] fixed bottom-0 left-0 sm:px-5 md:px-0 md:pt-5 flex md:flex-col justify-between">
+    <div className="w-full z-50 h-[70px] px-1 overflow-auto md:w-[120px] md:h-[90vh] bg-pcSecondary shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] md:shadow-md md:rounded-tr-[30px] fixed bottom-0 left-0 sm:px-5 md:px-0 md:pt-5 flex md:flex-col justify-between">
       <div className="flex md:flex-col items-center gap-5">
         <Image
           className="hidden sm:block"
@@ -27,36 +27,36 @@ export const Menu = () => {
           GLU Admin
         </h3>
         <div className="hidden sm:w-[3px] sm:h-full md:w-full md:h-[2px] sm:block bg-pcPrincipal"></div>
-        <div className="w-full flex md:flex-col">
+        <div className="w-full flex md:flex-col md:gap-3">
           {linksData.map((link: ILinkData, i: number) => (
             <Link
               key={i}
               className={clsx(
-                "flex flex-col w-[80px] h-[80px] items-center gap-2 p-3 transition-all duration-300 md:w-full",
+                "flex flex-col w-[60px] h-[60px] rounded-md items-center justify-center gap-2 p-3 transition-all duration-300 md:w-full md:h-[80px]",
                 pathname === link.href
-                  ? "text-pcSecondary bg-pcPrincipal"
+                  ? "text-pcPrincipal"
                   : "text-sc hover:bg-pcPrincipal/10"
               )}
               href={link.href}
             >
               <FontAwesomeIcon
-                className="max-w-[30px] text-[30px]"
+                className="max-w-[25px] text-[25px]"
                 icon={link.icon}
-                width={30}
-                height={30}
+                width={25}
+                height={25}
               />
-              {link.label}
+              <span className="hidden md:block">{link.label}</span>
             </Link>
           ))}
         </div>
       </div>
       <Link
         href="/"
-        className="flex gap-2 min-h-[80px] items-center justify-center text-admin-red px-5"
+        className="flex gap-2 min-h-[60px] items-center justify-center text-sm text-admin-red px-5"
       >
         Salir
         <FontAwesomeIcon
-          className="max-w-[18px] text-[18px]"
+          className="max-w-[16px] text-[16px]"
           icon={faArrowRightFromBracket}
           width={18}
           height={18}

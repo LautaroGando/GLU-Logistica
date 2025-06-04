@@ -3,7 +3,8 @@ import { ITableShipments } from "./adminData/tableData/types";
 
 export const buildDepositTable = (
   depositData: IDepositProduct[],
-  shipmentsData: ITableShipments[]
+  shipmentsData: ITableShipments[],
+  company: string
 ) => {
   const headers = [
     "Nombre del producto",
@@ -12,31 +13,40 @@ export const buildDepositTable = (
     "Faltantes",
   ];
 
-  const totalSolicitadoPorProducto: Record<string, number> = {};
+  console.log(depositData);
+  
 
-  const porEmpaquetar = shipmentsData.filter(
-    (shipment) => shipment.status === "POR EMPAQUETAR"
+  const totalByProduct: Record<string, number> = {};
+
+  const filteredShipments = shipmentsData.filter(
+    (shipment) =>
+      shipment.status === "POR EMPAQUETAR" && shipment.company === company
   );
 
-  for (const shipment of porEmpaquetar) {
+console.log("ShipmentsData full:", shipmentsData);
+
+
+  
+
+  for (const shipment of filteredShipments) {
     for (const item of shipment.shipmentProducts) {
       const productName = item.product.product;
-      totalSolicitadoPorProducto[productName] =
-        (totalSolicitadoPorProducto[productName] || 0) + item.quantity;
+      totalByProduct[productName] =
+        (totalByProduct[productName] || 0) + item.quantity;
     }
   }
 
-  const rows = Object.entries(totalSolicitadoPorProducto).map(
-    ([productName, cantidadSolicitada]) => {
-      const depositoItem = depositData.find((d) => d.product === productName);
-      const cantidadEnDeposito = depositoItem?.quantity || 0;
-      const faltantes = Math.max(cantidadSolicitada - cantidadEnDeposito, 0);
+  const rows = Object.entries(totalByProduct).map(
+    ([productName, requestedQty]) => {
+      const depositItem = depositData.find((d) => d.product === productName);
+      const depositQty = depositItem?.quantity || 0;
+      const shortage = Math.max(requestedQty - depositQty, 0);
 
       return [
         productName,
-        cantidadSolicitada.toString(),
-        cantidadEnDeposito.toString(),
-        faltantes > 0 ? faltantes.toString() : "-",
+        requestedQty.toString(),
+        depositQty.toString(),
+        shortage > 0 ? shortage.toString() : "-",
       ];
     }
   );

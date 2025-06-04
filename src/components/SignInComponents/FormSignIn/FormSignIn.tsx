@@ -9,6 +9,7 @@ import { IUserSignIn } from "@/interfaces/IUser";
 import { validateSignIn } from "@/helpers/validateSignIn";
 import { signIn } from "@/services/Auth/Auth.service";
 import { useUserStore } from "@/store";
+import Cookies from "js-cookie";
 
 export const FormSignIn: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
@@ -16,30 +17,32 @@ export const FormSignIn: React.FC = () => {
   const showErrorAlert = useErrorAlert();
   const router = useRouter();
 
+  const handleSignIn = async (values: IUserSignIn) => {
+    setIsLoading(true);
 
-const handleSignIn = async (values: IUserSignIn) => {
-  setIsLoading(true);
+    try {
+      const data = await signIn(values);
 
-  try {
-    const data = await signIn(values);
-    console.log("DATA FORMULARIO LOGIN: ", data);
+      if (!data.token || !data.userResponse) throw new Error("Respuesta inválida del servidor");
 
-    if (!data.token || !data.userResponse) throw new Error("Respuesta inválida del servidor");
+      localStorage.setItem("token", JSON.stringify(data.token));
+      localStorage.setItem("user", JSON.stringify(data.userResponse));
 
-    localStorage.setItem("token", JSON.stringify(data.token));
-    localStorage.setItem("user", JSON.stringify(data.userResponse));
-    console.log(data.userResponse);
-    
-    useUserStore.getState().setUser(data.userResponse);
+      Cookies.set("user-storage", JSON.stringify(data.userResponse), {
+        path: "/",
+        expires: 7,
+      });
 
-    showSuccessAlert("¡Inicio de sesión exitoso!", `Bienvenido, ${data.userResponse.fullName}.`);
-    router.push("/");
-  } catch {
-    showErrorAlert("Error al iniciar sesión", "Inténtalo de nuevo más tarde.");
-  } finally {
-    setIsLoading(false);
-  }
-};
+      useUserStore.getState().setUser(data.userResponse);
+
+      showSuccessAlert("¡Inicio de sesión exitoso!", `Bienvenido, ${data.userResponse.fullName}.`);
+      router.push("/");
+    } catch {
+      showErrorAlert("Error al iniciar sesión", "Inténtalo de nuevo más tarde.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Formik

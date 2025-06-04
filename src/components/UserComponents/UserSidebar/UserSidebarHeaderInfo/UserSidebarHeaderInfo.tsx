@@ -17,7 +17,7 @@ export const UserSidebarHeaderInfo = () => {
   return (
     <div className="mt-3 text-center h-11">
       <p className="text-lg font-medium">{user.fullName}</p>
-      <p className="text-xs text-black/35">{user.address}</p>
+      <p className="text-xs text-black/35">{user.company}</p>
     </div>
   );
 };

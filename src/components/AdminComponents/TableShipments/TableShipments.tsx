@@ -20,14 +20,12 @@ export const TableShipments = () => {
   }, [getOrders]);
 
   useEffect(() => {
-    const listOrder = orders?.data || [];
-
-    if (!listOrder.length) {
+    if (!orders) {
       setFilteredOrders([]);
       return;
     }
 
-    const result = listOrder
+    const result = orders
       .filter((order) => order.status !== "ENTREGADO")
       .filter((order) => {
         const matchesCompany = selectedFilter
@@ -48,7 +46,7 @@ export const TableShipments = () => {
   const companyFilterOptions: IFilter[] = useMemo(() => {
     if (!orders) return [];
     const uniqueCompanies = Array.from(
-      new Set(orders.data.map((o) => o.company).filter(Boolean))
+      new Set(orders.map((o) => o.company).filter(Boolean))
     );
     return uniqueCompanies.map((company) => ({
       label: company!,

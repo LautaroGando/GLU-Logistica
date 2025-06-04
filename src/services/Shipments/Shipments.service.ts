@@ -1,37 +1,11 @@
 import axios from "axios";
 import { ITableShipments } from "../../data/adminData/tableData/types";
 import { API_URL } from "@/config/envs";
+import Swal from "sweetalert2";
 
-export const getAllOrders = async (): Promise<ITableShipments[]> => {
-  const allOrders: ITableShipments[] = [];
-  let currentPage = 1;
-  let hasMore = true;
-
+export const getOrders = async () => {
   try {
-    while (hasMore) {
-      const { data } = await axios.get(`${API_URL}/shipment`, {
-        params: { page: currentPage },
-      });
-
-      const currentData: ITableShipments[] = data || [];
-
-      allOrders.push(...currentData);
-
-      hasMore = currentData.length > 0 && currentData.length === 10;
-      currentPage++;
-    }
-  } catch (error) {
-    console.log("Error al traer todas las órdenes:", error);
-  }
-
-  return allOrders;
-};
-
-export const getOrders = async (page = 1) => {
-  try {
-    const { data } = await axios.get(`${API_URL}/shipment`, {
-      params: { page },
-    });
+    const { data } = await axios.get(`${API_URL}/shipment`);
     return data;
   } catch (error) {
     console.log(error);
@@ -39,21 +13,70 @@ export const getOrders = async (page = 1) => {
 };
 
 export const addOrder = async (values: ITableShipments) => {
-  console.log(values);
   try {
     const { data } = await axios.post(`${API_URL}/shipment`, values);
+    if (data) {
+      Swal.fire({
+        icon: "success",
+        title: "Órden agregada.",
+        text: "Se ha agregado la órden.",
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        color: "#8D8D8D",
+        timer: 2000,
+        timerProgressBar: true,
+      });
+    }
     return data;
   } catch (error) {
-    console.log(error);
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Error.",
+        text: `${error.response.data.message}`,
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        color: "#8D8D8D",
+        timer: 2000,
+        timerProgressBar: true,
+      });
+    }
   }
 };
 
 export const deleteOrder = async (id: string) => {
   try {
     const { data } = await axios.delete(`${API_URL}/shipment/${id}`);
+    if (data) {
+      Swal.fire({
+        icon: "success",
+        title: "Órden eliminada.",
+        text: "Se ha eliminado la órden.",
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        color: "#8D8D8D",
+        timer: 2000,
+        timerProgressBar: true,
+      });
+    }
     return data;
   } catch (error) {
-    console.log(error);
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Error.",
+        text: `${error.response.data.message}`,
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        color: "#8D8D8D",
+        timer: 2000,
+        timerProgressBar: true,
+      });
+    }
   }
 };
 
@@ -62,8 +85,33 @@ export const updateOrderStatus = async (id: string, status: string) => {
     const { data } = await axios.patch(`${API_URL}/shipment/${id}/status`, {
       status,
     });
+    if (data) {
+      Swal.fire({
+        icon: "success",
+        title: "Órden actualizada.",
+        text: "Se ha actualizado la órden.",
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        color: "#8D8D8D",
+        timer: 2000,
+        timerProgressBar: true,
+      });
+    }
     return data;
   } catch (error) {
-    console.log(error);
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Error.",
+        text: `${error.response.data.message}`,
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        color: "#8D8D8D",
+        timer: 2000,
+        timerProgressBar: true,
+      });
+    }
   }
 };

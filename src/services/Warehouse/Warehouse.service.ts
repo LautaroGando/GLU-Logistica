@@ -1,21 +1,11 @@
 import { API_URL } from "@/config/envs";
 import { ITableWarehouse } from "@/data/adminData/tableData/types";
 import axios from "axios";
-import Cookies from "js-cookie";
-
-const getTokenHeader = () => {
-  const cookieData = Cookies.get("user-storage");
-  const token = cookieData ? JSON.parse(cookieData).token : null;
-  return {
-    Authorization: `Bearer ${token}`,
-  };
-};
+import Swal from "sweetalert2";
 
 export const getProducts = async () => {
   try {
-    const { data } = await axios.get(`${API_URL}/deposit`, {
-      headers: getTokenHeader(),
-    });
+    const { data } = await axios.get(`${API_URL}/deposit`);
     return data;
   } catch (error) {
     console.log(error);
@@ -24,44 +14,110 @@ export const getProducts = async () => {
 
 export const addProduct = async (values: ITableWarehouse) => {
   try {
-    const { data } = await axios.post(`${API_URL}/deposit`, values, {
-      headers: getTokenHeader(),
-    });
+    const { data } = await axios.post(`${API_URL}/deposit`, values);
+    if (data) {
+      Swal.fire({
+        icon: "success",
+        title: "Producto agregado.",
+        text: "Se ha agregado el producto.",
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        color: "#8D8D8D",
+        timer: 2000,
+        timerProgressBar: true,
+      });
+    }
     return data;
   } catch (error) {
-    console.log(error);
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Error.",
+        text: `${error.response.data.message}`,
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        color: "#8D8D8D",
+        timer: 2000,
+        timerProgressBar: true,
+      });
+    }
   }
 };
 
 export const deleteProduct = async (id: string) => {
   try {
-    const { data } = await axios.delete(`${API_URL}/deposit/${id}`, {
-      headers: getTokenHeader(),
-    });
+    const { data } = await axios.delete(`${API_URL}/deposit/${id}`);
+    if (data) {
+      Swal.fire({
+        icon: "success",
+        title: "Producto eliminado.",
+        text: "Se ha eliminado el producto.",
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        color: "#8D8D8D",
+        timer: 2000,
+        timerProgressBar: true,
+      });
+    }
     return data;
   } catch (error) {
-    console.log(error);
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Error.",
+        text: `${error.response.data.message}`,
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        color: "#8D8D8D",
+        timer: 2000,
+        timerProgressBar: true,
+      });
+    }
   }
 };
 
 export const incrementProduct = async (id: string) => {
   try {
-    const { data } = await axios.post(`${API_URL}/deposit/increment/${id}`, null, {
-      headers: getTokenHeader(),
-    });
+    const { data } = await axios.post(`${API_URL}/deposit/increment/${id}`);
     return data;
   } catch (error) {
-    console.log(error);
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Error.",
+        text: `${error.response.data.message}`,
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        color: "#8D8D8D",
+        timer: 2000,
+        timerProgressBar: true,
+      });
+    }
   }
 };
 
 export const decrementProduct = async (id: string) => {
   try {
-    const { data } = await axios.post(`${API_URL}/deposit/decrement/${id}`, null, {
-      headers: getTokenHeader(),
-    });
+    const { data } = await axios.post(`${API_URL}/deposit/decrement/${id}`);
     return data;
   } catch (error) {
-    console.log(error);
+    if (axios.isAxiosError(error) && error.response) {
+      Swal.fire({
+        icon: "error",
+        title: "Error.",
+        text: `${error.response.data.message}`,
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        color: "#8D8D8D",
+        timer: 2000,
+        timerProgressBar: true,
+      });
+    }
   }
 };

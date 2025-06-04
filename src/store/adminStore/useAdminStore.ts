@@ -5,7 +5,6 @@ import { deleteUser, getUsers } from "@/services/Users/Users.service";
 import {
   addProduct,
   deleteProduct,
-  getAllProducts,
   getProducts,
 } from "@/services/Warehouse/Warehouse.service";
 import {
@@ -31,8 +30,8 @@ export const useAdminStore = create<IAdminStoreProps>((set, get) => ({
   setSearchTerm: (value: string) => set(() => ({ searchTerm: value })),
   /* USUARIOS */
   users: null,
-  setUsersPage: async (page) => {
-    const data = await getUsers(page);
+  setUsersPage: async () => {
+    const data = await getUsers();
     set({ users: data });
   },
   getUsers: async () => {
@@ -61,17 +60,9 @@ export const useAdminStore = create<IAdminStoreProps>((set, get) => ({
   },
   /* DEPOSITO */
   products: null,
-  setProductsPage: async (page) => {
-    const data = await getProducts(page);
+  setProductsPage: async () => {
+    const data = await getProducts();
     set({ products: data });
-  },
-  getAllProducts: async () => {
-    try {
-      const data = await getAllProducts();
-      set({ products: data });
-    } catch (error) {
-      console.log(error);
-    }
   },
   getProducts: async () => {
     try {
@@ -102,7 +93,7 @@ export const useAdminStore = create<IAdminStoreProps>((set, get) => ({
       products: state.products
         ? {
             ...state.products,
-            data: state.products.data.map((product) =>
+            data: state.products.map((product) =>
               product.id === id ? { ...product, quantity } : product
             ),
           }
@@ -114,8 +105,8 @@ export const useAdminStore = create<IAdminStoreProps>((set, get) => ({
     set((state) => ({ modalProducts: !state.modalProducts })),
   closeModalProducts: () => set(() => ({ modalProducts: false })),
   orders: null,
-  setOrdersPage: async (page) => {
-    const data = await getOrders(page);
+  setOrdersPage: async () => {
+    const data = await getOrders();
     set({ orders: data });
   },
   getOrders: async () => {

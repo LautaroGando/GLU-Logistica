@@ -10,10 +10,19 @@ export const useUserStore = create<IUserStore>((set) => ({
     set({ user });
 
     if (typeof window !== "undefined") {
-      Cookies.set("user-storage", JSON.stringify(user), {
-        path: "/",
-        expires: 7,
-      });
+      const token = localStorage.getItem("token");
+
+      Cookies.set(
+        "user-storage",
+        JSON.stringify({
+          user,
+          token: token ? JSON.parse(token) : null,
+        }),
+        {
+          path: "/",
+          expires: 7,
+        }
+      );
     }
   },
 
@@ -21,6 +30,8 @@ export const useUserStore = create<IUserStore>((set) => ({
     set({ user: null });
 
     if (typeof window !== "undefined") {
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
       Cookies.remove("user-storage");
     }
   },
@@ -31,15 +42,23 @@ export const useUserStore = create<IUserStore>((set) => ({
 
       try {
         const storedUser = localStorage.getItem("user");
+        const token = localStorage.getItem("token");
 
         if (storedUser) {
           const parsedUser = JSON.parse(storedUser);
           set({ user: parsedUser });
 
-          Cookies.set("user-storage", storedUser, {
-            path: "/",
-            expires: 7,
-          });
+          Cookies.set(
+            "user-storage",
+            JSON.stringify({
+              user: parsedUser,
+              token: token ? JSON.parse(token) : null,
+            }),
+            {
+              path: "/",
+              expires: 7,
+            }
+          );
         } else {
           set({ user: null });
         }

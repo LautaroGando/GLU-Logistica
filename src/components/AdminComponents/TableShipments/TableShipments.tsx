@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useMemo, useState } from "react";
 import { Filter } from "@/components/ui/AdminComponents/Filter/Filter";
 import Pagination from "@/components/ui/AdminComponents/Pagination/Pagination";
 import { Table } from "@/components/ui/AdminComponents/Table/Table";
@@ -6,7 +7,6 @@ import { tableData } from "@/data/adminData/tableData/tableData";
 import { ButtonAdd } from "@/components/ui/AdminComponents/ButtonAdd/ButtonAdd";
 import { Modal } from "@/enum/Modal";
 import { useAdminStore } from "@/store/adminStore/useAdminStore";
-import { useEffect, useMemo, useState } from "react";
 import { ITableShipments } from "@/data/adminData/tableData/types";
 import { IFilter } from "@/interfaces/IFilter";
 
@@ -54,6 +54,34 @@ export const TableShipments = () => {
     }));
   }, [orders]);
 
+  const reorderedOrders = filteredOrders.map((order) => {
+    const {
+      orderId,
+      shipmentProducts,
+      address,
+      locality,
+      postalCode,
+      province,
+      company,
+      shipmentType,
+      status,
+      ...rest
+    } = order;
+
+    return {
+      orderId,
+      shipmentProducts,
+      address,
+      locality,
+      postalCode,
+      province,
+      company,
+      shipmentType,
+      status,
+      ...rest,
+    };
+  });
+
   return (
     <div className="w-full flex flex-col gap-5 p-3">
       <div className="flex flex-col gap-5 sm:flex-row sm:justify-between">
@@ -66,7 +94,7 @@ export const TableShipments = () => {
       <div className="w-full overflow-auto">
         <Table
           tableHeadData={tableData[2].tableHeadData}
-          tableBodyData={filteredOrders}
+          tableBodyData={reorderedOrders}
         />
       </div>
       <div className="w-full flex justify-end">

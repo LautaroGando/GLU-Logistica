@@ -21,14 +21,12 @@ export const TableClients = () => {
   }, [getUsers]);
 
   useEffect(() => {
-    const userList = users?.data || [];
-
-    if (!userList.length) {
+    if (!users) {
       setFilteredUsers([]);
       return;
     }
 
-    const result = userList.filter((user) => {
+    const result = users.filter((user) => {
       const matchesCompany = selectedFilter
         ? user.company?.toLowerCase().includes(selectedFilter)
         : true;
@@ -46,7 +44,7 @@ export const TableClients = () => {
   }, [selectedFilter, users, searchTerm]);
 
   const clientFilterOptions: IFilter[] = Array.from(
-    new Set(users?.data?.map((user) => user.company).filter(Boolean))
+    new Set(users?.map((user) => user.company).filter(Boolean))
   ).map((company) => ({
     label: company,
     value: company.toLowerCase(),

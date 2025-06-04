@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { IModalSelectProductsProps } from "./types";
 import { useFormikContext } from "formik";
 import { ITableWarehouse } from "@/data/adminData/tableData/types";
+import { motion } from "motion/react";
 
 export const ModalSelectProducts: React.FC<IModalSelectProductsProps> = ({
   products,
@@ -30,8 +31,8 @@ export const ModalSelectProducts: React.FC<IModalSelectProductsProps> = ({
   return (
     <>
       {modalProducts && (
-        <div className="absolute top-0 left-0 w-full h-full bg-black/50 overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-pcSecondary rounded-md p-2 flex flex-col gap-3 justify-between">
+        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 0.1}} className="absolute top-0 left-0 w-full h-full bg-black/50 overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[80%] bg-pcSecondary rounded-md p-2 flex flex-col gap-3 justify-between">
             <div className="flex flex-col gap-3">
               <h3 className="text-pcPrincipal font-semibold text-xl">
                 Agregar productos:
@@ -92,7 +93,7 @@ export const ModalSelectProducts: React.FC<IModalSelectProductsProps> = ({
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </>
   );

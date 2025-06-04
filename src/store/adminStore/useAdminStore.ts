@@ -90,15 +90,13 @@ export const useAdminStore = create<IAdminStoreProps>((set, get) => ({
   },
   updateProductQuantity: (id: string, quantity: number) =>
     set((state) => ({
-      products: state.products
-        ? {
-            ...state.products,
-            data: state.products.map((product) =>
-              product.id === id ? { ...product, quantity } : product
-            ),
-          }
-        : null,
+      products: Array.isArray(state.products)
+        ? state.products.map((product) =>
+            product.id === id ? { ...product, quantity } : product
+          )
+        : [],
     })),
+
   /* ENVIOS */
   modalProducts: false,
   toggleModalProducts: () =>

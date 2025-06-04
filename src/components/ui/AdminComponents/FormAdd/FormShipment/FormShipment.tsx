@@ -14,14 +14,14 @@ import { Shipment } from "@/enum/Shipment";
 import { Province } from "@/enum/Province";
 
 export const FormShipment = () => {
-  const { toggleModalProducts, users, getUsers, products, getAllProducts } =
+  const { toggleModalProducts, users, getUsers, products, getProducts } =
     useAdminStore();
   const { values, setFieldValue } = useFormikContext<ITableShipments>();
 
   useEffect(() => {
     getUsers();
-    getAllProducts();
-  }, [getUsers, getAllProducts]);
+    getProducts();
+  }, [getUsers, getProducts]);
 
   useEffect(() => {
     const selectedCompany = values.company;
@@ -32,7 +32,7 @@ export const FormShipment = () => {
       return;
     }
 
-    const customerId = products?.data.find(
+    const customerId = products?.find(
       (product) => product.company === selectedCompany
     )?.customerId;
 
@@ -46,8 +46,7 @@ export const FormShipment = () => {
 
   const companyProducts = useMemo(() => {
     return (
-      products?.data.filter((product) => product.company === selectedCompany) ||
-      []
+      products?.filter((product) => product.company === selectedCompany) || []
     );
   }, [products, selectedCompany]);
 
@@ -67,7 +66,7 @@ export const FormShipment = () => {
       <div className="w-full">
         <Field className="input" name="company" id="company" as="select">
           <option value="">Seleccione una empresa:</option>
-          {users?.data.map((user: ITableClients, i: number) => (
+          {users?.map((user: ITableClients, i: number) => (
             <option key={i} value={user.company}>
               {user.company}
             </option>
@@ -84,23 +83,19 @@ export const FormShipment = () => {
         />
       </div>
       <div className="w-full p-2 bg-tcExtra/40 rounded-md">
-        {values.products.length > 0 && (
-          <div className="pb-2 flex gap-2 text-sm flex-wrap max-h-[80px] overflow-auto">
-            {values.products.map((product, i) => {
-              const productInfo = products?.data.find(
-                (prod) => prod.id === product.depositId
-              );
-              return (
+        {Array.isArray(values.shipmentProducts) &&
+          values.shipmentProducts.length > 0 && (
+            <div className="pb-2 flex gap-2 text-sm flex-wrap max-h-[80px] overflow-auto">
+              {values.shipmentProducts.map((item, i) => (
                 <div
                   key={i}
                   className="text-pcPrincipal bg-pcPrincipal/10 px-2 py-1 rounded-xl"
                 >
-                  {productInfo?.product} ({product.quantity})
+                  {item.product?.product} ({item.quantity})
                 </div>
-              );
-            })}
-          </div>
-        )}
+              ))}
+            </div>
+          )}
 
         <button
           disabled={!selectedCompany}

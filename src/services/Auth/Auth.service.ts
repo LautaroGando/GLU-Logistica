@@ -2,15 +2,7 @@ import { API_URL } from "@/config/envs";
 import { ITableClients } from "@/data/adminData/tableData/types";
 import { IUserSignIn } from "@/interfaces/IUser";
 import axios from "axios";
-import Cookies from "js-cookie";
-
-const getTokenHeader = () => {
-  const cookieData = Cookies.get("user-storage");
-  const token = cookieData ? JSON.parse(cookieData).token : null;
-  return {
-    Authorization: `Bearer ${token}`,
-  };
-};
+import { getAuthHeader } from "@/utils/getAuthHeader";
 
 export const signIn = async (values: IUserSignIn) => {
   try {
@@ -21,7 +13,6 @@ export const signIn = async (values: IUserSignIn) => {
       const message = err.response?.data?.message || "Error del servidor al iniciar sesión";
       throw new Error(message);
     }
-
     throw new Error("Error desconocido al iniciar sesión");
   }
 };
@@ -29,7 +20,7 @@ export const signIn = async (values: IUserSignIn) => {
 export const addUser = async (values: ITableClients) => {
   try {
     const { data } = await axios.post(`${API_URL}/auth/signUp`, values, {
-      headers: getTokenHeader(),
+      headers: getAuthHeader(),
     });
     return data;
   } catch (error) {

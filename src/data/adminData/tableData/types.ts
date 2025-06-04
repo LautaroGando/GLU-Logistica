@@ -22,6 +22,7 @@ export interface ITableWarehouse {
 export interface ITableShipments {
   id: string;
   orderId: string;
+  customerId: string;
   shipmentProducts: {
     id: string;
     quantity: number;
@@ -51,7 +52,6 @@ export interface ITableShipments {
     role: "CLIENTE";
   };
 }
-
 
 export interface ITableData {
   table: string;

@@ -83,7 +83,9 @@ export const Table: React.FC<ITableProps> = ({
                     key === "id" ||
                     key === "role" ||
                     key === "customer" ||
-                    key === "customerId"
+                    key === "customerId" ||
+                    key === "createdAt" ||
+                    key === "newsletter"
                   )
                     return null;
 

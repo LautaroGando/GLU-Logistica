@@ -48,7 +48,7 @@ export const FormWarehouse = () => {
           as="select"
         >
           <option value="">Seleccione una opción:</option>
-          {users?.data.map((user: ITableClients, i: number) => (
+          {users?.map((user: ITableClients, i: number) => (
             <option key={i} value={user.company}>
               {user.company}
             </option>

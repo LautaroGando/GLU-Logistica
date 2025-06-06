@@ -1,9 +1,10 @@
 import Cookies from "js-cookie";
 
 export const getAuthHeader = () => {
-  const cookieData = Cookies.get("user-storage");
-  const token = cookieData ? JSON.parse(cookieData).token : null;
-  console.log("token extraído:", token);
+  const token = Cookies.get("auth-token");
+  
+  if (!token) return {};
+
   return {
     Authorization: `Bearer ${token}`,
   };

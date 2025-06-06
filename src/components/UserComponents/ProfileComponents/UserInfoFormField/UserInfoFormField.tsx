@@ -8,7 +8,6 @@ export const UserInfoFormField: React.FC<IUserInfoFormFieldProps> = ({
   name,
   label,
   type = "text",
-  readOnly,
 }) => {
   return (
     <div className="h-[87px]">
@@ -16,12 +15,8 @@ export const UserInfoFormField: React.FC<IUserInfoFormFieldProps> = ({
       <Field
         name={name}
         type={type}
-        readOnly={readOnly}
-        className={`h-12 w-full border-b px-1 text-[15px] outline-none transition-colors ${
-          readOnly
-            ? "bg-gray-50 border-gray-300 text-sc/70 cursor-default"
-            : "bg-white border-pcPrincipal text-sc cursor-text"
-        }`}
+        readOnly
+        className="h-12 w-full border-b px-1 text-[15px] outline-none transition-colors bg-gray-50 border-gray-300 text-sc/70 cursor-default"
       />
 
       <ErrorMessage name={name} component="div" className="text-admin-redAlt text-[13px] mt-1" />

@@ -1,11 +1,7 @@
 import { IShipment } from "@/interfaces";
 import clsx from "clsx";
 
-interface BuildShipmentTableOptions {
-  onlyDelivered?: boolean;
-}
-
-export const buildShipmentTable = (shipments: IShipment[], options?: BuildShipmentTableOptions) => {
+export const buildShipmentTable = (shipments: IShipment[]) => {
   const headers = [
     "Orden",
     "Productos",
@@ -17,13 +13,11 @@ export const buildShipmentTable = (shipments: IShipment[], options?: BuildShipme
     "Estado",
   ];
 
-  const filteredShipments = options?.onlyDelivered
-    ? shipments.filter((s) => s.status === "ENTREGADO")
-    : shipments.filter((s) => s.status !== "ENTREGADO");
-
-  const rows = filteredShipments.map((shipment) => {
+  const rows = shipments.map((shipment) => {
     const productNames = shipment.shipmentProducts
-      .map((sp) => sp.product?.product)
+      .map((sp) =>
+        sp.product?.product && sp.quantity ? `${sp.product.product} x${sp.quantity}` : null
+      )
       .filter(Boolean)
       .join(", ");
 
@@ -50,13 +44,11 @@ export const buildShipmentTable = (shipments: IShipment[], options?: BuildShipme
       shipment.locality,
       shipment.postalCode,
       shipment.province,
-
-      <span key={shipment.id} className={clsx("text-xs", shipmentTypeClass)}>
+      <span key={shipment.id + "-type"} className={clsx("text-xs", shipmentTypeClass)}>
         {shipment.shipmentType}
       </span>,
-
       <span
-        key={shipment.id}
+        key={shipment.id + "-status"}
         className={clsx("px-2 py-2 text-xs rounded-md border font-semibold", statusClass)}
       >
         {shipment.status}

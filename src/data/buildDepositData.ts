@@ -13,9 +13,6 @@ export const buildDepositTable = (
     "Faltantes",
   ];
 
-  console.log(depositData);
-  
-
   const totalByProduct: Record<string, number> = {};
 
   const filteredShipments = shipmentsData.filter(
@@ -23,33 +20,37 @@ export const buildDepositTable = (
       shipment.status === "POR EMPAQUETAR" && shipment.company === company
   );
 
-console.log("ShipmentsData full:", shipmentsData);
-
-
-  
-
-  for (const shipment of filteredShipments) {
-    for (const item of shipment.shipmentProducts) {
-      const productName = item.product.product;
-      totalByProduct[productName] =
-        (totalByProduct[productName] || 0) + item.quantity;
+for (const shipment of filteredShipments) {
+  for (const item of shipment.shipmentProducts) {
+    if (!item.product || !item.product.product) {
+      console.warn("shipmentProduct sin product cargado:", item);
+      continue;
     }
+
+    const productName = item.product.product;
+    totalByProduct[productName] =
+      (totalByProduct[productName] || 0) + item.quantity;
   }
+}
 
-  const rows = Object.entries(totalByProduct).map(
-    ([productName, requestedQty]) => {
-      const depositItem = depositData.find((d) => d.product === productName);
-      const depositQty = depositItem?.quantity || 0;
-      const shortage = Math.max(requestedQty - depositQty, 0);
+  const productNamesSet = new Set([
+    ...depositData.map((d) => d.product),
+    ...Object.keys(totalByProduct),
+  ]);
 
-      return [
-        productName,
-        requestedQty.toString(),
-        depositQty.toString(),
-        shortage > 0 ? shortage.toString() : "-",
-      ];
-    }
-  );
+  const rows = Array.from(productNamesSet).map((productName) => {
+    const requestedQty = totalByProduct[productName] || 0;
+    const depositItem = depositData.find((d) => d.product === productName);
+    const depositQty = depositItem?.quantity || 0;
+    const shortage = Math.max(requestedQty - depositQty, 0);
+
+    return [
+      productName,
+      requestedQty.toString(),
+      depositQty.toString(),
+      shortage > 0 ? shortage.toString() : "-",
+    ];
+  });
 
   return { headers, rows };
 };

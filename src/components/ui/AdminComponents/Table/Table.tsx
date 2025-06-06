@@ -64,9 +64,9 @@ export const Table: React.FC<ITableProps> = ({
 
   return (
     <div className="min-h-[542px] max-h-[542px]">
-      <table className="w-full">
-        <thead>
-          <tr className="h-[40px] border-b border-pcPrincipal">
+      <table className="min-w-[900px] text-sm text-center text-sc w-full">
+        <thead className="bg-gray-100 font-semibold text-[#4e4e4e] sticky top-0 z-10 shadow-md">
+          <tr className="h-[40px]">
             {tableHeadData.map((item, i) => (
               <th key={i} className="min-w-[200px]">
                 {item}

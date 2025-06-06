@@ -33,6 +33,7 @@ export interface ITableShipments {
       company: string;
     };
   }[];
+  products: [{ depositId: string; quantity: number }];
   address: string;
   locality: string;
   postalCode: string;

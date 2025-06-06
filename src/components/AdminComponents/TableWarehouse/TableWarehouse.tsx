@@ -34,7 +34,8 @@ export const TableWarehouse = () => {
         : true;
 
       const matchesSearch = searchTerm
-        ? product.company?.toLowerCase().includes(searchTerm)
+        ? product.company?.toLowerCase().includes(searchTerm) ||
+          product.product?.toLowerCase().includes(searchTerm)
         : true;
 
       return matchesCompany && matchesSearch;

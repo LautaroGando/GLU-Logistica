@@ -41,6 +41,7 @@ export interface ITableShipments {
   company: string;
   shipmentType: "DOMICILIO" | "SUCURSAL";
   status: Status;
+  price: number;
   customer: {
     id: string;
     fullName: string;

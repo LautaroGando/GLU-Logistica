@@ -30,6 +30,8 @@ export const tableData: ITableData[] = [
       "Empresa",
       "Envío",
       "Estado",
+      "Precio",
+      "Fecha de entregado",
       "Acciones",
     ],
   },

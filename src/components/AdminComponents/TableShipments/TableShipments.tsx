@@ -65,6 +65,7 @@ export const TableShipments = () => {
       company,
       shipmentType,
       status,
+      price,
       ...rest
     } = order;
 
@@ -78,6 +79,7 @@ export const TableShipments = () => {
       company,
       shipmentType,
       status,
+      price,
       ...rest,
     };
   });

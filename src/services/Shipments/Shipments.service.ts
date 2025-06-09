@@ -1,15 +1,28 @@
 import axios from "axios";
+import api from "@/utils/axios";
 import { ITableShipments } from "../../data/adminData/tableData/types";
 import { API_URL } from "@/config/envs";
 import Swal from "sweetalert2";
 import { getAuthHeader } from "@/utils/getAuthHeader";
 
-export const getOrders = async () => {
+export const getOrdersByCompany = async (companyName: string) => {
   try {
-    const { data } = await axios.get(`${API_URL}/shipment`, {
+    const { data } = await api.get(`${API_URL}/shipment/${companyName}`, {
       headers: getAuthHeader(),
     });
-    
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getOrders = async () => {
+  try {
+    const { data } = await api.get(`${API_URL}/shipment`, {
+      headers: getAuthHeader(),
+    });
+
     return data;
   } catch (error) {
     console.log(error);
@@ -18,7 +31,7 @@ export const getOrders = async () => {
 
 export const addOrder = async (values: ITableShipments) => {
   try {
-    const { data } = await axios.post(`${API_URL}/shipment`, values, {
+    const { data } = await api.post(`${API_URL}/shipment`, values, {
       headers: getAuthHeader(),
     });
 
@@ -56,7 +69,7 @@ export const addOrder = async (values: ITableShipments) => {
 
 export const deleteOrder = async (id: string) => {
   try {
-    const { data } = await axios.delete(`${API_URL}/shipment/${id}`, {
+    const { data } = await api.delete(`${API_URL}/shipment/${id}`, {
       headers: getAuthHeader(),
     });
 
@@ -94,7 +107,7 @@ export const deleteOrder = async (id: string) => {
 
 export const updateOrderStatus = async (id: string, status: string) => {
   try {
-    const { data } = await axios.patch(
+    const { data } = await api.patch(
       `${API_URL}/shipment/${id}/status`,
       { status },
       {

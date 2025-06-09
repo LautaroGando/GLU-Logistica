@@ -1,12 +1,14 @@
 import { API_URL } from "@/config/envs";
 import { IFormContact } from "@/interfaces/IFormContact";
 import axios from "axios";
+import api from "@/utils/axios";
 import Swal from "sweetalert2";
 import { getAuthHeader } from "@/utils/getAuthHeader";
+import { TChangePasswordValues } from "@/types";
 
 export const getUsers = async () => {
   try {
-    const { data } = await axios.get(`${API_URL}/users`, {
+    const { data } = await api.get(`${API_URL}/users`, {
       headers: getAuthHeader(),
     });
     return data;
@@ -17,7 +19,7 @@ export const getUsers = async () => {
 
 export const deleteUser = async (id: string) => {
   try {
-    const { data } = await axios.delete(`${API_URL}/users/${id}`, {
+    const { data } = await api.delete(`${API_URL}/users/${id}`, {
       headers: getAuthHeader(),
     });
     if (data) {
@@ -53,11 +55,21 @@ export const deleteUser = async (id: string) => {
 
 export const contact = async (data: IFormContact) => {
   try {
-    const response = await axios.post(`${API_URL}/email/formContact`, data);
+    const response = await api.post(`${API_URL}/email/formContact`, data);
     return response.data;
   } catch (err) {
-    throw new Error(
-      typeof err === "string" ? err : "Ha ocurrido un error desconocido"
-    );
+    throw new Error(typeof err === "string" ? err : "Ha ocurrido un error desconocido");
+  }
+};
+
+export const changePasswordService = async (id: string, values: TChangePasswordValues) => {
+  try {
+    const { data } = await axios.patch(`${API_URL}/users/${id}/changePass`, values, {
+      headers: getAuthHeader(),
+    });
+    return data;
+  } catch (err) {
+    console.error("Error al cambiar la contraseña:", err);
+    throw err;
   }
 };

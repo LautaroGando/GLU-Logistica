@@ -3,10 +3,12 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import useNewsLetter from "@/hooks/useNewsletter";
+import { useUserStore } from "@/store";
 
 const NewsLetterModal: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { email, setEmail } = useNewsLetter(setIsVisible);
+  const { user } = useUserStore();
 
   const handleClose = () => {
     setIsVisible(false);
@@ -20,13 +22,15 @@ const NewsLetterModal: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  if (user) return;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: "100%" }}
       animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : "100%" }}
       exit={{ opacity: 0, y: "100%" }}
       transition={{ duration: 0.5 }}
-      className="fixed bottom-1 left-[5px] right-[5px] border border-sc/30 px-2 pb-5 pt-10 bg-pcSecondary rounded-lg shadow-lg max-w-md mx-auto z-50 sm:right-5 sm:left-auto sm:bottom-5"
+      className="fixed bottom-1 left-[5px] right-[5px] border border-sc/30 px-2 pb-5 pt-10 bg-pcSecondary rounded-lg shadow-lg max-w-md mx-auto z-40 sm:right-5 sm:left-auto sm:bottom-5"
     >
       <div className="w-full h-full relative">
         <button

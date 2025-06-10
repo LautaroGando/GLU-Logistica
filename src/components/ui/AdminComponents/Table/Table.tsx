@@ -22,6 +22,7 @@ import {
 import { updateOrderStatus } from "@/services/Shipments/Shipments.service";
 import clsx from "clsx";
 import { formatDate } from "@/utils";
+import { usePathname } from "next/navigation";
 
 export const Table: React.FC<ITableProps> = ({
   tableHeadData,
@@ -35,6 +36,7 @@ export const Table: React.FC<ITableProps> = ({
     deleteProduct,
     deleteOrder,
   } = useAdminStore();
+  const pathName = usePathname();
 
   const handleChangeOrderStatus = async (id: string, status: string) => {
     try {
@@ -86,7 +88,9 @@ export const Table: React.FC<ITableProps> = ({
                     key === "customer" ||
                     key === "customerId" ||
                     key === "createdAt" ||
-                    key === "newsletter"
+                    key === "newsletter" ||
+                    (pathName === "/admin/table-shipments" &&
+                      key === "deliveryDate")
                   )
                     return null;
 

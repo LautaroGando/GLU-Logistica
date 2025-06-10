@@ -54,33 +54,40 @@ export const TableDelivered = () => {
     }));
   }, [orders]);
 
-  const reorderedOrders = filteredOrders.map((order) => {
-    const {
-      orderId,
-      shipmentProducts,
-      address,
-      locality,
-      postalCode,
-      province,
-      company,
-      shipmentType,
-      status,
-      ...rest
-    } = order;
+  const reorderedOrders = [...filteredOrders]
+    .sort((a, b) => {
+      const getNumber = (id: string) => Number(id.replace(/\D/g, ""));
+      return getNumber(b.orderId) - getNumber(a.orderId);
+    })
+    .map((order) => {
+      const {
+        orderId,
+        shipmentProducts,
+        address,
+        locality,
+        postalCode,
+        province,
+        company,
+        shipmentType,
+        status,
+        price,
+        ...rest
+      } = order;
 
-    return {
-      orderId,
-      shipmentProducts,
-      address,
-      locality,
-      postalCode,
-      province,
-      company,
-      shipmentType,
-      status,
-      ...rest,
-    };
-  });
+      return {
+        orderId,
+        shipmentProducts,
+        address,
+        locality,
+        postalCode,
+        province,
+        company,
+        shipmentType,
+        status,
+        price,
+        ...rest,
+      };
+    });
 
   return (
     <div className="w-full flex flex-col gap-5 p-3">
@@ -93,7 +100,7 @@ export const TableDelivered = () => {
       </div>
       <div className="w-full overflow-auto">
         <Table
-          tableHeadData={tableData[2].tableHeadData}
+          tableHeadData={tableData[3].tableHeadData}
           tableBodyData={reorderedOrders}
         />
       </div>

@@ -54,35 +54,54 @@ export const TableShipments = () => {
     }));
   }, [orders]);
 
-  const reorderedOrders = filteredOrders.map((order) => {
-    const {
-      orderId,
-      shipmentProducts,
-      address,
-      locality,
-      postalCode,
-      province,
-      company,
-      shipmentType,
-      status,
-      price,
-      ...rest
-    } = order;
+  const statusPriority: Record<string, number> = {
+    DESPACHADO: 4,
+    "EN CAMINO": 3,
+    EMPAQUETADO: 2,
+    "POR EMPAQUETAR": 1,
+  };
 
-    return {
-      orderId,
-      shipmentProducts,
-      address,
-      locality,
-      postalCode,
-      province,
-      company,
-      shipmentType,
-      status,
-      price,
-      ...rest,
-    };
-  });
+  const reorderedOrders = [...filteredOrders]
+    .sort((a, b) => {
+      const priorityA = statusPriority[a.status] || 0;
+      const priorityB = statusPriority[b.status] || 0;
+
+      if (priorityB !== priorityA) {
+        return priorityB - priorityA;
+      }
+
+      const getNumber = (id: string) => Number(id.replace(/\D/g, ""));
+      return getNumber(b.orderId) - getNumber(a.orderId);
+    })
+    .map((order) => {
+      const {
+        orderId,
+        shipmentProducts,
+        address,
+        locality,
+        postalCode,
+        province,
+        company,
+        shipmentType,
+        status,
+        price,
+        ...rest
+      } = order;
+
+      return {
+        orderId,
+        shipmentProducts,
+        address,
+        locality,
+        postalCode,
+        province,
+        company,
+        shipmentType,
+        status,
+        price,
+        ...rest,
+      };
+    });
 
   return (
     <div className="w-full flex flex-col gap-5 p-3">

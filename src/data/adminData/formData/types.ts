@@ -28,4 +28,5 @@ export interface IFormDataShipments {
   company: string;
   status: Status;
   shipmentType: Shipment | string;
+  price: number;
 }

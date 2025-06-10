@@ -15,23 +15,24 @@ export const buildDepositTable = (
 
   const totalByProduct: Record<string, number> = {};
 
-  const filteredShipments = shipmentsData.filter(
-    (shipment) =>
-      shipment.status === "POR EMPAQUETAR" && shipment.company === company
-  );
+  const filteredShipments =
+    shipmentsData?.filter(
+      (shipment) =>
+        shipment.status === "POR EMPAQUETAR" && shipment.company === company
+    ) || [];
 
-for (const shipment of filteredShipments) {
-  for (const item of shipment.shipmentProducts) {
-    if (!item.product || !item.product.product) {
-      console.warn("shipmentProduct sin product cargado:", item);
-      continue;
+  for (const shipment of filteredShipments) {
+    for (const item of shipment.shipmentProducts) {
+      if (!item.product || !item.product.product) {
+        console.warn("shipmentProduct sin product cargado:", item);
+        continue;
+      }
+
+      const productName = item.product.product;
+      totalByProduct[productName] =
+        (totalByProduct[productName] || 0) + item.quantity;
     }
-
-    const productName = item.product.product;
-    totalByProduct[productName] =
-      (totalByProduct[productName] || 0) + item.quantity;
   }
-}
 
   const productNamesSet = new Set([
     ...depositData.map((d) => d.product),

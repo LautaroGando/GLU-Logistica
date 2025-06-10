@@ -21,8 +21,8 @@ export const useShipmentStore = create<IShipmentState>((set) => ({
 
       const data = await getOrdersByCompany(company);
 
-      const delivered = data.filter((s: IShipment) => s.status === "ENTREGADO");
-      const nonDelivered = data.filter((s: IShipment) => s.status !== "ENTREGADO");
+      const delivered = data?.filter((s: IShipment) => s.status === "ENTREGADO");
+      const nonDelivered = data?.filter((s: IShipment) => s.status !== "ENTREGADO");
 
       set({
         shipments: nonDelivered,

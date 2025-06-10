@@ -21,6 +21,7 @@ import {
 } from "@/services/Warehouse/Warehouse.service";
 import { updateOrderStatus } from "@/services/Shipments/Shipments.service";
 import clsx from "clsx";
+import { formatDate } from "@/utils";
 
 export const Table: React.FC<ITableProps> = ({
   tableHeadData,
@@ -159,6 +160,16 @@ export const Table: React.FC<ITableProps> = ({
                           )}
                         >
                           {value}
+                        </span>
+                      ) : key === "price" ? (
+                        <span className={clsx("text-xs font-bold")}>
+                          ${value}
+                        </span>
+                      ) : key === "deliveryDate" ? (
+                        <span
+                          className={clsx("text-xs font-bold text-pcPrincipal")}
+                        >
+                          {value ? formatDate(value) : "-"}
                         </span>
                       ) : (
                         value

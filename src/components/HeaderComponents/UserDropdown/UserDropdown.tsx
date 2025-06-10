@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { logoutUser } from "@/utils/auth/logoutUser/logoutUser";
 import useSuccessAlert from "@/hooks/useSuccessAlert";
+import { useUserStore } from "@/store";
 
 const UserDropdown = () => {
   const router = useRouter();
@@ -14,6 +15,8 @@ const UserDropdown = () => {
   const [userName, setUserName] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const showSuccessAlert = useSuccessAlert();
+  const { user } = useUserStore();
+  const link = user?.role === "ADMIN" ? "/admin/table-clients" : "/user";
 
   useEffect(() => {
     const rawUser = Cookies.get("user-info");
@@ -47,7 +50,7 @@ const UserDropdown = () => {
 
   const handleProfileClick = () => {
     setIsOpen(false);
-    router.push("/user");
+    router.push(link);
   };
 
   if (!userName) return null;
@@ -67,12 +70,21 @@ const UserDropdown = () => {
 
       {isOpen && (
         <div className="absolute flex flex-col gap-2 right-0 mt-2 w-48 bg-white rounded-[4px] shadow-xl z-50 animate-fade-in overflow-hidden">
-          <button
-            onClick={handleProfileClick}
-            className="w-full px-5 py-3 text-left text-sm text-admin-primary font-medium hover:bg-admin-secondary hover:text-admin-letterColor transition-all duration-300"
-          >
-            Ver perfil
-          </button>
+          {user && user.role === "ADMIN" ? (
+            <button
+              onClick={handleProfileClick}
+              className="w-full px-5 py-3 text-left text-sm text-admin-primary font-medium hover:bg-admin-secondary hover:text-admin-letterColor transition-all duration-300"
+            >
+              Administrador
+            </button>
+          ) : (
+            <button
+              onClick={handleProfileClick}
+              className="w-full px-5 py-3 text-left text-sm text-admin-primary font-medium hover:bg-admin-secondary hover:text-admin-letterColor transition-all duration-300"
+            >
+              Ver perfil
+            </button>
+          )}
 
           <button
             onClick={handleLogout}

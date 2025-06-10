@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export const middleware = (req: NextRequest) => {
-  const searchUser = req.cookies.get("user-storage")?.value;
+  const searchUser = req.cookies.get("user-info")?.value;
   const user = searchUser && JSON.parse(searchUser);
 
   const { pathname } = req.nextUrl;
@@ -23,14 +23,14 @@ export const middleware = (req: NextRequest) => {
     return NextResponse.redirect(new URL("/sign-in", req.url));
   }
 
-  if (user && user.token && authPaths.includes(pathname)) {
+  if (user && authPaths.includes(pathname)) {
     return NextResponse.redirect(new URL("/", req.url));
   }
 
   if (user) {
     const roles = {
-      user: user.user.role === "CLIENTE",
-      admin: user.user.role === "ADMIN",
+      user: user.role === "CLIENTE",
+      admin: user.role === "ADMIN",
     };
 
     const hasAccess = Object.entries(roles).some(

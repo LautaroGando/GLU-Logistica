@@ -73,7 +73,7 @@ export default function RootLayout({
     <MenuProvider>
       <ChangeServiceProvider>
         <Header />
-        <main className="p-2 max-w-[1200px] mx-auto sm:p-4">{children}</main>
+        <div className="p-2 max-w-[1200px] mx-auto sm:p-4">{children}</div>
         <NewsLetterModal />
         <WhatsAppLink />
         <Footer />

@@ -37,16 +37,16 @@ export default function UserLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="flex flex-col lg:flex-row min-h-[75vh] lg:min-h-[80vh] ">
+    <div className="flex flex-col lg:flex-row min-h-[75vh] lg:min-h-[80vh] ">
       <div className="block lg:hidden">
         <UserSidebarMobile />
       </div>
       <aside className="min-w-[220px] border-r border-gray-200 hidden lg:block">
         <UserSidebar />
       </aside>
-      <section className="lg:flex-1 lg:pl-6 lg:overflow-auto lg:min-w-0">
+      <section className="lg:flex-1 lg:pl-6 lg:overflow-hidden lg:min-w-0">
         {children}
       </section>
-    </main>
+    </div>
   );
 }

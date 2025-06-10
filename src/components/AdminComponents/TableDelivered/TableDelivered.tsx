@@ -4,8 +4,6 @@ import { Filter } from "@/components/ui/AdminComponents/Filter/Filter";
 import Pagination from "@/components/ui/AdminComponents/Pagination/Pagination";
 import { Table } from "@/components/ui/AdminComponents/Table/Table";
 import { tableData } from "@/data/adminData/tableData/tableData";
-import { ButtonAdd } from "@/components/ui/AdminComponents/ButtonAdd/ButtonAdd";
-import { Modal } from "@/enum/Modal";
 import { useAdminStore } from "@/store/adminStore/useAdminStore";
 import { ITableShipments } from "@/data/adminData/tableData/types";
 import { IFilter } from "@/interfaces/IFilter";
@@ -103,9 +101,6 @@ export const TableDelivered = () => {
           tableHeadData={tableData[3].tableHeadData}
           tableBodyData={reorderedOrders}
         />
-      </div>
-      <div className="w-full flex justify-end">
-        <ButtonAdd label="Añadir órden" modalType={Modal.SHIPMENT} />
       </div>
     </div>
   );

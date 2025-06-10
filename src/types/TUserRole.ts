@@ -1,1 +1,1 @@
-export type TUserRole = "CLIENTE" | "ADMIN" | "INSTALADOR" | "COORDINADOR";
+export type TUserRole = "CLIENTE" | "ADMIN";

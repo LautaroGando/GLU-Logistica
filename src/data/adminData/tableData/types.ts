@@ -1,4 +1,5 @@
 import { Status } from "@/enum/Status";
+import { TUserRole } from "@/types";
 
 export interface ITableClients {
   id: string;
@@ -9,6 +10,7 @@ export interface ITableClients {
   phone: string;
   birthdate: string;
   company: string;
+  role: TUserRole;
 }
 
 export interface ITableWarehouse {

@@ -13,7 +13,7 @@ export const buildShipmentTable = (shipments: IShipment[]) => {
     "Estado",
   ];
 
-  const rows = shipments.map((shipment) => {
+  const rows = shipments?.map((shipment) => {
     const productNames = shipment.shipmentProducts
       .map((sp) =>
         sp.product?.product && sp.quantity ? `${sp.product.product} x${sp.quantity}` : null

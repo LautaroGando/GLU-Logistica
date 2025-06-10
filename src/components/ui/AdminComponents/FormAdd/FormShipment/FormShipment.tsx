@@ -66,11 +66,14 @@ export const FormShipment = () => {
       <div className="w-full">
         <Field className="input" name="company" id="company" as="select">
           <option value="">Seleccione una empresa:</option>
-          {users?.map((user: ITableClients, i: number) => (
-            <option key={i} value={user.company}>
-              {user.company}
-            </option>
-          ))}
+          {users?.map(
+            (user: ITableClients, i: number) =>
+              user.role !== "ADMIN" && (
+                <option key={i} value={user.company}>
+                  {user.company}
+                </option>
+              )
+          )}
         </Field>
       </div>
       <div className="w-full">

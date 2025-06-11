@@ -10,7 +10,10 @@ export interface IShipment {
   customer: ICustomer;
   shipmentProducts: IShipmentProduct[];
   shipmentType: string;
+  deliveryDate: string; 
+  price: number;        
 }
+
 
 export type ShipmentStatus =
   | "POR EMPAQUETAR"

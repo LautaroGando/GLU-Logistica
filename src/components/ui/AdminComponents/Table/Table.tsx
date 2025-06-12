@@ -38,6 +38,9 @@ export const Table: React.FC<ITableProps> = ({
   } = useAdminStore();
   const pathName = usePathname();
 
+  const isPaymentsTable = pathName === "/admin/table-payments";
+  const isClientsTable = pathName === "/admin/table-clients";
+
   const handleChangeOrderStatus = async (id: string, status: string) => {
     try {
       await updateOrderStatus(id, status);
@@ -175,64 +178,70 @@ export const Table: React.FC<ITableProps> = ({
                         >
                           {value ? formatDate(value) : "-"}
                         </span>
+                      ) : key === "company" && isClientsTable && !value ? (
+                        <span className="font-bold uppercase text-pcPrincipal text-xs">
+                          Admin
+                        </span>
                       ) : (
                         value
                       )}
                     </td>
                   );
                 })}
-                <td className="min-w-[200px] text-center text-pcSecondary">
-                  <div className="flex justify-center items-center w-full">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <div className="relative group">
-                          <button className="w-8 h-8 flex items-center justify-center rounded bg-pcPrincipal hover:bg-pcPrincipal/80 transition-colors">
-                            <FontAwesomeIcon
-                              className="max-w-5 text-[20px]"
-                              icon={faBarsStaggered}
-                              width={20}
-                              height={20}
-                            />
-                          </button>
-                        </div>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent
-                        align="end"
-                        className="w-48 rounded-md shadow-lg border border-gray-200 bg-white"
-                      >
-                        {"orderId" in row &&
-                          getNextStatusOptions(row.status).map((option) => (
-                            <DropdownMenuItem
-                              key={option.value}
-                              onClick={() =>
-                                handleChangeOrderStatus(row.id, option.value)
-                              }
-                              className="text-inherit flex items-center gap-3 px-4 py-3 min-h-[48px] text-base sm:text-sm cursor-pointer text-admin-primary data-[highlighted]:bg-admin-primary/10 data-[highlighted]:text-admin-primary rounded-md transition-colors duration-200"
-                            >
-                              <FontAwesomeIcon icon={faDiagramProject} />
-                              {option.label}
-                            </DropdownMenuItem>
-                          ))}
-
-                        <DropdownMenuItem
-                          onClick={() => {
-                            if ("fullName" in row) {
-                              deleteUser(row.id);
-                            } else if ("product" in row) {
-                              deleteProduct(row.id);
-                            } else if ("orderId" in row) {
-                              deleteOrder(row.id);
-                            }
-                          }}
-                          className="text-inherit flex items-center gap-3 px-4 py-3 min-h-[48px] text-base sm:text-sm cursor-pointer text-admin-deleteColor data-[highlighted]:bg-admin-deleteColor/10 data-[highlighted]:text-admin-deleteColor rounded-md transition-colors duration-200"
+                {!isPaymentsTable && (
+                  <td className="min-w-[200px] text-center text-pcSecondary">
+                    <div className="flex justify-center items-center w-full">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <div className="relative group">
+                            <button className="w-8 h-8 flex items-center justify-center rounded bg-pcPrincipal hover:bg-pcPrincipal/80 transition-colors">
+                              <FontAwesomeIcon
+                                className="max-w-5 text-[20px]"
+                                icon={faBarsStaggered}
+                                width={20}
+                                height={20}
+                              />
+                            </button>
+                          </div>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent
+                          align="end"
+                          className="w-48 rounded-md shadow-lg border border-gray-200 bg-white"
                         >
-                          <FontAwesomeIcon icon={faTrash} />
-                          Eliminar
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                </td>
+                          {"orderId" in row &&
+                            getNextStatusOptions(row.status).map((option) => (
+                              <DropdownMenuItem
+                                key={option.value}
+                                onClick={() =>
+                                  handleChangeOrderStatus(row.id, option.value)
+                                }
+                                className="text-inherit flex items-center gap-3 px-4 py-3 min-h-[48px] text-base sm:text-sm cursor-pointer text-admin-primary data-[highlighted]:bg-admin-primary/10 data-[highlighted]:text-admin-primary rounded-md transition-colors duration-200"
+                              >
+                                <FontAwesomeIcon icon={faDiagramProject} />
+                                {option.label}
+                              </DropdownMenuItem>
+                            ))}
+
+                          <DropdownMenuItem
+                            onClick={() => {
+                              if ("fullName" in row) {
+                                deleteUser(row.id);
+                              } else if ("product" in row) {
+                                deleteProduct(row.id);
+                              } else if ("orderId" in row) {
+                                deleteOrder(row.id);
+                              }
+                            }}
+                            className="text-inherit flex items-center gap-3 px-4 py-3 min-h-[48px] text-base sm:text-sm cursor-pointer text-admin-deleteColor data-[highlighted]:bg-admin-deleteColor/10 data-[highlighted]:text-admin-deleteColor rounded-md transition-colors duration-200"
+                          >
+                            <FontAwesomeIcon icon={faTrash} />
+                            Eliminar
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </div>
+                  </td>
+                )}
               </tr>
             );
           })}

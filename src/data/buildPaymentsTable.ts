@@ -18,7 +18,7 @@ export function buildPaymentsTable(shipments: IShipment[]) {
     const sunday = new Date(monday);
     sunday.setDate(monday.getDate() + 6);
 
-    const weekKey = `${format(monday, "dd/MM")} - ${format(sunday, "dd/MM")}`;
+    const weekKey = `${format(monday, "dd/MM/yyyy")} - ${format(sunday, "dd/MM/yyyy")}`;
 
     const prev = weeksMap.get(weekKey) || 0;
     weeksMap.set(weekKey, prev + shipment.price);

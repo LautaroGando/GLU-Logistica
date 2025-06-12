@@ -33,6 +33,12 @@ export const Header = () => {
         id="delivered"
         placeholder="Buscar órden..."
       />
+      <Search
+        path="/admin/table-payments"
+        name="payments"
+        id="payments"
+        placeholder="Buscar semana..."
+      />
     </div>
   );
 };

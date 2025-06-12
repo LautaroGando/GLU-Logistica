@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { Filter } from "@/components/ui/AdminComponents/Filter/Filter";
-import Pagination from "@/components/ui/AdminComponents/Pagination/Pagination";
 import { Table } from "@/components/ui/AdminComponents/Table/Table";
 import { tableData } from "@/data/adminData/tableData/tableData";
 import { useAdminStore } from "@/store/adminStore/useAdminStore";
@@ -94,7 +93,6 @@ export const TableDelivered = () => {
           filter={companyFilterOptions}
           onChange={(value) => setSelectedFilter(value)}
         />
-        <Pagination table="shipments" />
       </div>
       <div className="w-full overflow-auto">
         <Table

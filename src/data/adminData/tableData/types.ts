@@ -58,6 +58,13 @@ export interface ITableShipments {
   };
 }
 
+export interface ITablePayments {
+  id: string;
+  company: string;
+  week: string;
+  total: string;
+}
+
 export interface ITableData {
   table: string;
   tableHeadData: string[];

@@ -30,7 +30,7 @@ export function Deposit() {
       <UserTablesSearchInput
         value={searchProductTerm}
         onChange={setSearchProductTerm}
-        placeholder="Buscar por número de orden"
+        placeholder="Buscar por nombre de producto"
       />
 
       <TableBase

@@ -27,7 +27,7 @@ export const Payments = () => {
       <UserTablesSearchInput
         value={paymentSearchTerm}
         onChange={setPaymentSearchTerm}
-        placeholder="Buscar por número de orden"
+        placeholder="Buscar por semana (ej: 03/06 o 08/06)"
       />
 
       <TableBase

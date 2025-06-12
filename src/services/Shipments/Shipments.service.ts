@@ -11,7 +11,7 @@ export const getOrdersByCompany = async (companyName: string) => {
       headers: getAuthHeader(),
     });
 
-        console.log(data);
+    console.log(data);
 
     return data;
   } catch (error) {
@@ -32,6 +32,7 @@ export const getOrders = async () => {
 };
 
 export const addOrder = async (values: ITableShipments) => {
+  console.log(values)
   try {
     const { data } = await api.post(`${API_URL}/shipment`, values, {
       headers: getAuthHeader(),
@@ -51,13 +52,10 @@ export const addOrder = async (values: ITableShipments) => {
       });
     }
 
-    console.log(data);
-    
-
     return data;
   } catch (error) {
     console.log(error);
-    
+
     if (axios.isAxiosError(error) && error.response) {
       Swal.fire({
         icon: "error",

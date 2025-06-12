@@ -1,4 +1,5 @@
 import {
+  faCreditCard,
   faFlagCheckered,
   faTruckFast,
   faUser,
@@ -26,5 +27,10 @@ export const linksData: ILinkData[] = [
     icon: faFlagCheckered,
     href: "/admin/table-delivered",
     label: "Entregados",
+  },
+  {
+    icon: faCreditCard,
+    href: "/admin/table-payments",
+    label: "Pagos",
   },
 ];

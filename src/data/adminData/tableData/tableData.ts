@@ -51,4 +51,8 @@ export const tableData: ITableData[] = [
       "Acciones",
     ],
   },
+  {
+    table: "payments",
+    tableHeadData: ["Semana", "Monto total", "Empresa"],
+  },
 ];

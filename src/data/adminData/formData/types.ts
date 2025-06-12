@@ -27,6 +27,7 @@ export interface IFormDataShipments {
   province: string;
   company: string;
   status: Status;
+  deliveryDate?: string | null;
   shipmentType: Shipment | string;
   price: number;
 }

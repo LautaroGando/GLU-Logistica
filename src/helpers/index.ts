@@ -1,0 +1,1 @@
+export { validateUserInfo } from "./validateUserInfo";

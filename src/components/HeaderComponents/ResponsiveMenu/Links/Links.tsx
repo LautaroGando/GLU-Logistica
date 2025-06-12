@@ -8,13 +8,17 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useSize } from "@/hooks/useSize";
+import Button from "../../Button/Button";
+import Cookies from "js-cookie";
+import { LogoutButton } from "@/components/ui/HeaderComponents/LogoutButton/LogoutButton";
 
 export const Links: React.FC = () => {
   const { menu, handleCloseMenu } = useMenu();
+  const token = Cookies.get("auth-token");
   const size = useSize();
 
   useEffect(() => {
-    if (size.size > 768) handleCloseMenu();
+    if (size.size >= 1024) handleCloseMenu();
   }, [size, handleCloseMenu]);
 
   return (
@@ -47,6 +51,18 @@ export const Links: React.FC = () => {
             </div>
 
             <div className="w-full h-[65%] text-pcPrincipal flex flex-col items-center gap-5 font-bold sm:text-lg">
+              {token && (
+                <div className="min-w-[330px] text-left border-l-4 pl-3 border-pcPrincipal relative">
+                  <Link
+                    href="/user"
+                    onClick={handleCloseMenu}
+                    className="transition-all duration-500 hover:pl-3"
+                  >
+                    Mi perfil
+                  </Link>
+                </div>
+              )}
+
               {links.map((link: ILink, i: number) => (
                 <div
                   className="min-w-[330px] overflow-hidden text-left border-l-4 pl-3 border-pcPrincipal relative"
@@ -61,6 +77,14 @@ export const Links: React.FC = () => {
                   </Link>
                 </div>
               ))}
+
+              {token && (
+                <div className="min-w-[330px] text-left border-l-4 pl-3 border-admin-red relative">
+                  <LogoutButton handleCloseMenu={handleCloseMenu} />
+                </div>
+              )}
+
+              {!token && <Button />}
             </div>
           </motion.div>
         </motion.div>

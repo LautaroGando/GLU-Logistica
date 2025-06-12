@@ -1,0 +1,36 @@
+import {
+  faCreditCard,
+  faFlagCheckered,
+  faTruckFast,
+  faUser,
+  faWarehouse,
+} from "@fortawesome/free-solid-svg-icons";
+import { ILinkData } from "./types";
+
+export const linksData: ILinkData[] = [
+  {
+    icon: faUser,
+    href: "/admin/table-clients",
+    label: "Clientes",
+  },
+  {
+    icon: faWarehouse,
+    href: "/admin/table-warehouse",
+    label: "Depósito",
+  },
+  {
+    icon: faTruckFast,
+    href: "/admin/table-shipments",
+    label: "Envíos",
+  },
+  {
+    icon: faFlagCheckered,
+    href: "/admin/table-delivered",
+    label: "Entregados",
+  },
+  {
+    icon: faCreditCard,
+    href: "/admin/table-payments",
+    label: "Pagos",
+  },
+];

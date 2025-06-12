@@ -1,5 +1,6 @@
-import { IErrorFormContact } from "@/interfaces/IErrorInput";
+
 import { IFormContact } from "@/interfaces/IFormContact";
+import { IErrorFormContact } from '@/interfaces/IErrorInput';
 
 const validateContact = (values: IFormContact) => {
   const errors: IErrorFormContact = {};

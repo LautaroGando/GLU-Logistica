@@ -21,6 +21,7 @@ export default {
         mapColorGBA2: "#2B35A3",
         mapColorGBA3: "#0C1177",
         blackPage: "#222",
+        disabledButton: "#8D8D8D",
 
         admin: {
           primary: "#343A49",
@@ -32,6 +33,52 @@ export default {
           blue: "#8FA6FF",
           yellow: "#FFD593",
           orange: "#F59E0B",
+          editColor: "#009DFF",
+          activeColor: "#28b463",
+          inactiveColor: "#E17575",
+          deleteColor: "#CE1818",
+          inProccess: "#f1c40f",
+          borderColor: "#BDBDBD",
+        },
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        chart: {
+          "1": "hsl(var(--chart-1))",
+          "2": "hsl(var(--chart-2))",
+          "3": "hsl(var(--chart-3))",
+          "4": "hsl(var(--chart-4))",
+          "5": "hsl(var(--chart-5))",
         },
       },
       fontFamily: {
@@ -39,17 +86,12 @@ export default {
         bebasNeue: ["BebasNeue", "sans-serif"],
       },
       backgroundImage: {
-        buttonGradient:
-          "linear-gradient(350deg, #0C1177 45.45%, #323FBD 46.73%)",
-        buttonHoverGradient:
-          "linear-gradient(350deg, #FAFAFA 45.45%, #EEEEEE 46.73%)",
+        buttonGradient: "linear-gradient(350deg, #0C1177 45.45%, #323FBD 46.73%)",
+        buttonHoverGradient: "linear-gradient(350deg, #FAFAFA 45.45%, #EEEEEE 46.73%)",
         banner: "linear-gradient(344deg, #FAFAFA 48%, #00000000 49%)",
-        bannerGradientImage:
-          "linear-gradient(263deg, #0C1177aa 0%, #0C1177aa 100%)",
-        aboutUsGradientImage:
-          "linear-gradient(177deg, #0C1177 45%, #00000000 55%)",
-        aboutUsGradientBorder:
-          "linear-gradient(-135deg, #0C1177 50%, #00000000 50%)",
+        bannerGradientImage: "linear-gradient(263deg, #0C1177aa 0%, #0C1177aa 100%)",
+        aboutUsGradientImage: "linear-gradient(177deg, #0C1177 45%, #00000000 55%)",
+        aboutUsGradientBorder: "linear-gradient(-135deg, #0C1177 50%, #00000000 50%)",
       },
       boxShadow: {
         methodCard: "0 4px 4px 0 rgba(36, 186, 99, 0.50)",

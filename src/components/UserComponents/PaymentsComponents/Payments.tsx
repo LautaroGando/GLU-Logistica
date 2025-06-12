@@ -2,12 +2,13 @@
 
 import { useEffect } from "react";
 import { useUserStore, useShipmentStore } from "@/store";
-import { UserTitle, TableBase } from "@/components";
+import { UserTitle, TableBase, UserTablesSearchInput } from "@/components";
 import { buildPaymentsTable } from "@/data";
 
 export const Payments = () => {
   const { user } = useUserStore();
-  const { deliveredShipments, fetchShipments, isLoading } = useShipmentStore();
+  const { deliveredShipments, paymentSearchTerm, setPaymentSearchTerm, fetchShipments, isLoading } =
+    useShipmentStore();
 
   useEffect(() => {
     if (user?.company) fetchShipments(user.company);
@@ -15,12 +16,23 @@ export const Payments = () => {
 
   const { headers, rows } = buildPaymentsTable(deliveredShipments);
 
+  const filteredRows = rows.filter((row) =>
+    row[0].toLowerCase().includes(paymentSearchTerm.toLowerCase())
+  );
+
   return (
-    <section className="mt-6">
+    <section className="mt-6 space-y-4">
       <UserTitle text="Pagos semanales" />
+
+      <UserTablesSearchInput
+        value={paymentSearchTerm}
+        onChange={setPaymentSearchTerm}
+        placeholder="Buscar por número de orden"
+      />
+
       <TableBase
         headers={headers}
-        rows={rows}
+        rows={filteredRows}
         rowHight="h-[56px]"
         isLoading={isLoading}
         emptyTitle="Sin pagos"

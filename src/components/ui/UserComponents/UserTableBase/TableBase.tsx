@@ -15,6 +15,8 @@ const getColumnWidth = (header: string) => {
       return "w-[30%] sm:w-[20%] lg:w-[15%] xl:w-[10%] p-2";
     case "Estado":
       return "w-[130px]";
+    case "Fecha de entrega":
+      return "w-[150px]";
     default:
       return "w-[110px] px-4 py-2";
   }

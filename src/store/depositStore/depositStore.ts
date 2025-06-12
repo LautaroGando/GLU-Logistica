@@ -12,6 +12,9 @@ export const useDepositStore = create<IDepositState>((set) => ({
   isLoading: false,
   error: null,
 
+  searchProductTerm: "",
+  setSearchProductTerm: (term: string) => set({ searchProductTerm: term }),
+
   fetchDepositData: async (company: string) => {
     set({ isLoading: true, error: null });
 
@@ -29,10 +32,7 @@ export const useDepositStore = create<IDepositState>((set) => ({
 
       set({ products, shipments, table });
     } catch (error) {
-      const message =
-        error instanceof Error
-          ? error.message
-          : "No se pudo cargar el depósito";
+      const message = error instanceof Error ? error.message : "No se pudo cargar el depósito";
 
       console.error("Error en fetchDepositData:", error);
       set({ error: message });

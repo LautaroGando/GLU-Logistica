@@ -7,6 +7,8 @@ export interface IDepositState {
   table: ITableBaseProps | null;
   isLoading: boolean;
   error: string | null;
+  searchProductTerm: string;
+  setSearchProductTerm: (term: string) => void;
   fetchDepositData: (company: string) => Promise<void>;
   clear: () => void;
 }

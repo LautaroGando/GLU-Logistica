@@ -5,3 +5,4 @@ export * from "./HistoryComponents";
 export * from "./PaymentsComponents";
 export * from "./UserSidebar";
 export * from "./UserSidebarMobile/UserSidebarMobile";
+export * from "./UserTablesSearchInput/UserTablesSearchInput";

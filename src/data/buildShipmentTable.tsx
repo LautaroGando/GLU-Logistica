@@ -1,7 +1,10 @@
 import { IShipment } from "@/interfaces";
 import clsx from "clsx";
 
-export const buildShipmentTable = (shipments: IShipment[]) => {
+export const buildShipmentTable = (
+  shipments: IShipment[],
+  includeDeliveryDate: boolean = false
+) => {
   const headers = [
     "Orden",
     "Productos",
@@ -12,6 +15,10 @@ export const buildShipmentTable = (shipments: IShipment[]) => {
     "Envío",
     "Estado",
   ];
+
+  if (includeDeliveryDate) {
+    headers.splice(7, 0, "Fecha de entrega");
+  }
 
   const rows = shipments?.map((shipment) => {
     const productNames = shipment.shipmentProducts
@@ -37,7 +44,7 @@ export const buildShipmentTable = (shipments: IShipment[]) => {
       ) && "text-gray-600 border-gray-300"
     );
 
-    return [
+    const row = [
       shipment.orderId,
       productNames,
       shipment.address,
@@ -47,13 +54,29 @@ export const buildShipmentTable = (shipments: IShipment[]) => {
       <span key={shipment.id + "-type"} className={clsx("text-xs", shipmentTypeClass)}>
         {shipment.shipmentType}
       </span>,
+    ];
+
+    if (includeDeliveryDate) {
+      const delivery = new Date(shipment.deliveryDate);
+      const formattedDate = delivery.toLocaleDateString("es-AR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      });
+      
+      row.splice(7, 0, formattedDate);
+    }
+
+    row.push(
       <span
         key={shipment.id + "-status"}
         className={clsx("px-2 py-2 text-xs rounded-md border font-semibold", statusClass)}
       >
         {shipment.status}
-      </span>,
-    ];
+      </span>
+    );
+
+    return row;
   });
 
   return { headers, rows };

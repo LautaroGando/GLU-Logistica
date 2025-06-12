@@ -38,6 +38,13 @@ export const FormAdd: React.FC<IFormAddProps> = ({ initialValues }) => {
     return null;
   };
 
+  const normalizeShipmentValues = (
+    values: IFormDataShipments
+  ): IFormDataShipments => ({
+    ...values,
+    deliveryDate: values.deliveryDate === "" ? null : values.deliveryDate,
+  });
+
   const handleOnSubmit = async (
     values: IFormDataClients | IFormDataWarehouse | IFormDataShipments
   ) => {
@@ -48,7 +55,8 @@ export const FormAdd: React.FC<IFormAddProps> = ({ initialValues }) => {
       addProduct(values as ITableWarehouse);
       getProducts();
     } else if ("orderId" in initialValues) {
-      addOrder(values as ITableShipments);
+      const normalized = normalizeShipmentValues(values as IFormDataShipments);
+      addOrder(normalized as ITableShipments);
       getOrders();
     }
   };

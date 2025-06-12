@@ -31,6 +31,7 @@ export const formDataShipments: IFormDataShipments = {
   province: "",
   company: "",
   status: Status.FOR_PACKAGING,
+  deliveryDate: "",
   shipmentType: "",
   price: 0,
 };

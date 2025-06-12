@@ -48,11 +48,14 @@ export const FormWarehouse = () => {
           as="select"
         >
           <option value="">Seleccione una opción:</option>
-          {users?.map((user: ITableClients, i: number) => (
-            <option key={i} value={user.company}>
-              {user.company}
-            </option>
-          ))}
+          {users?.map(
+            (user: ITableClients, i: number) =>
+              user.role !== "ADMIN" && (
+                <option key={i} value={user.company}>
+                  {user.company}
+                </option>
+              )
+          )}
         </Field>
       </div>
       <div className="flex flex-col items-center gap-2">

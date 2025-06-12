@@ -43,6 +43,7 @@ export const FormShipment = () => {
   }, [values.company, values.customerId, products, setFieldValue]);
 
   const selectedCompany = values.company;
+  const orderStatus = values.status;
 
   const companyProducts = useMemo(() => {
     return (
@@ -209,6 +210,17 @@ export const FormShipment = () => {
           <option value={Status.DELIVERED}>Entregado</option>
         </Field>
       </div>
+      {orderStatus === "ENTREGADO" && (
+        <div className="w-full">
+          <Field
+            className="input"
+            name="deliveryDate"
+            id="deliveryDate"
+            type="date"
+            placeholder="Fecha de entregado:"
+          />
+        </div>
+      )}
       <div className="flex flex-col items-center gap-2">
         <ButtonSend label="Guardar envío" />
         <ButtonModaleClose />

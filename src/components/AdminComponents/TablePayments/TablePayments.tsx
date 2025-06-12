@@ -1,59 +1,61 @@
 "use client";
-
 import { useEffect, useMemo, useState } from "react";
 import { Filter } from "@/components/ui/AdminComponents/Filter/Filter";
-import Pagination from "@/components/ui/AdminComponents/Pagination/Pagination";
 import { Table } from "@/components/ui/AdminComponents/Table/Table";
 import { tableData } from "@/data/adminData/tableData/tableData";
-import { ButtonAdd } from "@/components/ui/AdminComponents/ButtonAdd/ButtonAdd";
-import { Modal } from "@/enum/Modal";
 import { useAdminStore } from "@/store/adminStore/useAdminStore";
+import { buildPaymentsTableAdmin } from "@/data/buildPaymentsTableAdmin";
 import { IFilter } from "@/interfaces/IFilter";
-import { ITableWarehouse } from "@/data/adminData/tableData/types";
+import { IShipment } from "@/interfaces";
+import { ITablePayments } from "@/data/adminData/tableData/types";
 
 export const TablePayments = () => {
-  const { products, getProducts, searchTerm } = useAdminStore();
-  const [filteredProducts, setFilteredProducts] = useState<ITableWarehouse[]>(
-    []
-  );
+  const { orders, getOrders, searchTerm } = useAdminStore();
   const [selectedFilter, setSelectedFilter] = useState<string>("");
 
   useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+    getOrders();
+  }, [getOrders]);
 
-  useEffect(() => {
-    if (!products) {
-      setFilteredProducts([]);
-      return;
-    }
-
-    const result = products.filter((product) => {
-      const matchesCompany = selectedFilter
-        ? product.company?.toLowerCase().includes(selectedFilter)
-        : true;
-
-      const matchesSearch = searchTerm
-        ? product.company?.toLowerCase().includes(searchTerm) ||
-          product.product?.toLowerCase().includes(searchTerm)
-        : true;
-
-      return matchesCompany && matchesSearch;
-    });
-
-    setFilteredProducts(result);
-  }, [selectedFilter, products, searchTerm]);
+  const { rows } = buildPaymentsTableAdmin(orders as IShipment[]) as {
+    rows: ITablePayments[];
+  };
 
   const companyFilterOptions: IFilter[] = useMemo(() => {
-    if (!products) return [];
+    if (!orders) return [];
     const uniqueCompanies = Array.from(
-      new Set(products.map((p) => p.company).filter(Boolean))
+      new Set(orders.map((o) => o.company).filter(Boolean))
     );
     return uniqueCompanies.map((company) => ({
       label: company!,
       value: company!.toLowerCase(),
     }));
-  }, [products]);
+  }, [orders]);
+
+  const filteredRows = useMemo(() => {
+    const sorted = [...rows].sort((a, b) => {
+      const getDateFromWeek = (week: string) => {
+        const [day, month, year] = week.split(" - ")[0].split("/").map(Number);
+        return new Date(year, month - 1, day);
+      };
+
+      return (
+        getDateFromWeek(b.week).getTime() - getDateFromWeek(a.week).getTime()
+      );
+    });
+
+    return sorted.filter((row) => {
+      const matchesCompany = selectedFilter
+        ? row.company.toLowerCase().includes(selectedFilter)
+        : true;
+
+      const matchesSearch = searchTerm
+        ? row.week.toLowerCase().includes(searchTerm)
+        : true;
+
+      return matchesCompany && matchesSearch;
+    });
+  }, [rows, selectedFilter, searchTerm]);
 
   return (
     <div className="w-full flex flex-col gap-5 p-3">
@@ -62,16 +64,12 @@ export const TablePayments = () => {
           filter={companyFilterOptions}
           onChange={(value) => setSelectedFilter(value)}
         />
-        <Pagination table="warehouse" />
       </div>
       <div className="w-full overflow-auto">
         <Table
           tableHeadData={tableData[4].tableHeadData}
-          tableBodyData={[]}
+          tableBodyData={filteredRows}
         />
-      </div>
-      <div className="w-full flex justify-end">
-        <ButtonAdd label="Añadir producto" modalType={Modal.WAREHOUSE} />
       </div>
     </div>
   );

@@ -1,1 +1,1 @@
-export type TTable = "clients" | "warehouse" | "shipments";
+export type TTable = "clients" | "warehouse" | "shipments" | "payments";

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Filter } from "@/components/ui/AdminComponents/Filter/Filter";
-import Pagination from "@/components/ui/AdminComponents/Pagination/Pagination";
 import { Table } from "@/components/ui/AdminComponents/Table/Table";
 import { ButtonAdd } from "@/components/ui/AdminComponents/ButtonAdd/ButtonAdd";
 import { Modal } from "@/enum/Modal";
@@ -57,7 +56,6 @@ export const TableClients = () => {
           filter={clientFilterOptions}
           onChange={(value) => setSelectedFilter(value)}
         />
-        <Pagination table="clients" />
       </div>
       <div className="w-full overflow-auto">
         <Table

@@ -15,6 +15,8 @@ import { LogoutButton } from "@/components/ui/HeaderComponents/LogoutButton/Logo
 export const Links: React.FC = () => {
   const { menu, handleCloseMenu } = useMenu();
   const token = Cookies.get("auth-token");
+  const user = Cookies.get("user-info");
+  const userInfo = user && JSON.parse(user);
   const size = useSize();
 
   useEffect(() => {
@@ -54,11 +56,17 @@ export const Links: React.FC = () => {
               {token && (
                 <div className="min-w-[330px] text-left border-l-4 pl-3 border-pcPrincipal relative">
                   <Link
-                    href="/user"
+                    href={
+                      userInfo && userInfo.role === "CLIENTE"
+                        ? "/user"
+                        : "/admin/table-clients"
+                    }
                     onClick={handleCloseMenu}
                     className="transition-all duration-500 hover:pl-3"
                   >
-                    Mi perfil
+                    {userInfo && userInfo.role === "CLIENTE"
+                      ? "Mi perfil"
+                      : "Administrador"}
                   </Link>
                 </div>
               )}

@@ -8,13 +8,22 @@ import { buildPaymentsTableAdmin } from "@/data/buildPaymentsTableAdmin";
 import { IFilter } from "@/interfaces/IFilter";
 import { IShipment } from "@/interfaces";
 import { ITablePayments } from "@/data/adminData/tableData/types";
+import { NotData } from "@/components/ui/AdminComponents/NotData/NotData";
+import Loading from "@/components/ui/Loading/Loading";
 
 export const TablePayments = () => {
   const { orders, getOrders, searchTerm } = useAdminStore();
   const [selectedFilter, setSelectedFilter] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    getOrders();
+    const fetchData = async () => {
+      setIsLoading(true);
+      await getOrders();
+      setIsLoading(false);
+    };
+
+    fetchData();
   }, [getOrders]);
 
   const { rows } = buildPaymentsTableAdmin(orders as IShipment[]) as {
@@ -66,10 +75,18 @@ export const TablePayments = () => {
         />
       </div>
       <div className="w-full overflow-auto">
-        <Table
-          tableHeadData={tableData[4].tableHeadData}
-          tableBodyData={filteredRows}
-        />
+        {isLoading ? (
+          <div className="min-h-[542px] max-h-[542px] flex items-center">
+            <Loading mode="principal" hover />
+          </div>
+        ) : filteredRows.length ? (
+          <Table
+            tableHeadData={tableData[4].tableHeadData}
+            tableBodyData={filteredRows}
+          />
+        ) : (
+          <NotData />
+        )}
       </div>
     </div>
   );

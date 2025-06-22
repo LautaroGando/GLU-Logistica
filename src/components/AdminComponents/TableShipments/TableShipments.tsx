@@ -8,14 +8,23 @@ import { Modal } from "@/enum/Modal";
 import { useAdminStore } from "@/store/adminStore/useAdminStore";
 import { ITableShipments } from "@/data/adminData/tableData/types";
 import { IFilter } from "@/interfaces/IFilter";
+import { NotData } from "@/components/ui/AdminComponents/NotData/NotData";
+import Loading from "@/components/ui/Loading/Loading";
 
 export const TableShipments = () => {
   const { orders, getOrders, searchTerm } = useAdminStore();
   const [filteredOrders, setFilteredOrders] = useState<ITableShipments[]>([]);
   const [selectedFilter, setSelectedFilter] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    getOrders();
+    const fetchData = async () => {
+      setIsLoading(true);
+      await getOrders();
+      setIsLoading(false);
+    };
+
+    fetchData();
   }, [getOrders]);
 
   useEffect(() => {
@@ -111,10 +120,18 @@ export const TableShipments = () => {
         />
       </div>
       <div className="w-full overflow-auto">
-        <Table
-          tableHeadData={tableData[2].tableHeadData}
-          tableBodyData={reorderedOrders}
-        />
+        {isLoading ? (
+          <div className="min-h-[542px] max-h-[542px] flex items-center">
+            <Loading mode="principal" hover />
+          </div>
+        ) : reorderedOrders.length ? (
+          <Table
+            tableHeadData={tableData[2].tableHeadData}
+            tableBodyData={reorderedOrders}
+          />
+        ) : (
+          <NotData />
+        )}
       </div>
       <div className="w-full flex justify-end">
         <ButtonAdd label="Añadir órden" modalType={Modal.SHIPMENT} />

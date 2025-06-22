@@ -9,14 +9,23 @@ import { tableData } from "@/data/adminData/tableData/tableData";
 import { ITableClients } from "@/data/adminData/tableData/types";
 import { IFilter } from "@/interfaces/IFilter";
 import { useAdminStore } from "@/store/adminStore/useAdminStore";
+import { NotData } from "@/components/ui/AdminComponents/NotData/NotData";
+import Loading from "@/components/ui/Loading/Loading";
 
 export const TableClients = () => {
   const { users, getUsers, searchTerm } = useAdminStore();
   const [filteredUsers, setFilteredUsers] = useState<ITableClients[]>([]);
   const [selectedFilter, setSelectedFilter] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    getUsers();
+    const fetchData = async () => {
+      setIsLoading(true);
+      await getUsers();
+      setIsLoading(false);
+    };
+
+    fetchData();
   }, [getUsers]);
 
   useEffect(() => {
@@ -58,10 +67,18 @@ export const TableClients = () => {
         />
       </div>
       <div className="w-full overflow-auto">
-        <Table
-          tableHeadData={tableData[0].tableHeadData}
-          tableBodyData={filteredUsers}
-        />
+        {isLoading ? (
+          <div className="min-h-[542px] max-h-[542px] flex items-center">
+            <Loading mode="principal" hover />
+          </div>
+        ) : clientFilterOptions.length ? (
+          <Table
+            tableHeadData={tableData[0].tableHeadData}
+            tableBodyData={filteredUsers}
+          />
+        ) : (
+          <NotData />
+        )}
       </div>
       <div className="w-full flex justify-end">
         <ButtonAdd label="Añadir cliente" modalType={Modal.CLIENT} />

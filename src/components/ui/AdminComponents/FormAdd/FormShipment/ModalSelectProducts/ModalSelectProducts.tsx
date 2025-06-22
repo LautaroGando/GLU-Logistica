@@ -1,5 +1,5 @@
 import { useAdminStore } from "@/store/adminStore/useAdminStore";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { IModalSelectProductsProps } from "./types";
 import { useFormikContext } from "formik";
 import { ITableWarehouse } from "@/data/adminData/tableData/types";
@@ -12,7 +12,17 @@ export const ModalSelectProducts: React.FC<IModalSelectProductsProps> = ({
   const [quantityProducts, setQuantityProducts] = useState<
     Record<string, number>
   >({});
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const { setFieldValue } = useFormikContext();
+
+  const filteredProducts = useMemo(() => {
+    const term = searchTerm.toLowerCase().trim();
+    return term.length === 0
+      ? products
+      : products.filter((product) =>
+          product.product.toLowerCase().includes(term)
+        );
+  }, [products, searchTerm]);
 
   const handleIncrement = (id: string) => {
     setQuantityProducts((prev) => ({
@@ -31,14 +41,25 @@ export const ModalSelectProducts: React.FC<IModalSelectProductsProps> = ({
   return (
     <>
       {modalProducts && (
-        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 0.1}} className="absolute top-0 left-0 w-full h-full bg-black/50 overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[80%] bg-pcSecondary rounded-md p-2 flex flex-col gap-3 justify-between">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.1 }}
+          className="absolute top-0 left-0 w-full h-full bg-black/50 overflow-hidden"
+        >
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[85%] bg-pcSecondary rounded-md p-2 flex flex-col gap-3 justify-between">
             <div className="flex flex-col gap-3">
               <h3 className="text-pcPrincipal font-semibold text-xl">
                 Agregar productos:
               </h3>
+              <input
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="input"
+                type="search"
+                placeholder="Buscar producto..."
+              />
               <div className="flex flex-col gap-2 max-h-[480px] overflow-auto">
-                {products.map((product: ITableWarehouse, i: number) => (
+                {filteredProducts.map((product: ITableWarehouse, i: number) => (
                   <div key={i}>
                     <div
                       key={i}

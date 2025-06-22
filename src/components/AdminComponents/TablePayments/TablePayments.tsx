@@ -8,7 +8,6 @@ import { buildPaymentsTableAdmin } from "@/data/buildPaymentsTableAdmin";
 import { IFilter } from "@/interfaces/IFilter";
 import { IShipment } from "@/interfaces";
 import { ITablePayments } from "@/data/adminData/tableData/types";
-import { NotData } from "@/components/ui/AdminComponents/NotData/NotData";
 import Loading from "@/components/ui/Loading/Loading";
 
 export const TablePayments = () => {
@@ -79,13 +78,11 @@ export const TablePayments = () => {
           <div className="min-h-[542px] max-h-[542px] flex items-center">
             <Loading mode="principal" hover />
           </div>
-        ) : filteredRows.length ? (
+        ) : (
           <Table
             tableHeadData={tableData[4].tableHeadData}
             tableBodyData={filteredRows}
           />
-        ) : (
-          <NotData />
         )}
       </div>
     </div>

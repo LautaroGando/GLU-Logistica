@@ -9,7 +9,6 @@ import { Modal } from "@/enum/Modal";
 import { useAdminStore } from "@/store/adminStore/useAdminStore";
 import { IFilter } from "@/interfaces/IFilter";
 import { ITableWarehouse } from "@/data/adminData/tableData/types";
-import { NotData } from "@/components/ui/AdminComponents/NotData/NotData";
 import Loading from "@/components/ui/Loading/Loading";
 
 export const TableWarehouse = () => {
@@ -78,13 +77,11 @@ export const TableWarehouse = () => {
           <div className="min-h-[542px] max-h-[542px] flex items-center">
             <Loading mode="principal" hover />
           </div>
-        ) : filteredProducts.length ? (
+        ) : (
           <Table
             tableHeadData={tableData[1].tableHeadData}
             tableBodyData={filteredProducts}
           />
-        ) : (
-          <NotData />
         )}
       </div>
       <div className="w-full flex justify-end">

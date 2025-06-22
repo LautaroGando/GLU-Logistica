@@ -9,7 +9,6 @@ import { tableData } from "@/data/adminData/tableData/tableData";
 import { ITableClients } from "@/data/adminData/tableData/types";
 import { IFilter } from "@/interfaces/IFilter";
 import { useAdminStore } from "@/store/adminStore/useAdminStore";
-import { NotData } from "@/components/ui/AdminComponents/NotData/NotData";
 import Loading from "@/components/ui/Loading/Loading";
 
 export const TableClients = () => {
@@ -71,13 +70,11 @@ export const TableClients = () => {
           <div className="min-h-[542px] max-h-[542px] flex items-center">
             <Loading mode="principal" hover />
           </div>
-        ) : clientFilterOptions.length ? (
+        ) : (
           <Table
             tableHeadData={tableData[0].tableHeadData}
             tableBodyData={filteredUsers}
           />
-        ) : (
-          <NotData />
         )}
       </div>
       <div className="w-full flex justify-end">

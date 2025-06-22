@@ -8,7 +8,6 @@ import { Modal } from "@/enum/Modal";
 import { useAdminStore } from "@/store/adminStore/useAdminStore";
 import { ITableShipments } from "@/data/adminData/tableData/types";
 import { IFilter } from "@/interfaces/IFilter";
-import { NotData } from "@/components/ui/AdminComponents/NotData/NotData";
 import Loading from "@/components/ui/Loading/Loading";
 
 export const TableShipments = () => {
@@ -124,13 +123,11 @@ export const TableShipments = () => {
           <div className="min-h-[542px] max-h-[542px] flex items-center">
             <Loading mode="principal" hover />
           </div>
-        ) : reorderedOrders.length ? (
+        ) : (
           <Table
             tableHeadData={tableData[2].tableHeadData}
             tableBodyData={reorderedOrders}
           />
-        ) : (
-          <NotData />
         )}
       </div>
       <div className="w-full flex justify-end">

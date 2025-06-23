@@ -9,6 +9,7 @@ import { IFilter } from "@/interfaces/IFilter";
 import { IShipment } from "@/interfaces";
 import { ITablePayments } from "@/data/adminData/tableData/types";
 import Loading from "@/components/ui/Loading/Loading";
+import { Quantity } from "@/components/ui/AdminComponents/Quantity/Quantity";
 
 export const TablePayments = () => {
   const { orders, getOrders, searchTerm } = useAdminStore();
@@ -72,6 +73,7 @@ export const TablePayments = () => {
           filter={companyFilterOptions}
           onChange={(value) => setSelectedFilter(value)}
         />
+        <Quantity label="Pagos realizados" quantity={filteredRows.length} />
       </div>
       <div className="w-full overflow-auto">
         {isLoading ? (

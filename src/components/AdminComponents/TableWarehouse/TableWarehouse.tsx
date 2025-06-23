@@ -10,6 +10,7 @@ import { useAdminStore } from "@/store/adminStore/useAdminStore";
 import { IFilter } from "@/interfaces/IFilter";
 import { ITableWarehouse } from "@/data/adminData/tableData/types";
 import Loading from "@/components/ui/Loading/Loading";
+import { Quantity } from "@/components/ui/AdminComponents/Quantity/Quantity";
 
 export const TableWarehouse = () => {
   const { products, getProducts, searchTerm } = useAdminStore();
@@ -71,6 +72,7 @@ export const TableWarehouse = () => {
           filter={companyFilterOptions}
           onChange={(value) => setSelectedFilter(value)}
         />
+        <Quantity label="Productos" quantity={filteredProducts.length} />
       </div>
       <div className="w-full overflow-auto">
         {isLoading ? (

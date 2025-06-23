@@ -9,6 +9,7 @@ import { useAdminStore } from "@/store/adminStore/useAdminStore";
 import { ITableShipments } from "@/data/adminData/tableData/types";
 import { IFilter } from "@/interfaces/IFilter";
 import Loading from "@/components/ui/Loading/Loading";
+import { Quantity } from "@/components/ui/AdminComponents/Quantity/Quantity";
 
 export const TableShipments = () => {
   const { orders, getOrders, searchTerm } = useAdminStore();
@@ -117,6 +118,7 @@ export const TableShipments = () => {
           filter={companyFilterOptions}
           onChange={(value) => setSelectedFilter(value)}
         />
+        <Quantity label="Envíos" quantity={reorderedOrders.length} />
       </div>
       <div className="w-full overflow-auto">
         {isLoading ? (

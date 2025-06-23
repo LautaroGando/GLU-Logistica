@@ -10,6 +10,7 @@ import { ITableClients } from "@/data/adminData/tableData/types";
 import { IFilter } from "@/interfaces/IFilter";
 import { useAdminStore } from "@/store/adminStore/useAdminStore";
 import Loading from "@/components/ui/Loading/Loading";
+import { Quantity } from "@/components/ui/AdminComponents/Quantity/Quantity";
 
 export const TableClients = () => {
   const { users, getUsers, searchTerm } = useAdminStore();
@@ -59,11 +60,12 @@ export const TableClients = () => {
 
   return (
     <div className="w-full flex flex-col gap-5 p-3">
-      <div className="flex flex-col gap-5 sm:flex-row sm:justify-between">
+      <div className="flex flex-col gap-5 items-center sm:flex-row sm:justify-between">
         <Filter
           filter={clientFilterOptions}
           onChange={(value) => setSelectedFilter(value)}
         />
+        <Quantity label="Clientes" quantity={filteredUsers.length} />
       </div>
       <div className="w-full overflow-auto">
         {isLoading ? (
